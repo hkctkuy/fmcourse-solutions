@@ -1,0 +1,41 @@
+theory Task
+    use import int.Int
+
+    function sqr (x: int) : int = x * x
+
+    predicate phi (x: int) = x > 1
+
+    predicate pAFTA (x y1 y2 y3: int) = y2 >= y3 && y3 = x 
+    predicate pATA  (x y1 y2 y3: int) = y2 <  y3
+
+    predicate p (x y1 y2 y3: int) =
+        y1 >= x && y2 >= 1 && y3 >= x && y1 = x * y2 && y2 <= y3 && y3 <= sqr(x)
+
+    predicate inW (u: (int, int)) =
+        let (x, y) = u in x >= 0 && y >= 0
+
+    predicate less (x y: (int, int)) =
+        let (x1, x2) = x in
+        let (y1, y2) = y in
+        x1 < y1 || x1 = y1 && x2 < y2
+
+    function u (x y1 y2 y3: int): (int, int) = (sqr(x) - y2, sqr(x) - y3)
+
+    goal SA:
+        forall x: int. (phi x) -> (p x x 1 x)
+    goal AFTA:
+        forall x y1 y2 y3: int. (phi x) && (p x y1 y2 y3) && (pAFTA x y1 y2 y3)
+            -> (p x y1 y2 y1)
+    goal ATA:
+        forall x y1 y2 y3: int. (phi x) && (p x y1 y2 y3) && (pATA x y1 y2 y3)
+            -> (p x (y1 + x) (y2 + 1) y3)
+    goal CORR:
+        forall x y1 y2 y3: int. (phi x) && (p x y1 y2 y3) -> (inW (u x y1 y2 y3))
+    goal tAFTA:
+        forall x y1 y2 y3: int. (phi x) && (p x y1 y2 y3) && (pAFTA x y1 y2 y3)
+            -> less (u x y1 y2 y1) (u x y1 y2 y3)
+    goal tATA:
+        forall x y1 y2 y3: int. (phi x) && (p x y1 y2 y3) && (pATA x y1 y2 y3)
+            -> less (u x (y1 + x) (y2 + 1) y3) (u x y1 y2 y3)
+
+end
