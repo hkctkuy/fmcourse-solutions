@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<org.eventb.core.contextFile org.eventb.core.configuration="org.eventb.core.fwd" version="3">
+    <org.eventb.core.axiom name="'" org.eventb.core.label="div&#9;def" org.eventb.core.predicate="&#9;∀a, b, d · a ∈ ℕ ∧ b ∈ ℕ1 ∧ d ∈ ℕ ⇒ (d = a ÷ b ⇔ a − b &lt; b ∗ d ∧ b ∗ d ≤ a)" org.eventb.core.theorem="true"/>
+    <org.eventb.core.axiom name="(" org.eventb.core.label="div&#9;prop1" org.eventb.core.predicate="∀a, b · a ∈ ℕ ∧ b ∈ ℕ1 ⇒ a = (a ∗ b) ÷ b" org.eventb.core.theorem="true"/>
+    <org.eventb.core.axiom name="2" org.eventb.core.label="div&#9;prop2" org.eventb.core.predicate="∀a, b, c · a ∈ ℕ ∧ b ∈ ℕ ∧ c ∈ ℕ1 ∧ a ≤ b ÷ c ⇒ a ∗ c ≤ b" org.eventb.core.theorem="true"/>
+    <org.eventb.core.axiom name=")" org.eventb.core.label="div&#9;prop3" org.eventb.core.predicate="∀a, b, c · a ∈ ℕ ∧ b ∈ ℕ1 ∧ c ∈ ℕ ⇒ a ÷ b + c = (a + b ∗ c) ÷ b" org.eventb.core.theorem="true"/>
+    <org.eventb.core.axiom name="*" org.eventb.core.label="div&#9;prop4" org.eventb.core.predicate="∀a, b, c · a ∈ ℕ ∧ b ∈ ℕ1 ∧ c ∈ ℕ1 ⇒ a ÷ b ÷ c = a ÷ (b ∗ c)" org.eventb.core.theorem="true"/>
+    <org.eventb.core.constant name="+" org.eventb.core.identifier="sqr"/>
+    <org.eventb.core.axiom name="0" org.eventb.core.label="sqr&#9;type" org.eventb.core.predicate="sqr ∈ ℤ → ℕ"/>
+    <org.eventb.core.axiom name="," org.eventb.core.label="sqr&#9;def" org.eventb.core.predicate="&#9;∀x ⦂ ℤ · sqr(x) = x ∗ x"/>
+    <org.eventb.core.constant name="-" org.eventb.core.identifier="isqrt"/>
+    <org.eventb.core.axiom name="1" org.eventb.core.label="isqrt type" org.eventb.core.predicate="isqrt ∈ ℤ → ℕ"/>
+    <org.eventb.core.axiom name="." org.eventb.core.label="isqrt def" org.eventb.core.predicate="&#9;∀x, r · x ∈ ℕ ∧ r ∈ ℕ ⇒ (r = isqrt(x) ⇔ sqr(r) ≤ x ∧ x &lt; sqr(r + 1))"/>
+    <org.eventb.core.axiom name="/" org.eventb.core.label="isqrt prop" org.eventb.core.predicate="∀x, y · x ∈ ℕ1 ∧ y ∈ ℕ1 ⇒ x &lt; sqr((x ÷ y + y) ÷ 2 + 1)" org.eventb.core.theorem="true"/>
+</org.eventb.core.contextFile>

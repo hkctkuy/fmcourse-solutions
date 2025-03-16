@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<org.eventb.core.poFile org.eventb.core.poStamp="0">
+    <org.eventb.core.poPredicateSet name="CTXHYP" org.eventb.core.poStamp="0">
+        <org.eventb.core.poIdentifier name="C" org.eventb.core.type="ℤ"/>
+        <org.eventb.core.poIdentifier name="M" org.eventb.core.type="ℤ"/>
+        <org.eventb.core.poIdentifier name="N" org.eventb.core.type="ℤ"/>
+        <org.eventb.core.poIdentifier name="W" org.eventb.core.type="ℤ"/>
+        <org.eventb.core.poPredicate name="X" org.eventb.core.predicate="W∈ℕ1" org.eventb.core.source="/subtask1/Params.buc|org.eventb.core.contextFile#Params|org.eventb.core.axiom#+"/>
+        <org.eventb.core.poPredicate name="Y" org.eventb.core.predicate="C∈ℕ1" org.eventb.core.source="/subtask1/Params.buc|org.eventb.core.contextFile#Params|org.eventb.core.axiom#,"/>
+        <org.eventb.core.poPredicate name="Z" org.eventb.core.predicate="N∈1 ‥ W" org.eventb.core.source="/subtask1/Params.buc|org.eventb.core.contextFile#Params|org.eventb.core.axiom#-"/>
+        <org.eventb.core.poPredicate name="[" org.eventb.core.predicate="M∈1 ‥ C" org.eventb.core.source="/subtask1/Params.buc|org.eventb.core.contextFile#Params|org.eventb.core.axiom#."/>
+    </org.eventb.core.poPredicateSet>
+    <org.eventb.core.poPredicateSet name="ABSHYP" org.eventb.core.parentSet="/subtask1/Coffee Machine.bpo|org.eventb.core.poFile#Coffee Machine|org.eventb.core.poPredicateSet#CTXHYP" org.eventb.core.poStamp="0">
+        <org.eventb.core.poIdentifier name="making" org.eventb.core.type="BOOL"/>
+        <org.eventb.core.poIdentifier name="tank" org.eventb.core.type="ℤ"/>
+        <org.eventb.core.poIdentifier name="storage" org.eventb.core.type="ℤ"/>
+        <org.eventb.core.poIdentifier name="slot_is_open" org.eventb.core.type="BOOL"/>
+    </org.eventb.core.poPredicateSet>
+    <org.eventb.core.poSequent name="INITIALISATION/tank type/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  establishment" org.eventb.core.poStamp="0">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/subtask1/Coffee Machine.bpo|org.eventb.core.poFile#Coffee Machine|org.eventb.core.poPredicateSet#EVTALLHYPslot_is_opeo">
+            <org.eventb.core.poPredicate name="'" org.eventb.core.predicate="tank'∈0 ‥ W∧storage'∈0 ‥ C∧slot_is_open'=bool(tank'≥N∧storage'≥M)" org.eventb.core.source="/subtask1/Coffee Machine.bum|org.eventb.core.machineFile#Coffee Machine|org.eventb.core.event#'|org.eventb.core.action#)"/>
+        </org.eventb.core.poPredicateSet>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="tank'∈0 ‥ W" org.eventb.core.source="/subtask1/Coffee Machine.bum|org.eventb.core.machineFile#Coffee Machine|org.eventb.core.invariant#+"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/subtask1/Coffee Machine.bum|org.eventb.core.machineFile#Coffee Machine|org.eventb.core.event#'"/>
+        <org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/subtask1/Coffee Machine.bum|org.eventb.core.machineFile#Coffee Machine|org.eventb.core.invariant#+"/>
+        <org.eventb.core.poSelHint name="SEQHYT" org.eventb.core.poSelHintFst="/subtask1/Coffee Machine.bpo|org.eventb.core.poFile#Coffee Machine|org.eventb.core.poPredicateSet#CTXHYP" org.eventb.core.poSelHintSnd="/subtask1/Coffee Machine.bpo|org.eventb.core.poFile#Coffee Machine|org.eventb.core.poSequent#INITIALISATION\/tank type\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+        <org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/subtask1/Coffee Machine.bpo|org.eventb.core.poFile#Coffee Machine|org.eventb.core.poPredicateSet#ALLHYP|org.eventb.core.poPredicate#PRD0"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poSequent name="INITIALISATION/storage type/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  establishment" org.eventb.core.poStamp="0">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/subtask1/Coffee Machine.bpo|org.eventb.core.poFile#Coffee Machine|org.eventb.core.poPredicateSet#EVTALLHYPslot_is_opeo">
+            <org.eventb.core.poPredicate name="'" org.eventb.core.predicate="tank'∈0 ‥ W∧storage'∈0 ‥ C∧slot_is_open'=bool(tank'≥N∧storage'≥M)" org.eventb.core.source="/subtask1/Coffee Machine.bum|org.eventb.core.machineFile#Coffee Machine|org.eventb.core.event#'|org.eventb.core.action#)"/>
+        </org.eventb.core.poPredicateSet>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="storage'∈0 ‥ C" org.eventb.core.source="/subtask1/Coffee Machine.bum|org.eventb.core.machineFile#Coffee Machine|org.eventb.core.invariant#-"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/subtask1/Coffee Machine.bum|org.eventb.core.machineFile#Coffee Machine|org.eventb.core.event#'"/>
+        <org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/subtask1/Coffee Machine.bum|org.eventb.core.machineFile#Coffee Machine|org.eventb.core.invariant#-"/>
+        <org.eventb.core.poSelHint name="SEQHYT" org.eventb.core.poSelHintFst="/subtask1/Coffee Machine.bpo|org.eventb.core.poFile#Coffee Machine|org.eventb.core.poPredicateSet#CTXHYP" org.eventb.core.poSelHintSnd="/subtask1/Coffee Machine.bpo|org.eventb.core.poFile#Coffee Machine|org.eventb.core.poSequent#INITIALISATION\/storage type\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+        <org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/subtask1/Coffee Machine.bpo|org.eventb.core.poFile#Coffee Machine|org.eventb.core.poPredicateSet#ALLHYP|org.eventb.core.poPredicate#PRD1"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poSequent name="INITIALISATION/slot/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  establishment" org.eventb.core.poStamp="0">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/subtask1/Coffee Machine.bpo|org.eventb.core.poFile#Coffee Machine|org.eventb.core.poPredicateSet#EVTALLHYPslot_is_opeo">
+            <org.eventb.core.poPredicate name="'" org.eventb.core.predicate="tank'∈0 ‥ W∧storage'∈0 ‥ C∧slot_is_open'=bool(tank'≥N∧storage'≥M)" org.eventb.core.source="/subtask1/Coffee Machine.bum|org.eventb.core.machineFile#Coffee Machine|org.eventb.core.event#'|org.eventb.core.action#)"/>
+        </org.eventb.core.poPredicateSet>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="slot_is_open'=TRUE⇔tank'≥N∧storage'≥M∧FALSE=FALSE" org.eventb.core.source="/subtask1/Coffee Machine.bum|org.eventb.core.machineFile#Coffee Machine|org.eventb.core.invariant#4"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/subtask1/Coffee Machine.bum|org.eventb.core.machineFile#Coffee Machine|org.eventb.core.event#'"/>
+        <org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/subtask1/Coffee Machine.bum|org.eventb.core.machineFile#Coffee Machine|org.eventb.core.invariant#4"/>
+        <org.eventb.core.poSelHint name="SEQHYT" org.eventb.core.poSelHintFst="/subtask1/Coffee Machine.bpo|org.eventb.core.poFile#Coffee Machine|org.eventb.core.poPredicateSet#CTXHYP" org.eventb.core.poSelHintSnd="/subtask1/Coffee Machine.bpo|org.eventb.core.poFile#Coffee Machine|org.eventb.core.poSequent#INITIALISATION\/slot\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+        <org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/subtask1/Coffee Machine.bpo|org.eventb.core.poFile#Coffee Machine|org.eventb.core.poPredicateSet#ALLHYP|org.eventb.core.poPredicate#PRD4"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poSequent name="INITIALISATION/slot init/FIS" org.eventb.core.accurate="true" org.eventb.core.poDesc="Feasibility of action" org.eventb.core.poStamp="0">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/subtask1/Coffee Machine.bpo|org.eventb.core.poFile#Coffee Machine|org.eventb.core.poPredicateSet#EVTALLHYPslot_is_opeo"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="∃tank'⦂ℤ,storage'⦂ℤ,slot_is_open'⦂BOOL·tank'∈0 ‥ W∧storage'∈0 ‥ C∧slot_is_open'=bool(tank'≥N∧storage'≥M)" org.eventb.core.source="/subtask1/Coffee Machine.bum|org.eventb.core.machineFile#Coffee Machine|org.eventb.core.event#'|org.eventb.core.action#)"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/subtask1/Coffee Machine.bum|org.eventb.core.machineFile#Coffee Machine|org.eventb.core.event#'|org.eventb.core.action#)"/>
+        <org.eventb.core.poSelHint name="SEQHYS" org.eventb.core.poSelHintFst="/subtask1/Coffee Machine.bpo|org.eventb.core.poFile#Coffee Machine|org.eventb.core.poPredicateSet#CTXHYP" org.eventb.core.poSelHintSnd="/subtask1/Coffee Machine.bpo|org.eventb.core.poFile#Coffee Machine|org.eventb.core.poPredicateSet#EVTALLHYPslot_is_opeo"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poPredicateSet name="EVTIDENTslot_is_opeo" org.eventb.core.parentSet="/subtask1/Coffee Machine.bpo|org.eventb.core.poFile#Coffee Machine|org.eventb.core.poPredicateSet#CTXHYP" org.eventb.core.poStamp="0">
+        <org.eventb.core.poIdentifier name="storage'" org.eventb.core.type="ℤ"/>
+        <org.eventb.core.poIdentifier name="making'" org.eventb.core.type="BOOL"/>
+        <org.eventb.core.poIdentifier name="tank'" org.eventb.core.type="ℤ"/>
+        <org.eventb.core.poIdentifier name="slot_is_open'" org.eventb.core.type="BOOL"/>
+    </org.eventb.core.poPredicateSet>
+    <org.eventb.core.poPredicateSet name="EVTALLHYPslot_is_opeo" org.eventb.core.parentSet="/subtask1/Coffee Machine.bpo|org.eventb.core.poFile#Coffee Machine|org.eventb.core.poPredicateSet#EVTIDENTslot_is_opeo" org.eventb.core.poStamp="0"/>
+    <org.eventb.core.poSequent name="Update ingredients/tank type/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="0">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/subtask1/Coffee Machine.bpo|org.eventb.core.poFile#Coffee Machine|org.eventb.core.poPredicateSet#EVTALLHYPslot_is_opep"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="upd_tank∈0 ‥ W" org.eventb.core.source="/subtask1/Coffee Machine.bum|org.eventb.core.machineFile#Coffee Machine|org.eventb.core.invariant#+"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/subtask1/Coffee Machine.bum|org.eventb.core.machineFile#Coffee Machine|org.eventb.core.event#\/"/>
+        <org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/subtask1/Coffee Machine.bum|org.eventb.core.machineFile#Coffee Machine|org.eventb.core.invariant#+"/>
+        <org.eventb.core.poSelHint name="SEQHYT" org.eventb.core.poSelHintFst="/subtask1/Coffee Machine.bpo|org.eventb.core.poFile#Coffee Machine|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/subtask1/Coffee Machine.bpo|org.eventb.core.poFile#Coffee Machine|org.eventb.core.poSequent#Update ingredients\/tank type\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+        <org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/subtask1/Coffee Machine.bpo|org.eventb.core.poFile#Coffee Machine|org.eventb.core.poPredicateSet#ALLHYP|org.eventb.core.poPredicate#PRD0"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poSequent name="Update ingredients/storage type/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="0">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/subtask1/Coffee Machine.bpo|org.eventb.core.poFile#Coffee Machine|org.eventb.core.poPredicateSet#EVTALLHYPslot_is_opep"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="upd_storage∈0 ‥ C" org.eventb.core.source="/subtask1/Coffee Machine.bum|org.eventb.core.machineFile#Coffee Machine|org.eventb.core.invariant#-"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/subtask1/Coffee Machine.bum|org.eventb.core.machineFile#Coffee Machine|org.eventb.core.event#\/"/>
+        <org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/subtask1/Coffee Machine.bum|org.eventb.core.machineFile#Coffee Machine|org.eventb.core.invariant#-"/>
+        <org.eventb.core.poSelHint name="SEQHYT" org.eventb.core.poSelHintFst="/subtask1/Coffee Machine.bpo|org.eventb.core.poFile#Coffee Machine|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/subtask1/Coffee Machine.bpo|org.eventb.core.poFile#Coffee Machine|org.eventb.core.poSequent#Update ingredients\/storage type\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+        <org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/subtask1/Coffee Machine.bpo|org.eventb.core.poFile#Coffee Machine|org.eventb.core.poPredicateSet#ALLHYP|org.eventb.core.poPredicate#PRD1"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poSequent name="Update ingredients/slot/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="0">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/subtask1/Coffee Machine.bpo|org.eventb.core.poFile#Coffee Machine|org.eventb.core.poPredicateSet#EVTALLHYPslot_is_opep"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="bool(upd_tank≥N∧upd_storage≥M∧making=FALSE)=TRUE⇔upd_tank≥N∧upd_storage≥M∧making=FALSE" org.eventb.core.source="/subtask1/Coffee Machine.bum|org.eventb.core.machineFile#Coffee Machine|org.eventb.core.invariant#4"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/subtask1/Coffee Machine.bum|org.eventb.core.machineFile#Coffee Machine|org.eventb.core.event#\/"/>
+        <org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/subtask1/Coffee Machine.bum|org.eventb.core.machineFile#Coffee Machine|org.eventb.core.invariant#4"/>
+        <org.eventb.core.poSelHint name="SEQHYT" org.eventb.core.poSelHintFst="/subtask1/Coffee Machine.bpo|org.eventb.core.poFile#Coffee Machine|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/subtask1/Coffee Machine.bpo|org.eventb.core.poFile#Coffee Machine|org.eventb.core.poSequent#Update ingredients\/slot\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+        <org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/subtask1/Coffee Machine.bpo|org.eventb.core.poFile#Coffee Machine|org.eventb.core.poPredicateSet#ALLHYP|org.eventb.core.poPredicate#PRD4"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poPredicateSet name="EVTIDENTslot_is_opep" org.eventb.core.parentSet="/subtask1/Coffee Machine.bpo|org.eventb.core.poFile#Coffee Machine|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poStamp="0">
+        <org.eventb.core.poIdentifier name="upd_tank" org.eventb.core.type="ℤ"/>
+        <org.eventb.core.poIdentifier name="storage'" org.eventb.core.type="ℤ"/>
+        <org.eventb.core.poIdentifier name="tank'" org.eventb.core.type="ℤ"/>
+        <org.eventb.core.poIdentifier name="slot_is_open'" org.eventb.core.type="BOOL"/>
+        <org.eventb.core.poIdentifier name="upd_storage" org.eventb.core.type="ℤ"/>
+    </org.eventb.core.poPredicateSet>
+    <org.eventb.core.poPredicateSet name="EVTALLHYPslot_is_opep" org.eventb.core.parentSet="/subtask1/Coffee Machine.bpo|org.eventb.core.poFile#Coffee Machine|org.eventb.core.poPredicateSet#EVTIDENTslot_is_opep" org.eventb.core.poStamp="0">
+        <org.eventb.core.poPredicate name="PRD0" org.eventb.core.predicate="upd_tank∈tank ‥ W" org.eventb.core.source="/subtask1/Coffee Machine.bum|org.eventb.core.machineFile#Coffee Machine|org.eventb.core.event#\/|org.eventb.core.guard#)"/>
+        <org.eventb.core.poPredicate name="PRD1" org.eventb.core.predicate="upd_storage∈storage ‥ C" org.eventb.core.source="/subtask1/Coffee Machine.bum|org.eventb.core.machineFile#Coffee Machine|org.eventb.core.event#\/|org.eventb.core.guard#*"/>
+    </org.eventb.core.poPredicateSet>
+    <org.eventb.core.poSequent name="Start making coffee/tank type/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="0">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/subtask1/Coffee Machine.bpo|org.eventb.core.poFile#Coffee Machine|org.eventb.core.poPredicateSet#EVTALLHYPslot_is_opeq"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="tank − N∈0 ‥ W" org.eventb.core.source="/subtask1/Coffee Machine.bum|org.eventb.core.machineFile#Coffee Machine|org.eventb.core.invariant#+"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/subtask1/Coffee Machine.bum|org.eventb.core.machineFile#Coffee Machine|org.eventb.core.event#2"/>
+        <org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/subtask1/Coffee Machine.bum|org.eventb.core.machineFile#Coffee Machine|org.eventb.core.invariant#+"/>
+        <org.eventb.core.poSelHint name="SEQHYT" org.eventb.core.poSelHintFst="/subtask1/Coffee Machine.bpo|org.eventb.core.poFile#Coffee Machine|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/subtask1/Coffee Machine.bpo|org.eventb.core.poFile#Coffee Machine|org.eventb.core.poSequent#Start making coffee\/tank type\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+        <org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/subtask1/Coffee Machine.bpo|org.eventb.core.poFile#Coffee Machine|org.eventb.core.poPredicateSet#ALLHYP|org.eventb.core.poPredicate#PRD0"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poSequent name="Start making coffee/storage type/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="0">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/subtask1/Coffee Machine.bpo|org.eventb.core.poFile#Coffee Machine|org.eventb.core.poPredicateSet#EVTALLHYPslot_is_opeq"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="storage − M∈0 ‥ C" org.eventb.core.source="/subtask1/Coffee Machine.bum|org.eventb.core.machineFile#Coffee Machine|org.eventb.core.invariant#-"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/subtask1/Coffee Machine.bum|org.eventb.core.machineFile#Coffee Machine|org.eventb.core.event#2"/>
+        <org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/subtask1/Coffee Machine.bum|org.eventb.core.machineFile#Coffee Machine|org.eventb.core.invariant#-"/>
+        <org.eventb.core.poSelHint name="SEQHYT" org.eventb.core.poSelHintFst="/subtask1/Coffee Machine.bpo|org.eventb.core.poFile#Coffee Machine|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/subtask1/Coffee Machine.bpo|org.eventb.core.poFile#Coffee Machine|org.eventb.core.poSequent#Start making coffee\/storage type\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+        <org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/subtask1/Coffee Machine.bpo|org.eventb.core.poFile#Coffee Machine|org.eventb.core.poPredicateSet#ALLHYP|org.eventb.core.poPredicate#PRD1"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poSequent name="Start making coffee/slot/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="0">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/subtask1/Coffee Machine.bpo|org.eventb.core.poFile#Coffee Machine|org.eventb.core.poPredicateSet#EVTALLHYPslot_is_opeq"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="FALSE=TRUE⇔tank − N≥N∧storage − M≥M∧TRUE=FALSE" org.eventb.core.source="/subtask1/Coffee Machine.bum|org.eventb.core.machineFile#Coffee Machine|org.eventb.core.invariant#4"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/subtask1/Coffee Machine.bum|org.eventb.core.machineFile#Coffee Machine|org.eventb.core.event#2"/>
+        <org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/subtask1/Coffee Machine.bum|org.eventb.core.machineFile#Coffee Machine|org.eventb.core.invariant#4"/>
+        <org.eventb.core.poSelHint name="SEQHYT" org.eventb.core.poSelHintFst="/subtask1/Coffee Machine.bpo|org.eventb.core.poFile#Coffee Machine|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/subtask1/Coffee Machine.bpo|org.eventb.core.poFile#Coffee Machine|org.eventb.core.poSequent#Start making coffee\/slot\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+        <org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/subtask1/Coffee Machine.bpo|org.eventb.core.poFile#Coffee Machine|org.eventb.core.poPredicateSet#ALLHYP|org.eventb.core.poPredicate#PRD4"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poPredicateSet name="EVTIDENTslot_is_opeq" org.eventb.core.parentSet="/subtask1/Coffee Machine.bpo|org.eventb.core.poFile#Coffee Machine|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poStamp="0">
+        <org.eventb.core.poIdentifier name="storage'" org.eventb.core.type="ℤ"/>
+        <org.eventb.core.poIdentifier name="making'" org.eventb.core.type="BOOL"/>
+        <org.eventb.core.poIdentifier name="tank'" org.eventb.core.type="ℤ"/>
+        <org.eventb.core.poIdentifier name="slot_is_open'" org.eventb.core.type="BOOL"/>
+    </org.eventb.core.poPredicateSet>
+    <org.eventb.core.poPredicateSet name="EVTALLHYPslot_is_opeq" org.eventb.core.parentSet="/subtask1/Coffee Machine.bpo|org.eventb.core.poFile#Coffee Machine|org.eventb.core.poPredicateSet#EVTIDENTslot_is_opeq" org.eventb.core.poStamp="0">
+        <org.eventb.core.poPredicate name="PRD0" org.eventb.core.predicate="tank≥N" org.eventb.core.source="/subtask1/Coffee Machine.bum|org.eventb.core.machineFile#Coffee Machine|org.eventb.core.event#2|org.eventb.core.guard#'"/>
+        <org.eventb.core.poPredicate name="PRD1" org.eventb.core.predicate="storage≥M" org.eventb.core.source="/subtask1/Coffee Machine.bum|org.eventb.core.machineFile#Coffee Machine|org.eventb.core.event#2|org.eventb.core.guard#("/>
+        <org.eventb.core.poPredicate name="PRD2" org.eventb.core.predicate="making=FALSE" org.eventb.core.source="/subtask1/Coffee Machine.bum|org.eventb.core.machineFile#Coffee Machine|org.eventb.core.event#2|org.eventb.core.guard#)"/>
+    </org.eventb.core.poPredicateSet>
+    <org.eventb.core.poSequent name="End making coffee/slot/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="0">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/subtask1/Coffee Machine.bpo|org.eventb.core.poFile#Coffee Machine|org.eventb.core.poPredicateSet#EVTALLHYPslot_is_oper"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="bool(tank≥N∧storage≥M)=TRUE⇔tank≥N∧storage≥M∧FALSE=FALSE" org.eventb.core.source="/subtask1/Coffee Machine.bum|org.eventb.core.machineFile#Coffee Machine|org.eventb.core.invariant#4"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/subtask1/Coffee Machine.bum|org.eventb.core.machineFile#Coffee Machine|org.eventb.core.event#3"/>
+        <org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/subtask1/Coffee Machine.bum|org.eventb.core.machineFile#Coffee Machine|org.eventb.core.invariant#4"/>
+        <org.eventb.core.poSelHint name="SEQHYT" org.eventb.core.poSelHintFst="/subtask1/Coffee Machine.bpo|org.eventb.core.poFile#Coffee Machine|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/subtask1/Coffee Machine.bpo|org.eventb.core.poFile#Coffee Machine|org.eventb.core.poSequent#End making coffee\/slot\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+        <org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/subtask1/Coffee Machine.bpo|org.eventb.core.poFile#Coffee Machine|org.eventb.core.poPredicateSet#ALLHYP|org.eventb.core.poPredicate#PRD4"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poPredicateSet name="EVTIDENTslot_is_oper" org.eventb.core.parentSet="/subtask1/Coffee Machine.bpo|org.eventb.core.poFile#Coffee Machine|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poStamp="0">
+        <org.eventb.core.poIdentifier name="making'" org.eventb.core.type="BOOL"/>
+        <org.eventb.core.poIdentifier name="slot_is_open'" org.eventb.core.type="BOOL"/>
+    </org.eventb.core.poPredicateSet>
+    <org.eventb.core.poPredicateSet name="EVTALLHYPslot_is_oper" org.eventb.core.parentSet="/subtask1/Coffee Machine.bpo|org.eventb.core.poFile#Coffee Machine|org.eventb.core.poPredicateSet#EVTIDENTslot_is_oper" org.eventb.core.poStamp="0">
+        <org.eventb.core.poPredicate name="PRD0" org.eventb.core.predicate="making=TRUE" org.eventb.core.source="/subtask1/Coffee Machine.bum|org.eventb.core.machineFile#Coffee Machine|org.eventb.core.event#3|org.eventb.core.guard#'"/>
+    </org.eventb.core.poPredicateSet>
+    <org.eventb.core.poPredicateSet name="ALLHYP" org.eventb.core.parentSet="/subtask1/Coffee Machine.bpo|org.eventb.core.poFile#Coffee Machine|org.eventb.core.poPredicateSet#ABSHYP" org.eventb.core.poStamp="0">
+        <org.eventb.core.poPredicate name="PRD0" org.eventb.core.predicate="tank∈0 ‥ W" org.eventb.core.source="/subtask1/Coffee Machine.bum|org.eventb.core.machineFile#Coffee Machine|org.eventb.core.invariant#+"/>
+        <org.eventb.core.poPredicate name="PRD1" org.eventb.core.predicate="storage∈0 ‥ C" org.eventb.core.source="/subtask1/Coffee Machine.bum|org.eventb.core.machineFile#Coffee Machine|org.eventb.core.invariant#-"/>
+        <org.eventb.core.poPredicate name="PRD2" org.eventb.core.predicate="slot_is_open∈BOOL" org.eventb.core.source="/subtask1/Coffee Machine.bum|org.eventb.core.machineFile#Coffee Machine|org.eventb.core.invariant#."/>
+        <org.eventb.core.poPredicate name="PRD3" org.eventb.core.predicate="making∈BOOL" org.eventb.core.source="/subtask1/Coffee Machine.bum|org.eventb.core.machineFile#Coffee Machine|org.eventb.core.invariant#1"/>
+        <org.eventb.core.poPredicate name="PRD4" org.eventb.core.predicate="slot_is_open=TRUE⇔tank≥N∧storage≥M∧making=FALSE" org.eventb.core.source="/subtask1/Coffee Machine.bum|org.eventb.core.machineFile#Coffee Machine|org.eventb.core.invariant#4"/>
+    </org.eventb.core.poPredicateSet>
+</org.eventb.core.poFile>

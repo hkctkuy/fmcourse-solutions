@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<org.eventb.core.contextFile org.eventb.core.configuration="org.eventb.core.fwd" version="3">
+    <org.eventb.core.axiom name="*" org.eventb.core.label="phi &#9;&#9;type" org.eventb.core.predicate="phi ∈ ℤ → BOOL"/>
+    <org.eventb.core.axiom name="2" org.eventb.core.label="psi &#9;&#9;type" org.eventb.core.predicate="psi ∈ ℤ × ℤ → BOOL"/>
+    <org.eventb.core.axiom name="6" org.eventb.core.label="RATA &#9;type" org.eventb.core.predicate="RATA ∈ ℤ × ℤ × ℤ → BOOL"/>
+    <org.eventb.core.axiom name="4" org.eventb.core.label="RAFH&#9;type" org.eventb.core.predicate="RAFH ∈ ℤ × ℤ × ℤ → BOOL"/>
+    <org.eventb.core.axiom name="I" org.eventb.core.label="rSA&#9;&#9;type" org.eventb.core.predicate="rSA ∈ ℤ → ℤ × ℤ"/>
+    <org.eventb.core.axiom name="9" org.eventb.core.label="rATA &#9;type" org.eventb.core.predicate="rATA ∈ ℤ × ℤ × ℤ → ℤ × ℤ"/>
+    <org.eventb.core.axiom name=":" org.eventb.core.label="h&#9;&#9;&#9;type" org.eventb.core.predicate="h ∈ ℤ × ℤ × ℤ → ℤ"/>
+    <org.eventb.core.constant name="+" org.eventb.core.identifier="phi"/>
+    <org.eventb.core.axiom name="," org.eventb.core.label="phi&#9;&#9;def" org.eventb.core.predicate="&#9;∀x ⦂ ℤ · phi(x) = bool(x ≥ 0)"/>
+    <org.eventb.core.constant name="-" org.eventb.core.identifier="psi"/>
+    <org.eventb.core.axiom name="0" org.eventb.core.label="psi&#9;&#9;def" org.eventb.core.predicate="&#9;∀x ⦂ ℤ, z ⦂ ℤ · psi(x ↦ z) = bool(z = isqrt(x))"/>
+    <org.eventb.core.constant name="5" org.eventb.core.identifier="RATA"/>
+    <org.eventb.core.constant name="3" org.eventb.core.identifier="RAFH"/>
+    <org.eventb.core.constant name="G" org.eventb.core.identifier="rSA"/>
+    <org.eventb.core.constant name="8" org.eventb.core.identifier="rATA"/>
+    <org.eventb.core.constant name="7" org.eventb.core.identifier="h"/>
+    <org.eventb.core.axiom name="?" org.eventb.core.label="RATA&#9;def" org.eventb.core.predicate="&#9;∀x ⦂ ℤ, y1 ⦂ ℤ, y2 ⦂ ℤ · RATA(x ↦ y1 ↦ y2) = bool(y1 &gt; y2)"/>
+    <org.eventb.core.axiom name="@" org.eventb.core.label="RAFH&#9;def" org.eventb.core.predicate="&#9;∀x ⦂ ℤ, y1 ⦂ ℤ, y2 ⦂ ℤ · RAFH(x ↦ y1 ↦ y2) = bool(RATA(x ↦ y1 ↦ y2) = FALSE)"/>
+    <org.eventb.core.axiom name="H" org.eventb.core.label="rSA&#9;&#9;def" org.eventb.core.predicate="&#9;∀x ⦂ ℤ · rSA(x) = x ↦ (x + 1) ÷ 2"/>
+    <org.eventb.core.axiom name="&gt;" org.eventb.core.label="rATA&#9;&#9;def" org.eventb.core.predicate="&#9;∀x ⦂ ℤ, y1 ⦂ ℤ, y2 ⦂ ℤ · y2 ≠ 0 ⇒ rATA(x ↦ y1 ↦ y2) = y2 ↦ (x ÷ y2 + y2) ÷ 2"/>
+    <org.eventb.core.axiom name="A" org.eventb.core.label="h&#9;&#9;&#9;def" org.eventb.core.predicate="&#9;∀x ⦂ ℤ, y1 ⦂ ℤ, y2 ⦂ ℤ · h(x ↦ y1 ↦ y2) = y1"/>
+    <org.eventb.core.extendsContext name="L" org.eventb.core.target="Common"/>
+</org.eventb.core.contextFile>
