@@ -1,0 +1,578 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<org.eventb.core.poFile org.eventb.core.poStamp="30">
+    <org.eventb.core.poPredicateSet name="CTXHYP" org.eventb.core.poStamp="0">
+        <org.eventb.core.poIdentifier name="USERS" org.eventb.core.type="ℙ(USERS)"/>
+        <org.eventb.core.poIdentifier name="FILES" org.eventb.core.type="ℙ(FILES)"/>
+        <org.eventb.core.poIdentifier name="PROCESSES" org.eventb.core.type="ℙ(PROCESSES)"/>
+    </org.eventb.core.poPredicateSet>
+    <org.eventb.core.poPredicateSet name="ABSHYP" org.eventb.core.parentSet="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poPredicateSet#CTXHYP" org.eventb.core.poStamp="13">
+        <org.eventb.core.poIdentifier name="OpenFiles" org.eventb.core.type="ℙ(PROCESSES×ℤ×FILES)"/>
+        <org.eventb.core.poIdentifier name="Users" org.eventb.core.type="ℙ(USERS)"/>
+        <org.eventb.core.poIdentifier name="PrevOwner" org.eventb.core.type="ℙ(PROCESSES×USERS)"/>
+        <org.eventb.core.poIdentifier name="Processes" org.eventb.core.type="ℙ(PROCESSES)"/>
+        <org.eventb.core.poIdentifier name="Owner" org.eventb.core.type="ℙ(PROCESSES×USERS)"/>
+        <org.eventb.core.poIdentifier name="Files" org.eventb.core.type="ℙ(FILES)"/>
+        <org.eventb.core.poIdentifier name="Logged" org.eventb.core.type="ℙ(USERS×BOOL)"/>
+        <org.eventb.core.poIdentifier name="Accesses" org.eventb.core.type="ℙ(USERS×ℙ(FILES))"/>
+    </org.eventb.core.poPredicateSet>
+    <org.eventb.core.poSequent name="PermittedAccess/WD" org.eventb.core.accurate="true" org.eventb.core.poDesc="Well-definedness of Invariant" org.eventb.core.poStamp="19">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poPredicateSet#HYPCommov"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="∀p⦂PROCESSES,n⦂ℤ·p ↦ n∈dom(OpenFiles)⇒OpenFiles∈PROCESSES × ℤ ⇸ FILES∧p∈dom(Owner)∧Owner∈PROCESSES ⇸ USERS∧Owner(p)∈dom(Accesses)∧Accesses∈USERS ⇸ ℙ(FILES)" org.eventb.core.source="/subtask3/ISS.bum|org.eventb.core.machineFile#ISS|org.eventb.core.invariant#5"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/subtask3/ISS.bum|org.eventb.core.machineFile#ISS|org.eventb.core.invariant#5"/>
+        <org.eventb.core.poSelHint name="SEQHYS" org.eventb.core.poSelHintFst="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poPredicateSet#ABSHYP" org.eventb.core.poSelHintSnd="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poPredicateSet#HYPCommov"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poSequent name="LoggedAccess/WD" org.eventb.core.accurate="true" org.eventb.core.poDesc="Well-definedness of Invariant" org.eventb.core.poStamp="14">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poPredicateSet#HYPCommow"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="∀p⦂PROCESSES·p∈Processes⇒p∈dom(Owner)∧Owner∈PROCESSES ⇸ USERS∧Owner(p)∈dom(Logged)∧Logged∈USERS ⇸ BOOL" org.eventb.core.source="/subtask3/ISS.bum|org.eventb.core.machineFile#ISS|org.eventb.core.invariant#evt&gt;"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/subtask3/ISS.bum|org.eventb.core.machineFile#ISS|org.eventb.core.invariant#evt&gt;"/>
+        <org.eventb.core.poSelHint name="SEQHYS" org.eventb.core.poSelHintFst="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poPredicateSet#ABSHYP" org.eventb.core.poSelHintSnd="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poPredicateSet#HYPCommow"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poSequent name="LoggedPrev/WD" org.eventb.core.accurate="true" org.eventb.core.poDesc="Well-definedness of Invariant" org.eventb.core.poStamp="14">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poPredicateSet#HYPCommox"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="∀p⦂PROCESSES·p∈Processes∧p∈dom(PrevOwner)⇒PrevOwner∈PROCESSES ⇸ USERS∧PrevOwner(p)∈dom(Logged)∧Logged∈USERS ⇸ BOOL" org.eventb.core.source="/subtask3/ISS.bum|org.eventb.core.machineFile#ISS|org.eventb.core.invariant#evt?"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/subtask3/ISS.bum|org.eventb.core.machineFile#ISS|org.eventb.core.invariant#evt?"/>
+        <org.eventb.core.poSelHint name="SEQHYS" org.eventb.core.poSelHintFst="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poPredicateSet#ABSHYP" org.eventb.core.poSelHintSnd="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poPredicateSet#HYPCommox"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poSequent name="INITIALISATION/OpenFIles/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  establishment" org.eventb.core.poStamp="16">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poPredicateSet#EVTALLHYPProcesset"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="(∅ ⦂ ℙ(PROCESSES×ℤ×FILES))∈(∅ ⦂ ℙ(PROCESSES)) × ℕ ⇸ (∅ ⦂ ℙ(FILES))" org.eventb.core.source="/subtask3/ISS.bum|org.eventb.core.machineFile#ISS|org.eventb.core.invariant#."/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/subtask3/ISS.bum|org.eventb.core.machineFile#ISS|org.eventb.core.event#'"/>
+        <org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/subtask3/ISS.bum|org.eventb.core.machineFile#ISS|org.eventb.core.invariant#."/>
+        <org.eventb.core.poSelHint name="SEQHYT" org.eventb.core.poSelHintFst="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poPredicateSet#CTXHYP" org.eventb.core.poSelHintSnd="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poSequent#INITIALISATION\/OpenFIles\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+        <org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poPredicateSet#HYPCommov|org.eventb.core.poPredicate#PRD3"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poSequent name="INITIALISATION/Onwer/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  establishment" org.eventb.core.poStamp="16">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poPredicateSet#EVTALLHYPProcesset"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="(∅ ⦂ ℙ(PROCESSES×USERS))∈(∅ ⦂ ℙ(PROCESSES)) → (∅ ⦂ ℙ(USERS))" org.eventb.core.source="/subtask3/ISS.bum|org.eventb.core.machineFile#ISS|org.eventb.core.invariant#4"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/subtask3/ISS.bum|org.eventb.core.machineFile#ISS|org.eventb.core.event#'"/>
+        <org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/subtask3/ISS.bum|org.eventb.core.machineFile#ISS|org.eventb.core.invariant#4"/>
+        <org.eventb.core.poSelHint name="SEQHYT" org.eventb.core.poSelHintFst="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poPredicateSet#CTXHYP" org.eventb.core.poSelHintSnd="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poSequent#INITIALISATION\/Onwer\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+        <org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poPredicateSet#HYPCommov|org.eventb.core.poPredicate#PRD4"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poSequent name="INITIALISATION/Accesses/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  establishment" org.eventb.core.poStamp="16">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poPredicateSet#EVTALLHYPProcesset"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="(∅ ⦂ ℙ(USERS×ℙ(FILES)))∈(∅ ⦂ ℙ(USERS)) → ℙ(∅ ⦂ ℙ(FILES))" org.eventb.core.source="/subtask3/ISS.bum|org.eventb.core.machineFile#ISS|org.eventb.core.invariant#2"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/subtask3/ISS.bum|org.eventb.core.machineFile#ISS|org.eventb.core.event#'"/>
+        <org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/subtask3/ISS.bum|org.eventb.core.machineFile#ISS|org.eventb.core.invariant#2"/>
+        <org.eventb.core.poSelHint name="SEQHYT" org.eventb.core.poSelHintFst="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poPredicateSet#CTXHYP" org.eventb.core.poSelHintSnd="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poSequent#INITIALISATION\/Accesses\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+        <org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poPredicateSet#HYPCommov|org.eventb.core.poPredicate#PRD5"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poSequent name="INITIALISATION/Logged/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  establishment" org.eventb.core.poStamp="16">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poPredicateSet#EVTALLHYPProcesset"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="(∅ ⦂ ℙ(USERS×BOOL))∈(∅ ⦂ ℙ(USERS)) → BOOL" org.eventb.core.source="/subtask3/ISS.bum|org.eventb.core.machineFile#ISS|org.eventb.core.invariant#7"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/subtask3/ISS.bum|org.eventb.core.machineFile#ISS|org.eventb.core.event#'"/>
+        <org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/subtask3/ISS.bum|org.eventb.core.machineFile#ISS|org.eventb.core.invariant#7"/>
+        <org.eventb.core.poSelHint name="SEQHYT" org.eventb.core.poSelHintFst="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poPredicateSet#CTXHYP" org.eventb.core.poSelHintSnd="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poSequent#INITIALISATION\/Logged\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+        <org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poPredicateSet#HYPCommov|org.eventb.core.poPredicate#PRD6"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poSequent name="INITIALISATION/PrevOwner/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  establishment" org.eventb.core.poStamp="16">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poPredicateSet#EVTALLHYPProcesset"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="(∅ ⦂ ℙ(PROCESSES×USERS))∈(∅ ⦂ ℙ(PROCESSES)) ⇸ (∅ ⦂ ℙ(USERS))" org.eventb.core.source="/subtask3/ISS.bum|org.eventb.core.machineFile#ISS|org.eventb.core.invariant#evt7"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/subtask3/ISS.bum|org.eventb.core.machineFile#ISS|org.eventb.core.event#'"/>
+        <org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/subtask3/ISS.bum|org.eventb.core.machineFile#ISS|org.eventb.core.invariant#evt7"/>
+        <org.eventb.core.poSelHint name="SEQHYT" org.eventb.core.poSelHintFst="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poPredicateSet#CTXHYP" org.eventb.core.poSelHintSnd="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poSequent#INITIALISATION\/PrevOwner\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+        <org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poPredicateSet#HYPCommov|org.eventb.core.poPredicate#PRD7"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poSequent name="INITIALISATION/PermittedAccess/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  establishment" org.eventb.core.poStamp="19">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poPredicateSet#EVTALLHYPProcesset"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="∀p⦂PROCESSES,n⦂ℤ·p ↦ n∈dom(∅ ⦂ ℙ(PROCESSES×ℤ×FILES))⇒(∅ ⦂ ℙ(PROCESSES×ℤ×FILES))(p ↦ n)∈(∅ ⦂ ℙ(USERS×ℙ(FILES)))((∅ ⦂ ℙ(PROCESSES×USERS))(p))" org.eventb.core.source="/subtask3/ISS.bum|org.eventb.core.machineFile#ISS|org.eventb.core.invariant#5"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/subtask3/ISS.bum|org.eventb.core.machineFile#ISS|org.eventb.core.event#'"/>
+        <org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/subtask3/ISS.bum|org.eventb.core.machineFile#ISS|org.eventb.core.invariant#5"/>
+        <org.eventb.core.poSelHint name="SEQHYT" org.eventb.core.poSelHintFst="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poPredicateSet#CTXHYP" org.eventb.core.poSelHintSnd="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poSequent#INITIALISATION\/PermittedAccess\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+        <org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poPredicateSet#HYPCommow|org.eventb.core.poPredicate#PRD8"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poSequent name="INITIALISATION/LoggedAccess/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  establishment" org.eventb.core.poStamp="16">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poPredicateSet#EVTALLHYPProcesset"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="∀p⦂PROCESSES·p∈(∅ ⦂ ℙ(PROCESSES))⇒(∅ ⦂ ℙ(USERS×BOOL))((∅ ⦂ ℙ(PROCESSES×USERS))(p))=TRUE" org.eventb.core.source="/subtask3/ISS.bum|org.eventb.core.machineFile#ISS|org.eventb.core.invariant#evt&gt;"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/subtask3/ISS.bum|org.eventb.core.machineFile#ISS|org.eventb.core.event#'"/>
+        <org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/subtask3/ISS.bum|org.eventb.core.machineFile#ISS|org.eventb.core.invariant#evt&gt;"/>
+        <org.eventb.core.poSelHint name="SEQHYT" org.eventb.core.poSelHintFst="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poPredicateSet#CTXHYP" org.eventb.core.poSelHintSnd="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poSequent#INITIALISATION\/LoggedAccess\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+        <org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poPredicateSet#HYPCommox|org.eventb.core.poPredicate#PRD9"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poSequent name="INITIALISATION/LoggedPrev/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  establishment" org.eventb.core.poStamp="16">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poPredicateSet#EVTALLHYPProcesset"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="∀p⦂PROCESSES·p∈(∅ ⦂ ℙ(PROCESSES))∧p∈dom(∅ ⦂ ℙ(PROCESSES×USERS))⇒(∅ ⦂ ℙ(USERS×BOOL))((∅ ⦂ ℙ(PROCESSES×USERS))(p))=TRUE" org.eventb.core.source="/subtask3/ISS.bum|org.eventb.core.machineFile#ISS|org.eventb.core.invariant#evt?"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/subtask3/ISS.bum|org.eventb.core.machineFile#ISS|org.eventb.core.event#'"/>
+        <org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/subtask3/ISS.bum|org.eventb.core.machineFile#ISS|org.eventb.core.invariant#evt?"/>
+        <org.eventb.core.poSelHint name="SEQHYT" org.eventb.core.poSelHintFst="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poPredicateSet#CTXHYP" org.eventb.core.poSelHintSnd="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poSequent#INITIALISATION\/LoggedPrev\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+        <org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poPredicateSet#ALLHYP|org.eventb.core.poPredicate#PRD10"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poPredicateSet name="EVTIDENTProcesset" org.eventb.core.parentSet="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poPredicateSet#CTXHYP" org.eventb.core.poStamp="13">
+        <org.eventb.core.poIdentifier name="Logged'" org.eventb.core.type="ℙ(USERS×BOOL)"/>
+        <org.eventb.core.poIdentifier name="Processes'" org.eventb.core.type="ℙ(PROCESSES)"/>
+        <org.eventb.core.poIdentifier name="Users'" org.eventb.core.type="ℙ(USERS)"/>
+        <org.eventb.core.poIdentifier name="PrevOwner'" org.eventb.core.type="ℙ(PROCESSES×USERS)"/>
+        <org.eventb.core.poIdentifier name="Owner'" org.eventb.core.type="ℙ(PROCESSES×USERS)"/>
+        <org.eventb.core.poIdentifier name="Accesses'" org.eventb.core.type="ℙ(USERS×ℙ(FILES))"/>
+        <org.eventb.core.poIdentifier name="Files'" org.eventb.core.type="ℙ(FILES)"/>
+        <org.eventb.core.poIdentifier name="OpenFiles'" org.eventb.core.type="ℙ(PROCESSES×ℤ×FILES)"/>
+    </org.eventb.core.poPredicateSet>
+    <org.eventb.core.poPredicateSet name="EVTALLHYPProcesset" org.eventb.core.parentSet="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poPredicateSet#EVTIDENTProcesset" org.eventb.core.poStamp="13"/>
+    <org.eventb.core.poSequent name="Any Transition/permittedaccess/WD" org.eventb.core.accurate="true" org.eventb.core.poDesc="Well-definedness of Guard" org.eventb.core.poStamp="29">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poPredicateSet#EVTHYPProcesseu."/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="∀p⦂PROCESSES,n⦂ℤ·p ↦ n∈dom(openfiles)⇒openfiles∈PROCESSES × ℤ ⇸ FILES∧p∈dom(owner)∧owner∈PROCESSES ⇸ USERS∧owner(p)∈dom(accesses)∧accesses∈USERS ⇸ ℙ(FILES)" org.eventb.core.source="/subtask3/ISS.bum|org.eventb.core.machineFile#ISS|org.eventb.core.event#evt@|org.eventb.core.guard#5"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/subtask3/ISS.bum|org.eventb.core.machineFile#ISS|org.eventb.core.event#evt@|org.eventb.core.guard#5"/>
+        <org.eventb.core.poSelHint name="SEQHYS" org.eventb.core.poSelHintFst="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poPredicateSet#EVTHYPProcesseu."/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poSequent name="Any Transition/loggedaccess/WD" org.eventb.core.accurate="true" org.eventb.core.poDesc="Well-definedness of Guard" org.eventb.core.poStamp="29">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poPredicateSet#EVTHYPProcesseu\/"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="∀p⦂PROCESSES·p∈processes⇒p∈dom(owner)∧owner∈PROCESSES ⇸ USERS∧owner(p)∈dom(logged)∧logged∈USERS ⇸ BOOL" org.eventb.core.source="/subtask3/ISS.bum|org.eventb.core.machineFile#ISS|org.eventb.core.event#evt@|org.eventb.core.guard#evt8"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/subtask3/ISS.bum|org.eventb.core.machineFile#ISS|org.eventb.core.event#evt@|org.eventb.core.guard#evt8"/>
+        <org.eventb.core.poSelHint name="SEQHYS" org.eventb.core.poSelHintFst="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poPredicateSet#EVTHYPProcesseu\/"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poSequent name="Any Transition/loggedprev/WD" org.eventb.core.accurate="true" org.eventb.core.poDesc="Well-definedness of Guard" org.eventb.core.poStamp="29">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poPredicateSet#EVTHYPProcesseu0"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="∀p⦂PROCESSES·p∈processes∧p∈dom(prevowner)⇒prevowner∈PROCESSES ⇸ USERS∧prevowner(p)∈dom(logged)∧logged∈USERS ⇸ BOOL" org.eventb.core.source="/subtask3/ISS.bum|org.eventb.core.machineFile#ISS|org.eventb.core.event#evt@|org.eventb.core.guard#evt9"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/subtask3/ISS.bum|org.eventb.core.machineFile#ISS|org.eventb.core.event#evt@|org.eventb.core.guard#evt9"/>
+        <org.eventb.core.poSelHint name="SEQHYS" org.eventb.core.poSelHintFst="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poPredicateSet#EVTHYPProcesseu0"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poSequent name="Any Transition/OpenFIles/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="29">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poPredicateSet#EVTALLHYPProcesseu"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="openfiles∈processes × ℕ ⇸ files" org.eventb.core.source="/subtask3/ISS.bum|org.eventb.core.machineFile#ISS|org.eventb.core.invariant#."/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/subtask3/ISS.bum|org.eventb.core.machineFile#ISS|org.eventb.core.event#evt@"/>
+        <org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/subtask3/ISS.bum|org.eventb.core.machineFile#ISS|org.eventb.core.invariant#."/>
+        <org.eventb.core.poSelHint name="SEQHYT" org.eventb.core.poSelHintFst="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poSequent#Any Transition\/OpenFIles\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+        <org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poPredicateSet#HYPCommov|org.eventb.core.poPredicate#PRD3"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poSequent name="Any Transition/Onwer/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="29">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poPredicateSet#EVTALLHYPProcesseu"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="owner∈processes → users" org.eventb.core.source="/subtask3/ISS.bum|org.eventb.core.machineFile#ISS|org.eventb.core.invariant#4"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/subtask3/ISS.bum|org.eventb.core.machineFile#ISS|org.eventb.core.event#evt@"/>
+        <org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/subtask3/ISS.bum|org.eventb.core.machineFile#ISS|org.eventb.core.invariant#4"/>
+        <org.eventb.core.poSelHint name="SEQHYT" org.eventb.core.poSelHintFst="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poSequent#Any Transition\/Onwer\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+        <org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poPredicateSet#HYPCommov|org.eventb.core.poPredicate#PRD4"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poSequent name="Any Transition/Accesses/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="29">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poPredicateSet#EVTALLHYPProcesseu"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="accesses∈users → ℙ(files)" org.eventb.core.source="/subtask3/ISS.bum|org.eventb.core.machineFile#ISS|org.eventb.core.invariant#2"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/subtask3/ISS.bum|org.eventb.core.machineFile#ISS|org.eventb.core.event#evt@"/>
+        <org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/subtask3/ISS.bum|org.eventb.core.machineFile#ISS|org.eventb.core.invariant#2"/>
+        <org.eventb.core.poSelHint name="SEQHYT" org.eventb.core.poSelHintFst="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poSequent#Any Transition\/Accesses\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+        <org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poPredicateSet#HYPCommov|org.eventb.core.poPredicate#PRD5"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poSequent name="Any Transition/Logged/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="29">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poPredicateSet#EVTALLHYPProcesseu"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="logged∈users → BOOL" org.eventb.core.source="/subtask3/ISS.bum|org.eventb.core.machineFile#ISS|org.eventb.core.invariant#7"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/subtask3/ISS.bum|org.eventb.core.machineFile#ISS|org.eventb.core.event#evt@"/>
+        <org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/subtask3/ISS.bum|org.eventb.core.machineFile#ISS|org.eventb.core.invariant#7"/>
+        <org.eventb.core.poSelHint name="SEQHYT" org.eventb.core.poSelHintFst="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poSequent#Any Transition\/Logged\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+        <org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poPredicateSet#HYPCommov|org.eventb.core.poPredicate#PRD6"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poSequent name="Any Transition/PrevOwner/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="29">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poPredicateSet#EVTALLHYPProcesseu"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="prevowner∈processes ⇸ users" org.eventb.core.source="/subtask3/ISS.bum|org.eventb.core.machineFile#ISS|org.eventb.core.invariant#evt7"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/subtask3/ISS.bum|org.eventb.core.machineFile#ISS|org.eventb.core.event#evt@"/>
+        <org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/subtask3/ISS.bum|org.eventb.core.machineFile#ISS|org.eventb.core.invariant#evt7"/>
+        <org.eventb.core.poSelHint name="SEQHYT" org.eventb.core.poSelHintFst="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poSequent#Any Transition\/PrevOwner\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+        <org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poPredicateSet#HYPCommov|org.eventb.core.poPredicate#PRD7"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poSequent name="Any Transition/PermittedAccess/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="29">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poPredicateSet#EVTALLHYPProcesseu"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="∀p⦂PROCESSES,n⦂ℤ·p ↦ n∈dom(openfiles)⇒openfiles(p ↦ n)∈accesses(owner(p))" org.eventb.core.source="/subtask3/ISS.bum|org.eventb.core.machineFile#ISS|org.eventb.core.invariant#5"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/subtask3/ISS.bum|org.eventb.core.machineFile#ISS|org.eventb.core.event#evt@"/>
+        <org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/subtask3/ISS.bum|org.eventb.core.machineFile#ISS|org.eventb.core.invariant#5"/>
+        <org.eventb.core.poSelHint name="SEQHYT" org.eventb.core.poSelHintFst="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poSequent#Any Transition\/PermittedAccess\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+        <org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poPredicateSet#HYPCommow|org.eventb.core.poPredicate#PRD8"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poSequent name="Any Transition/LoggedAccess/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="29">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poPredicateSet#EVTALLHYPProcesseu"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="∀p⦂PROCESSES·p∈processes⇒logged(owner(p))=TRUE" org.eventb.core.source="/subtask3/ISS.bum|org.eventb.core.machineFile#ISS|org.eventb.core.invariant#evt&gt;"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/subtask3/ISS.bum|org.eventb.core.machineFile#ISS|org.eventb.core.event#evt@"/>
+        <org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/subtask3/ISS.bum|org.eventb.core.machineFile#ISS|org.eventb.core.invariant#evt&gt;"/>
+        <org.eventb.core.poSelHint name="SEQHYT" org.eventb.core.poSelHintFst="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poSequent#Any Transition\/LoggedAccess\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+        <org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poPredicateSet#HYPCommox|org.eventb.core.poPredicate#PRD9"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poSequent name="Any Transition/LoggedPrev/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="29">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poPredicateSet#EVTALLHYPProcesseu"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="∀p⦂PROCESSES·p∈processes∧p∈dom(prevowner)⇒logged(prevowner(p))=TRUE" org.eventb.core.source="/subtask3/ISS.bum|org.eventb.core.machineFile#ISS|org.eventb.core.invariant#evt?"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/subtask3/ISS.bum|org.eventb.core.machineFile#ISS|org.eventb.core.event#evt@"/>
+        <org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/subtask3/ISS.bum|org.eventb.core.machineFile#ISS|org.eventb.core.invariant#evt?"/>
+        <org.eventb.core.poSelHint name="SEQHYT" org.eventb.core.poSelHintFst="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poSequent#Any Transition\/LoggedPrev\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+        <org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poPredicateSet#ALLHYP|org.eventb.core.poPredicate#PRD10"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poPredicateSet name="EVTIDENTProcesseu" org.eventb.core.parentSet="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poStamp="29">
+        <org.eventb.core.poIdentifier name="Logged'" org.eventb.core.type="ℙ(USERS×BOOL)"/>
+        <org.eventb.core.poIdentifier name="users" org.eventb.core.type="ℙ(USERS)"/>
+        <org.eventb.core.poIdentifier name="Processes'" org.eventb.core.type="ℙ(PROCESSES)"/>
+        <org.eventb.core.poIdentifier name="files" org.eventb.core.type="ℙ(FILES)"/>
+        <org.eventb.core.poIdentifier name="prevowner" org.eventb.core.type="ℙ(PROCESSES×USERS)"/>
+        <org.eventb.core.poIdentifier name="processes" org.eventb.core.type="ℙ(PROCESSES)"/>
+        <org.eventb.core.poIdentifier name="Users'" org.eventb.core.type="ℙ(USERS)"/>
+        <org.eventb.core.poIdentifier name="openfiles" org.eventb.core.type="ℙ(PROCESSES×ℤ×FILES)"/>
+        <org.eventb.core.poIdentifier name="PrevOwner'" org.eventb.core.type="ℙ(PROCESSES×USERS)"/>
+        <org.eventb.core.poIdentifier name="Owner'" org.eventb.core.type="ℙ(PROCESSES×USERS)"/>
+        <org.eventb.core.poIdentifier name="Accesses'" org.eventb.core.type="ℙ(USERS×ℙ(FILES))"/>
+        <org.eventb.core.poIdentifier name="logged" org.eventb.core.type="ℙ(USERS×BOOL)"/>
+        <org.eventb.core.poIdentifier name="Files'" org.eventb.core.type="ℙ(FILES)"/>
+        <org.eventb.core.poIdentifier name="OpenFiles'" org.eventb.core.type="ℙ(PROCESSES×ℤ×FILES)"/>
+        <org.eventb.core.poIdentifier name="owner" org.eventb.core.type="ℙ(PROCESSES×USERS)"/>
+        <org.eventb.core.poIdentifier name="accesses" org.eventb.core.type="ℙ(USERS×ℙ(FILES))"/>
+    </org.eventb.core.poPredicateSet>
+    <org.eventb.core.poPredicateSet name="EVTHYPProcesseu." org.eventb.core.parentSet="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poPredicateSet#EVTIDENTProcesseu" org.eventb.core.poStamp="29">
+        <org.eventb.core.poPredicate name="PRD0" org.eventb.core.predicate="files∈ℙ(FILES)" org.eventb.core.source="/subtask3/ISS.bum|org.eventb.core.machineFile#ISS|org.eventb.core.event#evt@|org.eventb.core.guard#,"/>
+        <org.eventb.core.poPredicate name="PRD1" org.eventb.core.predicate="users∈ℙ(USERS)" org.eventb.core.source="/subtask3/ISS.bum|org.eventb.core.machineFile#ISS|org.eventb.core.event#evt@|org.eventb.core.guard#0"/>
+        <org.eventb.core.poPredicate name="PRD2" org.eventb.core.predicate="processes∈ℙ(PROCESSES)" org.eventb.core.source="/subtask3/ISS.bum|org.eventb.core.machineFile#ISS|org.eventb.core.event#evt@|org.eventb.core.guard#)"/>
+        <org.eventb.core.poPredicate name="PRD3" org.eventb.core.predicate="openfiles∈processes × ℕ ⇸ files" org.eventb.core.source="/subtask3/ISS.bum|org.eventb.core.machineFile#ISS|org.eventb.core.event#evt@|org.eventb.core.guard#."/>
+        <org.eventb.core.poPredicate name="PRD4" org.eventb.core.predicate="owner∈processes → users" org.eventb.core.source="/subtask3/ISS.bum|org.eventb.core.machineFile#ISS|org.eventb.core.event#evt@|org.eventb.core.guard#4"/>
+        <org.eventb.core.poPredicate name="PRD5" org.eventb.core.predicate="accesses∈users → ℙ(files)" org.eventb.core.source="/subtask3/ISS.bum|org.eventb.core.machineFile#ISS|org.eventb.core.event#evt@|org.eventb.core.guard#2"/>
+        <org.eventb.core.poPredicate name="PRD6" org.eventb.core.predicate="logged∈users → BOOL" org.eventb.core.source="/subtask3/ISS.bum|org.eventb.core.machineFile#ISS|org.eventb.core.event#evt@|org.eventb.core.guard#7"/>
+        <org.eventb.core.poPredicate name="PRD7" org.eventb.core.predicate="prevowner∈processes ⇸ users" org.eventb.core.source="/subtask3/ISS.bum|org.eventb.core.machineFile#ISS|org.eventb.core.event#evt@|org.eventb.core.guard#evt7"/>
+    </org.eventb.core.poPredicateSet>
+    <org.eventb.core.poPredicateSet name="EVTHYPProcesseu/" org.eventb.core.parentSet="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poPredicateSet#EVTHYPProcesseu." org.eventb.core.poStamp="29">
+        <org.eventb.core.poPredicate name="PRD8" org.eventb.core.predicate="∀p⦂PROCESSES,n⦂ℤ·p ↦ n∈dom(openfiles)⇒openfiles(p ↦ n)∈accesses(owner(p))" org.eventb.core.source="/subtask3/ISS.bum|org.eventb.core.machineFile#ISS|org.eventb.core.event#evt@|org.eventb.core.guard#5"/>
+    </org.eventb.core.poPredicateSet>
+    <org.eventb.core.poPredicateSet name="EVTHYPProcesseu0" org.eventb.core.parentSet="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poPredicateSet#EVTHYPProcesseu\/" org.eventb.core.poStamp="29">
+        <org.eventb.core.poPredicate name="PRD9" org.eventb.core.predicate="∀p⦂PROCESSES·p∈processes⇒logged(owner(p))=TRUE" org.eventb.core.source="/subtask3/ISS.bum|org.eventb.core.machineFile#ISS|org.eventb.core.event#evt@|org.eventb.core.guard#evt8"/>
+    </org.eventb.core.poPredicateSet>
+    <org.eventb.core.poPredicateSet name="EVTALLHYPProcesseu" org.eventb.core.parentSet="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poPredicateSet#EVTHYPProcesseu0" org.eventb.core.poStamp="29">
+        <org.eventb.core.poPredicate name="PRD10" org.eventb.core.predicate="∀p⦂PROCESSES·p∈processes∧p∈dom(prevowner)⇒logged(prevowner(p))=TRUE" org.eventb.core.source="/subtask3/ISS.bum|org.eventb.core.machineFile#ISS|org.eventb.core.event#evt@|org.eventb.core.guard#evt9"/>
+    </org.eventb.core.poPredicateSet>
+    <org.eventb.core.poSequent name="Log In/Logged/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="14">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poPredicateSet#EVTALLHYPProcessev"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="Logged{user ↦ TRUE}∈Users → BOOL" org.eventb.core.source="/subtask3/ISS.bum|org.eventb.core.machineFile#ISS|org.eventb.core.invariant#7"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/subtask3/ISS.bum|org.eventb.core.machineFile#ISS|org.eventb.core.event#9"/>
+        <org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/subtask3/ISS.bum|org.eventb.core.machineFile#ISS|org.eventb.core.invariant#7"/>
+        <org.eventb.core.poSelHint name="SEQHYT" org.eventb.core.poSelHintFst="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poSequent#Log In\/Logged\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+        <org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poPredicateSet#HYPCommov|org.eventb.core.poPredicate#PRD6"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poSequent name="Log In/LoggedAccess/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="14">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poPredicateSet#EVTALLHYPProcessev"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="∀p⦂PROCESSES·p∈Processes⇒(Logged{user ↦ TRUE})(Owner(p))=TRUE" org.eventb.core.source="/subtask3/ISS.bum|org.eventb.core.machineFile#ISS|org.eventb.core.invariant#evt&gt;"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/subtask3/ISS.bum|org.eventb.core.machineFile#ISS|org.eventb.core.event#9"/>
+        <org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/subtask3/ISS.bum|org.eventb.core.machineFile#ISS|org.eventb.core.invariant#evt&gt;"/>
+        <org.eventb.core.poSelHint name="SEQHYT" org.eventb.core.poSelHintFst="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poSequent#Log In\/LoggedAccess\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+        <org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poPredicateSet#HYPCommox|org.eventb.core.poPredicate#PRD9"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poSequent name="Log In/LoggedPrev/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="14">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poPredicateSet#EVTALLHYPProcessev"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="∀p⦂PROCESSES·p∈Processes∧p∈dom(PrevOwner)⇒(Logged{user ↦ TRUE})(PrevOwner(p))=TRUE" org.eventb.core.source="/subtask3/ISS.bum|org.eventb.core.machineFile#ISS|org.eventb.core.invariant#evt?"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/subtask3/ISS.bum|org.eventb.core.machineFile#ISS|org.eventb.core.event#9"/>
+        <org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/subtask3/ISS.bum|org.eventb.core.machineFile#ISS|org.eventb.core.invariant#evt?"/>
+        <org.eventb.core.poSelHint name="SEQHYT" org.eventb.core.poSelHintFst="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poSequent#Log In\/LoggedPrev\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+        <org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poPredicateSet#ALLHYP|org.eventb.core.poPredicate#PRD10"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poPredicateSet name="EVTIDENTProcessev" org.eventb.core.parentSet="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poStamp="14">
+        <org.eventb.core.poIdentifier name="Logged'" org.eventb.core.type="ℙ(USERS×BOOL)"/>
+        <org.eventb.core.poIdentifier name="user" org.eventb.core.type="USERS"/>
+    </org.eventb.core.poPredicateSet>
+    <org.eventb.core.poPredicateSet name="EVTALLHYPProcessev" org.eventb.core.parentSet="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poPredicateSet#EVTIDENTProcessev" org.eventb.core.poStamp="14">
+        <org.eventb.core.poPredicate name="PRD0" org.eventb.core.predicate="user∈Users" org.eventb.core.source="/subtask3/ISS.bum|org.eventb.core.machineFile#ISS|org.eventb.core.event#9|org.eventb.core.guard#("/>
+    </org.eventb.core.poPredicateSet>
+    <org.eventb.core.poSequent name="Open File/onwer/WD" org.eventb.core.accurate="true" org.eventb.core.poDesc="Well-definedness of Guard" org.eventb.core.poStamp="30">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poPredicateSet#EVTHYPProcessew)"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="process∈dom(Owner)∧Owner∈PROCESSES ⇸ USERS∧Owner(process)∈dom(Logged)∧Logged∈USERS ⇸ BOOL" org.eventb.core.source="/subtask3/ISS.bum|org.eventb.core.machineFile#ISS|org.eventb.core.event#8|org.eventb.core.guard#+"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/subtask3/ISS.bum|org.eventb.core.machineFile#ISS|org.eventb.core.event#8|org.eventb.core.guard#+"/>
+        <org.eventb.core.poSelHint name="SEQHYS" org.eventb.core.poSelHintFst="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poPredicateSet#EVTHYPProcessew)"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poSequent name="Open File/access/WD" org.eventb.core.accurate="true" org.eventb.core.poDesc="Well-definedness of Guard" org.eventb.core.poStamp="30">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poPredicateSet#EVTHYPProcessew*"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="process∈dom(Owner)∧Owner∈PROCESSES ⇸ USERS∧Owner(process)∈dom(Accesses)∧Accesses∈USERS ⇸ ℙ(FILES)" org.eventb.core.source="/subtask3/ISS.bum|org.eventb.core.machineFile#ISS|org.eventb.core.event#8|org.eventb.core.guard#,"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/subtask3/ISS.bum|org.eventb.core.machineFile#ISS|org.eventb.core.event#8|org.eventb.core.guard#,"/>
+        <org.eventb.core.poSelHint name="SEQHYS" org.eventb.core.poSelHintFst="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poPredicateSet#EVTHYPProcessew*"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poSequent name="Open File/OpenFIles/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="30">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poPredicateSet#EVTALLHYPProcessew"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="OpenFiles{process ↦ n ↦ file}∈Processes × ℕ ⇸ Files" org.eventb.core.source="/subtask3/ISS.bum|org.eventb.core.machineFile#ISS|org.eventb.core.invariant#."/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/subtask3/ISS.bum|org.eventb.core.machineFile#ISS|org.eventb.core.event#8"/>
+        <org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/subtask3/ISS.bum|org.eventb.core.machineFile#ISS|org.eventb.core.invariant#."/>
+        <org.eventb.core.poSelHint name="SEQHYT" org.eventb.core.poSelHintFst="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poSequent#Open File\/OpenFIles\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+        <org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poPredicateSet#HYPCommov|org.eventb.core.poPredicate#PRD3"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poSequent name="Open File/PermittedAccess/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="30">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poPredicateSet#EVTALLHYPProcessew"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="∀p⦂PROCESSES,n0⦂ℤ·p ↦ n0∈dom(OpenFiles{process ↦ n ↦ file})⇒(OpenFiles{process ↦ n ↦ file})(p ↦ n0)∈Accesses(Owner(p))" org.eventb.core.source="/subtask3/ISS.bum|org.eventb.core.machineFile#ISS|org.eventb.core.invariant#5"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/subtask3/ISS.bum|org.eventb.core.machineFile#ISS|org.eventb.core.event#8"/>
+        <org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/subtask3/ISS.bum|org.eventb.core.machineFile#ISS|org.eventb.core.invariant#5"/>
+        <org.eventb.core.poSelHint name="SEQHYT" org.eventb.core.poSelHintFst="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poSequent#Open File\/PermittedAccess\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+        <org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poPredicateSet#HYPCommow|org.eventb.core.poPredicate#PRD8"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poPredicateSet name="EVTIDENTProcessew" org.eventb.core.parentSet="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poStamp="20">
+        <org.eventb.core.poIdentifier name="n" org.eventb.core.type="ℤ"/>
+        <org.eventb.core.poIdentifier name="file" org.eventb.core.type="FILES"/>
+        <org.eventb.core.poIdentifier name="OpenFiles'" org.eventb.core.type="ℙ(PROCESSES×ℤ×FILES)"/>
+        <org.eventb.core.poIdentifier name="process" org.eventb.core.type="PROCESSES"/>
+    </org.eventb.core.poPredicateSet>
+    <org.eventb.core.poPredicateSet name="EVTHYPProcessew)" org.eventb.core.parentSet="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poPredicateSet#EVTIDENTProcessew" org.eventb.core.poStamp="30">
+        <org.eventb.core.poPredicate name="PRD0" org.eventb.core.predicate="process∈Processes" org.eventb.core.source="/subtask3/ISS.bum|org.eventb.core.machineFile#ISS|org.eventb.core.event#8|org.eventb.core.guard#)"/>
+        <org.eventb.core.poPredicate name="PRD1" org.eventb.core.predicate="file∈Files" org.eventb.core.source="/subtask3/ISS.bum|org.eventb.core.machineFile#ISS|org.eventb.core.event#8|org.eventb.core.guard#*"/>
+        <org.eventb.core.poPredicate name="PRD2" org.eventb.core.predicate="n∈ℕ" org.eventb.core.source="/subtask3/ISS.bum|org.eventb.core.machineFile#ISS|org.eventb.core.event#8|org.eventb.core.guard#0"/>
+    </org.eventb.core.poPredicateSet>
+    <org.eventb.core.poPredicateSet name="EVTHYPProcessew*" org.eventb.core.parentSet="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poPredicateSet#EVTHYPProcessew)" org.eventb.core.poStamp="0">
+        <org.eventb.core.poPredicate name="PRD3" org.eventb.core.predicate="Logged(Owner(process))=TRUE" org.eventb.core.source="/subtask3/ISS.bum|org.eventb.core.machineFile#ISS|org.eventb.core.event#8|org.eventb.core.guard#+"/>
+    </org.eventb.core.poPredicateSet>
+    <org.eventb.core.poPredicateSet name="EVTALLHYPProcessew" org.eventb.core.parentSet="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poPredicateSet#EVTHYPProcessew*" org.eventb.core.poStamp="30">
+        <org.eventb.core.poPredicate name="PRD4" org.eventb.core.predicate="file∈Accesses(Owner(process))" org.eventb.core.source="/subtask3/ISS.bum|org.eventb.core.machineFile#ISS|org.eventb.core.event#8|org.eventb.core.guard#,"/>
+        <org.eventb.core.poPredicate name="PRD5" org.eventb.core.predicate="process ↦ n∉dom(OpenFiles)" org.eventb.core.source="/subtask3/ISS.bum|org.eventb.core.machineFile#ISS|org.eventb.core.event#8|org.eventb.core.guard#\/"/>
+    </org.eventb.core.poPredicateSet>
+    <org.eventb.core.poSequent name="Close FIle/open/WD" org.eventb.core.accurate="true" org.eventb.core.poDesc="Well-definedness of Guard" org.eventb.core.poStamp="21">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poPredicateSet#EVTHYPProcessex("/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="process ↦ n∈dom(OpenFiles)⇒OpenFiles∈PROCESSES × ℤ ⇸ FILES" org.eventb.core.source="/subtask3/ISS.bum|org.eventb.core.machineFile#ISS|org.eventb.core.event#evt1|org.eventb.core.guard#."/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/subtask3/ISS.bum|org.eventb.core.machineFile#ISS|org.eventb.core.event#evt1|org.eventb.core.guard#."/>
+        <org.eventb.core.poSelHint name="SEQHYS" org.eventb.core.poSelHintFst="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poPredicateSet#EVTHYPProcessex("/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poSequent name="Close FIle/OpenFIles/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="21">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poPredicateSet#EVTALLHYPProcessex"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="{process ↦ n} ⩤ OpenFiles∈Processes × ℕ ⇸ Files" org.eventb.core.source="/subtask3/ISS.bum|org.eventb.core.machineFile#ISS|org.eventb.core.invariant#."/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/subtask3/ISS.bum|org.eventb.core.machineFile#ISS|org.eventb.core.event#evt1"/>
+        <org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/subtask3/ISS.bum|org.eventb.core.machineFile#ISS|org.eventb.core.invariant#."/>
+        <org.eventb.core.poSelHint name="SEQHYT" org.eventb.core.poSelHintFst="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poSequent#Close FIle\/OpenFIles\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+        <org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poPredicateSet#HYPCommov|org.eventb.core.poPredicate#PRD3"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poSequent name="Close FIle/PermittedAccess/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="21">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poPredicateSet#EVTALLHYPProcessex"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="∀p⦂PROCESSES,n0⦂ℤ·p ↦ n0∈dom({process ↦ n} ⩤ OpenFiles)⇒({process ↦ n} ⩤ OpenFiles)(p ↦ n0)∈Accesses(Owner(p))" org.eventb.core.source="/subtask3/ISS.bum|org.eventb.core.machineFile#ISS|org.eventb.core.invariant#5"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/subtask3/ISS.bum|org.eventb.core.machineFile#ISS|org.eventb.core.event#evt1"/>
+        <org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/subtask3/ISS.bum|org.eventb.core.machineFile#ISS|org.eventb.core.invariant#5"/>
+        <org.eventb.core.poSelHint name="SEQHYT" org.eventb.core.poSelHintFst="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poSequent#Close FIle\/PermittedAccess\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+        <org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poPredicateSet#HYPCommow|org.eventb.core.poPredicate#PRD8"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poPredicateSet name="EVTIDENTProcessex" org.eventb.core.parentSet="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poStamp="21">
+        <org.eventb.core.poIdentifier name="n" org.eventb.core.type="ℤ"/>
+        <org.eventb.core.poIdentifier name="file" org.eventb.core.type="FILES"/>
+        <org.eventb.core.poIdentifier name="OpenFiles'" org.eventb.core.type="ℙ(PROCESSES×ℤ×FILES)"/>
+        <org.eventb.core.poIdentifier name="process" org.eventb.core.type="PROCESSES"/>
+    </org.eventb.core.poPredicateSet>
+    <org.eventb.core.poPredicateSet name="EVTHYPProcessex(" org.eventb.core.parentSet="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poPredicateSet#EVTIDENTProcessex" org.eventb.core.poStamp="0">
+        <org.eventb.core.poPredicate name="PRD0" org.eventb.core.predicate="process∈Processes" org.eventb.core.source="/subtask3/ISS.bum|org.eventb.core.machineFile#ISS|org.eventb.core.event#evt1|org.eventb.core.guard#)"/>
+        <org.eventb.core.poPredicate name="PRD1" org.eventb.core.predicate="file∈Files" org.eventb.core.source="/subtask3/ISS.bum|org.eventb.core.machineFile#ISS|org.eventb.core.event#evt1|org.eventb.core.guard#*"/>
+    </org.eventb.core.poPredicateSet>
+    <org.eventb.core.poPredicateSet name="EVTALLHYPProcessex" org.eventb.core.parentSet="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poPredicateSet#EVTHYPProcessex(" org.eventb.core.poStamp="21">
+        <org.eventb.core.poPredicate name="PRD2" org.eventb.core.predicate="process ↦ n∈dom(OpenFiles)∧OpenFiles(process ↦ n)=file" org.eventb.core.source="/subtask3/ISS.bum|org.eventb.core.machineFile#ISS|org.eventb.core.event#evt1|org.eventb.core.guard#."/>
+    </org.eventb.core.poPredicateSet>
+    <org.eventb.core.poSequent name="Create a Child Process/OpenFIles/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="22">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poPredicateSet#EVTALLHYPProcessey"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="OpenFiles∈(Processes∪{child}) × ℕ ⇸ Files" org.eventb.core.source="/subtask3/ISS.bum|org.eventb.core.machineFile#ISS|org.eventb.core.invariant#."/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/subtask3/ISS.bum|org.eventb.core.machineFile#ISS|org.eventb.core.event#evt2"/>
+        <org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/subtask3/ISS.bum|org.eventb.core.machineFile#ISS|org.eventb.core.invariant#."/>
+        <org.eventb.core.poSelHint name="SEQHYT" org.eventb.core.poSelHintFst="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poSequent#Create a Child Process\/OpenFIles\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+        <org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poPredicateSet#HYPCommov|org.eventb.core.poPredicate#PRD3"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poSequent name="Create a Child Process/Onwer/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="22">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poPredicateSet#EVTALLHYPProcessey"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="Owner{child ↦ Owner(process)}∈Processes∪{child} → Users" org.eventb.core.source="/subtask3/ISS.bum|org.eventb.core.machineFile#ISS|org.eventb.core.invariant#4"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/subtask3/ISS.bum|org.eventb.core.machineFile#ISS|org.eventb.core.event#evt2"/>
+        <org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/subtask3/ISS.bum|org.eventb.core.machineFile#ISS|org.eventb.core.invariant#4"/>
+        <org.eventb.core.poSelHint name="SEQHYT" org.eventb.core.poSelHintFst="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poSequent#Create a Child Process\/Onwer\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+        <org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poPredicateSet#HYPCommov|org.eventb.core.poPredicate#PRD4"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poSequent name="Create a Child Process/PrevOwner/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="22">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poPredicateSet#EVTALLHYPProcessey"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="PrevOwner∈Processes∪{child} ⇸ Users" org.eventb.core.source="/subtask3/ISS.bum|org.eventb.core.machineFile#ISS|org.eventb.core.invariant#evt7"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/subtask3/ISS.bum|org.eventb.core.machineFile#ISS|org.eventb.core.event#evt2"/>
+        <org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/subtask3/ISS.bum|org.eventb.core.machineFile#ISS|org.eventb.core.invariant#evt7"/>
+        <org.eventb.core.poSelHint name="SEQHYT" org.eventb.core.poSelHintFst="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poSequent#Create a Child Process\/PrevOwner\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+        <org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poPredicateSet#HYPCommov|org.eventb.core.poPredicate#PRD7"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poSequent name="Create a Child Process/PermittedAccess/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="22">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poPredicateSet#EVTALLHYPProcessey"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="∀p⦂PROCESSES,n⦂ℤ·p ↦ n∈dom(OpenFiles)⇒OpenFiles(p ↦ n)∈Accesses((Owner{child ↦ Owner(process)})(p))" org.eventb.core.source="/subtask3/ISS.bum|org.eventb.core.machineFile#ISS|org.eventb.core.invariant#5"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/subtask3/ISS.bum|org.eventb.core.machineFile#ISS|org.eventb.core.event#evt2"/>
+        <org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/subtask3/ISS.bum|org.eventb.core.machineFile#ISS|org.eventb.core.invariant#5"/>
+        <org.eventb.core.poSelHint name="SEQHYT" org.eventb.core.poSelHintFst="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poSequent#Create a Child Process\/PermittedAccess\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+        <org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poPredicateSet#HYPCommow|org.eventb.core.poPredicate#PRD8"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poSequent name="Create a Child Process/LoggedAccess/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="22">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poPredicateSet#EVTALLHYPProcessey"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="∀p⦂PROCESSES·p∈Processes∪{child}⇒Logged((Owner{child ↦ Owner(process)})(p))=TRUE" org.eventb.core.source="/subtask3/ISS.bum|org.eventb.core.machineFile#ISS|org.eventb.core.invariant#evt&gt;"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/subtask3/ISS.bum|org.eventb.core.machineFile#ISS|org.eventb.core.event#evt2"/>
+        <org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/subtask3/ISS.bum|org.eventb.core.machineFile#ISS|org.eventb.core.invariant#evt&gt;"/>
+        <org.eventb.core.poSelHint name="SEQHYT" org.eventb.core.poSelHintFst="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poSequent#Create a Child Process\/LoggedAccess\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+        <org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poPredicateSet#HYPCommox|org.eventb.core.poPredicate#PRD9"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poSequent name="Create a Child Process/LoggedPrev/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="22">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poPredicateSet#EVTALLHYPProcessey"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="∀p⦂PROCESSES·p∈Processes∪{child}∧p∈dom(PrevOwner)⇒Logged(PrevOwner(p))=TRUE" org.eventb.core.source="/subtask3/ISS.bum|org.eventb.core.machineFile#ISS|org.eventb.core.invariant#evt?"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/subtask3/ISS.bum|org.eventb.core.machineFile#ISS|org.eventb.core.event#evt2"/>
+        <org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/subtask3/ISS.bum|org.eventb.core.machineFile#ISS|org.eventb.core.invariant#evt?"/>
+        <org.eventb.core.poSelHint name="SEQHYT" org.eventb.core.poSelHintFst="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poSequent#Create a Child Process\/LoggedPrev\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+        <org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poPredicateSet#ALLHYP|org.eventb.core.poPredicate#PRD10"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poSequent name="Create a Child Process/owner/WD" org.eventb.core.accurate="true" org.eventb.core.poDesc="Well-definedness of action" org.eventb.core.poStamp="22">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poPredicateSet#EVTALLHYPProcessey"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="process∈dom(Owner)∧Owner∈PROCESSES ⇸ USERS" org.eventb.core.source="/subtask3/ISS.bum|org.eventb.core.machineFile#ISS|org.eventb.core.event#evt2|org.eventb.core.action#*"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/subtask3/ISS.bum|org.eventb.core.machineFile#ISS|org.eventb.core.event#evt2|org.eventb.core.action#*"/>
+        <org.eventb.core.poSelHint name="SEQHYS" org.eventb.core.poSelHintFst="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poPredicateSet#EVTALLHYPProcessey"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poPredicateSet name="EVTIDENTProcessey" org.eventb.core.parentSet="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poStamp="14">
+        <org.eventb.core.poIdentifier name="Processes'" org.eventb.core.type="ℙ(PROCESSES)"/>
+        <org.eventb.core.poIdentifier name="Owner'" org.eventb.core.type="ℙ(PROCESSES×USERS)"/>
+        <org.eventb.core.poIdentifier name="child" org.eventb.core.type="PROCESSES"/>
+        <org.eventb.core.poIdentifier name="process" org.eventb.core.type="PROCESSES"/>
+    </org.eventb.core.poPredicateSet>
+    <org.eventb.core.poPredicateSet name="EVTALLHYPProcessey" org.eventb.core.parentSet="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poPredicateSet#EVTIDENTProcessey" org.eventb.core.poStamp="14">
+        <org.eventb.core.poPredicate name="PRD0" org.eventb.core.predicate="process∈Processes" org.eventb.core.source="/subtask3/ISS.bum|org.eventb.core.machineFile#ISS|org.eventb.core.event#evt2|org.eventb.core.guard#("/>
+        <org.eventb.core.poPredicate name="PRD1" org.eventb.core.predicate="child∈PROCESSES ∖ Processes" org.eventb.core.source="/subtask3/ISS.bum|org.eventb.core.machineFile#ISS|org.eventb.core.event#evt2|org.eventb.core.guard#,"/>
+    </org.eventb.core.poPredicateSet>
+    <org.eventb.core.poSequent name="Change Owner/logged/WD" org.eventb.core.accurate="true" org.eventb.core.poDesc="Well-definedness of Guard" org.eventb.core.poStamp="23">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poPredicateSet#EVTHYPProcessez("/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="newuser∈dom(Logged)∧Logged∈USERS ⇸ BOOL" org.eventb.core.source="/subtask3/ISS.bum|org.eventb.core.machineFile#ISS|org.eventb.core.event#evt3|org.eventb.core.guard#+"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/subtask3/ISS.bum|org.eventb.core.machineFile#ISS|org.eventb.core.event#evt3|org.eventb.core.guard#+"/>
+        <org.eventb.core.poSelHint name="SEQHYS" org.eventb.core.poSelHintFst="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poPredicateSet#EVTHYPProcessez("/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poSequent name="Change Owner/access/WD" org.eventb.core.accurate="true" org.eventb.core.poDesc="Well-definedness of Guard" org.eventb.core.poStamp="23">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poPredicateSet#EVTHYPProcessez)"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="∀n⦂ℤ·process ↦ n∈dom(OpenFiles)⇒OpenFiles∈PROCESSES × ℤ ⇸ FILES∧newuser∈dom(Accesses)∧Accesses∈USERS ⇸ ℙ(FILES)" org.eventb.core.source="/subtask3/ISS.bum|org.eventb.core.machineFile#ISS|org.eventb.core.event#evt3|org.eventb.core.guard#-"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/subtask3/ISS.bum|org.eventb.core.machineFile#ISS|org.eventb.core.event#evt3|org.eventb.core.guard#-"/>
+        <org.eventb.core.poSelHint name="SEQHYS" org.eventb.core.poSelHintFst="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poPredicateSet#EVTHYPProcessez)"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poSequent name="Change Owner/Onwer/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="23">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poPredicateSet#EVTALLHYPProcessez"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="Owner{process ↦ newuser}∈Processes → Users" org.eventb.core.source="/subtask3/ISS.bum|org.eventb.core.machineFile#ISS|org.eventb.core.invariant#4"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/subtask3/ISS.bum|org.eventb.core.machineFile#ISS|org.eventb.core.event#evt3"/>
+        <org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/subtask3/ISS.bum|org.eventb.core.machineFile#ISS|org.eventb.core.invariant#4"/>
+        <org.eventb.core.poSelHint name="SEQHYT" org.eventb.core.poSelHintFst="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poSequent#Change Owner\/Onwer\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+        <org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poPredicateSet#HYPCommov|org.eventb.core.poPredicate#PRD4"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poSequent name="Change Owner/PrevOwner/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="23">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poPredicateSet#EVTALLHYPProcessez"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="PrevOwner{process ↦ Owner(process)}∈Processes ⇸ Users" org.eventb.core.source="/subtask3/ISS.bum|org.eventb.core.machineFile#ISS|org.eventb.core.invariant#evt7"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/subtask3/ISS.bum|org.eventb.core.machineFile#ISS|org.eventb.core.event#evt3"/>
+        <org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/subtask3/ISS.bum|org.eventb.core.machineFile#ISS|org.eventb.core.invariant#evt7"/>
+        <org.eventb.core.poSelHint name="SEQHYT" org.eventb.core.poSelHintFst="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poSequent#Change Owner\/PrevOwner\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+        <org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poPredicateSet#HYPCommov|org.eventb.core.poPredicate#PRD7"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poSequent name="Change Owner/PermittedAccess/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="23">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poPredicateSet#EVTALLHYPProcessez"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="∀p⦂PROCESSES,n⦂ℤ·p ↦ n∈dom(OpenFiles)⇒OpenFiles(p ↦ n)∈Accesses((Owner{process ↦ newuser})(p))" org.eventb.core.source="/subtask3/ISS.bum|org.eventb.core.machineFile#ISS|org.eventb.core.invariant#5"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/subtask3/ISS.bum|org.eventb.core.machineFile#ISS|org.eventb.core.event#evt3"/>
+        <org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/subtask3/ISS.bum|org.eventb.core.machineFile#ISS|org.eventb.core.invariant#5"/>
+        <org.eventb.core.poSelHint name="SEQHYT" org.eventb.core.poSelHintFst="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poSequent#Change Owner\/PermittedAccess\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+        <org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poPredicateSet#HYPCommow|org.eventb.core.poPredicate#PRD8"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poSequent name="Change Owner/LoggedAccess/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="23">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poPredicateSet#EVTALLHYPProcessez"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="∀p⦂PROCESSES·p∈Processes⇒Logged((Owner{process ↦ newuser})(p))=TRUE" org.eventb.core.source="/subtask3/ISS.bum|org.eventb.core.machineFile#ISS|org.eventb.core.invariant#evt&gt;"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/subtask3/ISS.bum|org.eventb.core.machineFile#ISS|org.eventb.core.event#evt3"/>
+        <org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/subtask3/ISS.bum|org.eventb.core.machineFile#ISS|org.eventb.core.invariant#evt&gt;"/>
+        <org.eventb.core.poSelHint name="SEQHYT" org.eventb.core.poSelHintFst="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poSequent#Change Owner\/LoggedAccess\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+        <org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poPredicateSet#HYPCommox|org.eventb.core.poPredicate#PRD9"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poSequent name="Change Owner/LoggedPrev/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="23">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poPredicateSet#EVTALLHYPProcessez"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="∀p⦂PROCESSES·p∈Processes∧p∈dom(PrevOwner{process ↦ Owner(process)})⇒Logged((PrevOwner{process ↦ Owner(process)})(p))=TRUE" org.eventb.core.source="/subtask3/ISS.bum|org.eventb.core.machineFile#ISS|org.eventb.core.invariant#evt?"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/subtask3/ISS.bum|org.eventb.core.machineFile#ISS|org.eventb.core.event#evt3"/>
+        <org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/subtask3/ISS.bum|org.eventb.core.machineFile#ISS|org.eventb.core.invariant#evt?"/>
+        <org.eventb.core.poSelHint name="SEQHYT" org.eventb.core.poSelHintFst="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poSequent#Change Owner\/LoggedPrev\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+        <org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poPredicateSet#ALLHYP|org.eventb.core.poPredicate#PRD10"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poSequent name="Change Owner/prev/WD" org.eventb.core.accurate="true" org.eventb.core.poDesc="Well-definedness of action" org.eventb.core.poStamp="23">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poPredicateSet#EVTALLHYPProcessez"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="process∈dom(Owner)∧Owner∈PROCESSES ⇸ USERS" org.eventb.core.source="/subtask3/ISS.bum|org.eventb.core.machineFile#ISS|org.eventb.core.event#evt3|org.eventb.core.action#."/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/subtask3/ISS.bum|org.eventb.core.machineFile#ISS|org.eventb.core.event#evt3|org.eventb.core.action#."/>
+        <org.eventb.core.poSelHint name="SEQHYS" org.eventb.core.poSelHintFst="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poPredicateSet#EVTALLHYPProcessez"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poPredicateSet name="EVTIDENTProcessez" org.eventb.core.parentSet="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poStamp="14">
+        <org.eventb.core.poIdentifier name="newuser" org.eventb.core.type="USERS"/>
+        <org.eventb.core.poIdentifier name="PrevOwner'" org.eventb.core.type="ℙ(PROCESSES×USERS)"/>
+        <org.eventb.core.poIdentifier name="Owner'" org.eventb.core.type="ℙ(PROCESSES×USERS)"/>
+        <org.eventb.core.poIdentifier name="process" org.eventb.core.type="PROCESSES"/>
+    </org.eventb.core.poPredicateSet>
+    <org.eventb.core.poPredicateSet name="EVTHYPProcessez(" org.eventb.core.parentSet="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poPredicateSet#EVTIDENTProcessez" org.eventb.core.poStamp="14">
+        <org.eventb.core.poPredicate name="PRD0" org.eventb.core.predicate="process∈Processes" org.eventb.core.source="/subtask3/ISS.bum|org.eventb.core.machineFile#ISS|org.eventb.core.event#evt3|org.eventb.core.guard#)"/>
+        <org.eventb.core.poPredicate name="PRD1" org.eventb.core.predicate="newuser∈Users" org.eventb.core.source="/subtask3/ISS.bum|org.eventb.core.machineFile#ISS|org.eventb.core.event#evt3|org.eventb.core.guard#*"/>
+    </org.eventb.core.poPredicateSet>
+    <org.eventb.core.poPredicateSet name="EVTHYPProcessez)" org.eventb.core.parentSet="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poPredicateSet#EVTHYPProcessez(" org.eventb.core.poStamp="0">
+        <org.eventb.core.poPredicate name="PRD2" org.eventb.core.predicate="Logged(newuser)=TRUE" org.eventb.core.source="/subtask3/ISS.bum|org.eventb.core.machineFile#ISS|org.eventb.core.event#evt3|org.eventb.core.guard#+"/>
+    </org.eventb.core.poPredicateSet>
+    <org.eventb.core.poPredicateSet name="EVTALLHYPProcessez" org.eventb.core.parentSet="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poPredicateSet#EVTHYPProcessez)" org.eventb.core.poStamp="23">
+        <org.eventb.core.poPredicate name="PRD3" org.eventb.core.predicate="∀n⦂ℤ·process ↦ n∈dom(OpenFiles)⇒OpenFiles(process ↦ n)∈Accesses(newuser)" org.eventb.core.source="/subtask3/ISS.bum|org.eventb.core.machineFile#ISS|org.eventb.core.event#evt3|org.eventb.core.guard#-"/>
+    </org.eventb.core.poPredicateSet>
+    <org.eventb.core.poSequent name="Return Owner/logged/WD" org.eventb.core.accurate="true" org.eventb.core.poDesc="Well-definedness of Guard" org.eventb.core.poStamp="25">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poPredicateSet#EVTHYPProcesse{("/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="process∈dom(PrevOwner)∧PrevOwner∈PROCESSES ⇸ USERS∧PrevOwner(process)∈dom(Logged)∧Logged∈USERS ⇸ BOOL" org.eventb.core.source="/subtask3/ISS.bum|org.eventb.core.machineFile#ISS|org.eventb.core.event#evt4|org.eventb.core.guard#-"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/subtask3/ISS.bum|org.eventb.core.machineFile#ISS|org.eventb.core.event#evt4|org.eventb.core.guard#-"/>
+        <org.eventb.core.poSelHint name="SEQHYS" org.eventb.core.poSelHintFst="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poPredicateSet#EVTHYPProcesse{("/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poSequent name="Return Owner/access/WD" org.eventb.core.accurate="true" org.eventb.core.poDesc="Well-definedness of Guard" org.eventb.core.poStamp="25">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poPredicateSet#EVTHYPProcesse{)"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="∀n⦂ℤ·process ↦ n∈dom(OpenFiles)⇒OpenFiles∈PROCESSES × ℤ ⇸ FILES∧process∈dom(PrevOwner)∧PrevOwner∈PROCESSES ⇸ USERS∧PrevOwner(process)∈dom(Accesses)∧Accesses∈USERS ⇸ ℙ(FILES)" org.eventb.core.source="/subtask3/ISS.bum|org.eventb.core.machineFile#ISS|org.eventb.core.event#evt4|org.eventb.core.guard#,"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/subtask3/ISS.bum|org.eventb.core.machineFile#ISS|org.eventb.core.event#evt4|org.eventb.core.guard#,"/>
+        <org.eventb.core.poSelHint name="SEQHYS" org.eventb.core.poSelHintFst="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poPredicateSet#EVTHYPProcesse{)"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poSequent name="Return Owner/Onwer/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="25">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poPredicateSet#EVTALLHYPProcesse{"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="Owner{process ↦ PrevOwner(process)}∈Processes → Users" org.eventb.core.source="/subtask3/ISS.bum|org.eventb.core.machineFile#ISS|org.eventb.core.invariant#4"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/subtask3/ISS.bum|org.eventb.core.machineFile#ISS|org.eventb.core.event#evt4"/>
+        <org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/subtask3/ISS.bum|org.eventb.core.machineFile#ISS|org.eventb.core.invariant#4"/>
+        <org.eventb.core.poSelHint name="SEQHYT" org.eventb.core.poSelHintFst="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poSequent#Return Owner\/Onwer\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+        <org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poPredicateSet#HYPCommov|org.eventb.core.poPredicate#PRD4"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poSequent name="Return Owner/PrevOwner/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="25">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poPredicateSet#EVTALLHYPProcesse{"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="PrevOwner{process ↦ Owner(process)}∈Processes ⇸ Users" org.eventb.core.source="/subtask3/ISS.bum|org.eventb.core.machineFile#ISS|org.eventb.core.invariant#evt7"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/subtask3/ISS.bum|org.eventb.core.machineFile#ISS|org.eventb.core.event#evt4"/>
+        <org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/subtask3/ISS.bum|org.eventb.core.machineFile#ISS|org.eventb.core.invariant#evt7"/>
+        <org.eventb.core.poSelHint name="SEQHYT" org.eventb.core.poSelHintFst="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poSequent#Return Owner\/PrevOwner\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+        <org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poPredicateSet#HYPCommov|org.eventb.core.poPredicate#PRD7"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poSequent name="Return Owner/PermittedAccess/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="25">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poPredicateSet#EVTALLHYPProcesse{"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="∀p⦂PROCESSES,n⦂ℤ·p ↦ n∈dom(OpenFiles)⇒OpenFiles(p ↦ n)∈Accesses((Owner{process ↦ PrevOwner(process)})(p))" org.eventb.core.source="/subtask3/ISS.bum|org.eventb.core.machineFile#ISS|org.eventb.core.invariant#5"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/subtask3/ISS.bum|org.eventb.core.machineFile#ISS|org.eventb.core.event#evt4"/>
+        <org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/subtask3/ISS.bum|org.eventb.core.machineFile#ISS|org.eventb.core.invariant#5"/>
+        <org.eventb.core.poSelHint name="SEQHYT" org.eventb.core.poSelHintFst="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poSequent#Return Owner\/PermittedAccess\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+        <org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poPredicateSet#HYPCommow|org.eventb.core.poPredicate#PRD8"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poSequent name="Return Owner/LoggedAccess/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="25">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poPredicateSet#EVTALLHYPProcesse{"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="∀p⦂PROCESSES·p∈Processes⇒Logged((Owner{process ↦ PrevOwner(process)})(p))=TRUE" org.eventb.core.source="/subtask3/ISS.bum|org.eventb.core.machineFile#ISS|org.eventb.core.invariant#evt&gt;"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/subtask3/ISS.bum|org.eventb.core.machineFile#ISS|org.eventb.core.event#evt4"/>
+        <org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/subtask3/ISS.bum|org.eventb.core.machineFile#ISS|org.eventb.core.invariant#evt&gt;"/>
+        <org.eventb.core.poSelHint name="SEQHYT" org.eventb.core.poSelHintFst="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poSequent#Return Owner\/LoggedAccess\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+        <org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poPredicateSet#HYPCommox|org.eventb.core.poPredicate#PRD9"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poSequent name="Return Owner/LoggedPrev/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="25">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poPredicateSet#EVTALLHYPProcesse{"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="∀p⦂PROCESSES·p∈Processes∧p∈dom(PrevOwner{process ↦ Owner(process)})⇒Logged((PrevOwner{process ↦ Owner(process)})(p))=TRUE" org.eventb.core.source="/subtask3/ISS.bum|org.eventb.core.machineFile#ISS|org.eventb.core.invariant#evt?"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/subtask3/ISS.bum|org.eventb.core.machineFile#ISS|org.eventb.core.event#evt4"/>
+        <org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/subtask3/ISS.bum|org.eventb.core.machineFile#ISS|org.eventb.core.invariant#evt?"/>
+        <org.eventb.core.poSelHint name="SEQHYT" org.eventb.core.poSelHintFst="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poSequent#Return Owner\/LoggedPrev\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+        <org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poPredicateSet#ALLHYP|org.eventb.core.poPredicate#PRD10"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poSequent name="Return Owner/return/WD" org.eventb.core.accurate="true" org.eventb.core.poDesc="Well-definedness of action" org.eventb.core.poStamp="25">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poPredicateSet#EVTALLHYPProcesse{"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="process∈dom(PrevOwner)∧PrevOwner∈PROCESSES ⇸ USERS" org.eventb.core.source="/subtask3/ISS.bum|org.eventb.core.machineFile#ISS|org.eventb.core.event#evt4|org.eventb.core.action#)"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/subtask3/ISS.bum|org.eventb.core.machineFile#ISS|org.eventb.core.event#evt4|org.eventb.core.action#)"/>
+        <org.eventb.core.poSelHint name="SEQHYS" org.eventb.core.poSelHintFst="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poPredicateSet#EVTALLHYPProcesse{"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poSequent name="Return Owner/prev/WD" org.eventb.core.accurate="true" org.eventb.core.poDesc="Well-definedness of action" org.eventb.core.poStamp="25">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poPredicateSet#EVTALLHYPProcesse{"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="process∈dom(Owner)∧Owner∈PROCESSES ⇸ USERS" org.eventb.core.source="/subtask3/ISS.bum|org.eventb.core.machineFile#ISS|org.eventb.core.event#evt4|org.eventb.core.action#+"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/subtask3/ISS.bum|org.eventb.core.machineFile#ISS|org.eventb.core.event#evt4|org.eventb.core.action#+"/>
+        <org.eventb.core.poSelHint name="SEQHYS" org.eventb.core.poSelHintFst="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poPredicateSet#EVTALLHYPProcesse{"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poPredicateSet name="EVTIDENTProcesse{" org.eventb.core.parentSet="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poStamp="14">
+        <org.eventb.core.poIdentifier name="PrevOwner'" org.eventb.core.type="ℙ(PROCESSES×USERS)"/>
+        <org.eventb.core.poIdentifier name="Owner'" org.eventb.core.type="ℙ(PROCESSES×USERS)"/>
+        <org.eventb.core.poIdentifier name="process" org.eventb.core.type="PROCESSES"/>
+    </org.eventb.core.poPredicateSet>
+    <org.eventb.core.poPredicateSet name="EVTHYPProcesse{(" org.eventb.core.parentSet="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poPredicateSet#EVTIDENTProcesse{" org.eventb.core.poStamp="14">
+        <org.eventb.core.poPredicate name="PRD0" org.eventb.core.predicate="process∈Processes" org.eventb.core.source="/subtask3/ISS.bum|org.eventb.core.machineFile#ISS|org.eventb.core.event#evt4|org.eventb.core.guard#'"/>
+        <org.eventb.core.poPredicate name="PRD1" org.eventb.core.predicate="process∈dom(PrevOwner)" org.eventb.core.source="/subtask3/ISS.bum|org.eventb.core.machineFile#ISS|org.eventb.core.event#evt4|org.eventb.core.guard#*"/>
+    </org.eventb.core.poPredicateSet>
+    <org.eventb.core.poPredicateSet name="EVTHYPProcesse{)" org.eventb.core.parentSet="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poPredicateSet#EVTHYPProcesse{(" org.eventb.core.poStamp="0">
+        <org.eventb.core.poPredicate name="PRD2" org.eventb.core.predicate="Logged(PrevOwner(process))=TRUE" org.eventb.core.source="/subtask3/ISS.bum|org.eventb.core.machineFile#ISS|org.eventb.core.event#evt4|org.eventb.core.guard#-"/>
+    </org.eventb.core.poPredicateSet>
+    <org.eventb.core.poPredicateSet name="EVTALLHYPProcesse{" org.eventb.core.parentSet="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poPredicateSet#EVTHYPProcesse{)" org.eventb.core.poStamp="25">
+        <org.eventb.core.poPredicate name="PRD3" org.eventb.core.predicate="∀n⦂ℤ·process ↦ n∈dom(OpenFiles)⇒OpenFiles(process ↦ n)∈Accesses(PrevOwner(process))" org.eventb.core.source="/subtask3/ISS.bum|org.eventb.core.machineFile#ISS|org.eventb.core.event#evt4|org.eventb.core.guard#,"/>
+    </org.eventb.core.poPredicateSet>
+    <org.eventb.core.poPredicateSet name="HYPCommov" org.eventb.core.parentSet="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poPredicateSet#ABSHYP" org.eventb.core.poStamp="13">
+        <org.eventb.core.poPredicate name="PRD0" org.eventb.core.predicate="Files∈ℙ(FILES)" org.eventb.core.source="/subtask3/ISS.bum|org.eventb.core.machineFile#ISS|org.eventb.core.invariant#,"/>
+        <org.eventb.core.poPredicate name="PRD1" org.eventb.core.predicate="Users∈ℙ(USERS)" org.eventb.core.source="/subtask3/ISS.bum|org.eventb.core.machineFile#ISS|org.eventb.core.invariant#0"/>
+        <org.eventb.core.poPredicate name="PRD2" org.eventb.core.predicate="Processes∈ℙ(PROCESSES)" org.eventb.core.source="/subtask3/ISS.bum|org.eventb.core.machineFile#ISS|org.eventb.core.invariant#)"/>
+        <org.eventb.core.poPredicate name="PRD3" org.eventb.core.predicate="OpenFiles∈Processes × ℕ ⇸ Files" org.eventb.core.source="/subtask3/ISS.bum|org.eventb.core.machineFile#ISS|org.eventb.core.invariant#."/>
+        <org.eventb.core.poPredicate name="PRD4" org.eventb.core.predicate="Owner∈Processes → Users" org.eventb.core.source="/subtask3/ISS.bum|org.eventb.core.machineFile#ISS|org.eventb.core.invariant#4"/>
+        <org.eventb.core.poPredicate name="PRD5" org.eventb.core.predicate="Accesses∈Users → ℙ(Files)" org.eventb.core.source="/subtask3/ISS.bum|org.eventb.core.machineFile#ISS|org.eventb.core.invariant#2"/>
+        <org.eventb.core.poPredicate name="PRD6" org.eventb.core.predicate="Logged∈Users → BOOL" org.eventb.core.source="/subtask3/ISS.bum|org.eventb.core.machineFile#ISS|org.eventb.core.invariant#7"/>
+        <org.eventb.core.poPredicate name="PRD7" org.eventb.core.predicate="PrevOwner∈Processes ⇸ Users" org.eventb.core.source="/subtask3/ISS.bum|org.eventb.core.machineFile#ISS|org.eventb.core.invariant#evt7"/>
+    </org.eventb.core.poPredicateSet>
+    <org.eventb.core.poPredicateSet name="HYPCommow" org.eventb.core.parentSet="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poPredicateSet#HYPCommov" org.eventb.core.poStamp="14">
+        <org.eventb.core.poPredicate name="PRD8" org.eventb.core.predicate="∀p⦂PROCESSES,n⦂ℤ·p ↦ n∈dom(OpenFiles)⇒OpenFiles(p ↦ n)∈Accesses(Owner(p))" org.eventb.core.source="/subtask3/ISS.bum|org.eventb.core.machineFile#ISS|org.eventb.core.invariant#5"/>
+    </org.eventb.core.poPredicateSet>
+    <org.eventb.core.poPredicateSet name="HYPCommox" org.eventb.core.parentSet="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poPredicateSet#HYPCommow" org.eventb.core.poStamp="0">
+        <org.eventb.core.poPredicate name="PRD9" org.eventb.core.predicate="∀p⦂PROCESSES·p∈Processes⇒Logged(Owner(p))=TRUE" org.eventb.core.source="/subtask3/ISS.bum|org.eventb.core.machineFile#ISS|org.eventb.core.invariant#evt&gt;"/>
+    </org.eventb.core.poPredicateSet>
+    <org.eventb.core.poPredicateSet name="ALLHYP" org.eventb.core.parentSet="/subtask3/ISS.bpo|org.eventb.core.poFile#ISS|org.eventb.core.poPredicateSet#HYPCommox" org.eventb.core.poStamp="14">
+        <org.eventb.core.poPredicate name="PRD10" org.eventb.core.predicate="∀p⦂PROCESSES·p∈Processes∧p∈dom(PrevOwner)⇒Logged(PrevOwner(p))=TRUE" org.eventb.core.source="/subtask3/ISS.bum|org.eventb.core.machineFile#ISS|org.eventb.core.invariant#evt?"/>
+    </org.eventb.core.poPredicateSet>
+</org.eventb.core.poFile>

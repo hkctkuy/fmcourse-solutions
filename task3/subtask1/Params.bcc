@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<org.eventb.core.scContextFile org.eventb.core.accurate="true" org.eventb.core.configuration="org.eventb.core.fwd">
+    <org.eventb.core.scAxiom name="'" org.eventb.core.label="W type" org.eventb.core.predicate="W∈ℕ1" org.eventb.core.source="/subtask1/Params.buc|org.eventb.core.contextFile#Params|org.eventb.core.axiom#+" org.eventb.core.theorem="false"/>
+    <org.eventb.core.scAxiom name="(" org.eventb.core.label="C type" org.eventb.core.predicate="C∈ℕ1" org.eventb.core.source="/subtask1/Params.buc|org.eventb.core.contextFile#Params|org.eventb.core.axiom#," org.eventb.core.theorem="false"/>
+    <org.eventb.core.scAxiom name=")" org.eventb.core.label="N type" org.eventb.core.predicate="N∈1 ‥ W" org.eventb.core.source="/subtask1/Params.buc|org.eventb.core.contextFile#Params|org.eventb.core.axiom#-" org.eventb.core.theorem="false"/>
+    <org.eventb.core.scAxiom name="*" org.eventb.core.label="M type" org.eventb.core.predicate="M∈1 ‥ C" org.eventb.core.source="/subtask1/Params.buc|org.eventb.core.contextFile#Params|org.eventb.core.axiom#." org.eventb.core.theorem="false"/>
+    <org.eventb.core.scConstant name="C" org.eventb.core.source="/subtask1/Params.buc|org.eventb.core.contextFile#Params|org.eventb.core.constant#(" org.eventb.core.type="ℤ"/>
+    <org.eventb.core.scConstant name="M" org.eventb.core.source="/subtask1/Params.buc|org.eventb.core.contextFile#Params|org.eventb.core.constant#*" org.eventb.core.type="ℤ"/>
+    <org.eventb.core.scConstant name="N" org.eventb.core.source="/subtask1/Params.buc|org.eventb.core.contextFile#Params|org.eventb.core.constant#)" org.eventb.core.type="ℤ"/>
+    <org.eventb.core.scConstant name="W" org.eventb.core.source="/subtask1/Params.buc|org.eventb.core.contextFile#Params|org.eventb.core.constant#'" org.eventb.core.type="ℤ"/>
+</org.eventb.core.scContextFile>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<org.eventb.core.contextFile org.eventb.core.configuration="org.eventb.core.fwd" version="3">
+    <org.eventb.core.constant name="'" org.eventb.core.identifier="W"/>
+    <org.eventb.core.constant name="(" org.eventb.core.identifier="C"/>
+    <org.eventb.core.constant name=")" org.eventb.core.identifier="N"/>
+    <org.eventb.core.constant name="*" org.eventb.core.identifier="M"/>
+    <org.eventb.core.axiom name="+" org.eventb.core.label="W type" org.eventb.core.predicate="W ∈ ℕ1"/>
+    <org.eventb.core.axiom name="," org.eventb.core.label="C type" org.eventb.core.predicate="&#9;C ∈ ℕ1"/>
+    <org.eventb.core.axiom name="-" org.eventb.core.label="N type" org.eventb.core.predicate="&#9;N ∈ 1‥W"/>
+    <org.eventb.core.axiom name="." org.eventb.core.label="M type" org.eventb.core.predicate="M ∈ 1‥C"/>
+</org.eventb.core.contextFile>

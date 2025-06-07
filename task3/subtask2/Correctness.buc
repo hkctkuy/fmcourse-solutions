@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<org.eventb.core.contextFile org.eventb.core.configuration="org.eventb.core.fwd" version="3">
+    <org.eventb.core.extendsContext name="(" org.eventb.core.target="Scheme"/>
+    <org.eventb.core.axiom name="-" org.eventb.core.label="p type" org.eventb.core.predicate="p ∈ ℤ × (ℤ × ℤ) → BOOL"/>
+    <org.eventb.core.axiom name="," org.eventb.core.label="p def" org.eventb.core.predicate="∀x ⦂ ℤ, y1 ⦂ ℤ, y2 ⦂ ℤ · p(x ↦ (y1 ↦ y2)) = bool((x = 0 ∧ y1 = 0 ∧ y2 = 0)&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;   ∨ (x &gt; 0 ∧ y1 &gt; 0 ∧ y2 = (x ÷ y1 + y1) ÷ 2 ∧ y1 ≤ x ∧ x &lt; sqr(y1 + 1)))"/>
+    <org.eventb.core.axiom name="0" org.eventb.core.label="u type" org.eventb.core.predicate="u ∈ ℤ × (ℤ × ℤ) → ℤ"/>
+    <org.eventb.core.axiom name="1" org.eventb.core.label="u def" org.eventb.core.predicate="∀x ⦂ ℤ, y1 ⦂ ℤ, y2 ⦂ ℤ · u(x ↦ (y1 ↦ y2)) = y1"/>
+    <org.eventb.core.axiom name=")" org.eventb.core.label="SA" org.eventb.core.predicate="&#9;∀x ⦂ ℤ · phi(x) = TRUE ⇒ p(x ↦ rSA(x)) = TRUE" org.eventb.core.theorem="true"/>
+    <org.eventb.core.axiom name="*" org.eventb.core.label="ATA" org.eventb.core.predicate="&#9;∀x ⦂ ℤ, y1 ⦂ ℤ, y2 ⦂ ℤ · phi(x) = TRUE ∧ p(x ↦ (y1 ↦ y2)) = TRUE ∧ RATA(x ↦ y1 ↦ y2) = TRUE&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;⇒ p(x ↦ rATA(x ↦ y1 ↦ y2)) = TRUE" org.eventb.core.theorem="true"/>
+    <org.eventb.core.axiom name="+" org.eventb.core.label="AFH" org.eventb.core.predicate="&#9;∀x ⦂ ℤ, y1 ⦂ ℤ, y2 ⦂ ℤ · phi(x) = TRUE ∧ p(x ↦ (y1 ↦ y2)) = TRUE ∧ RAFH(x ↦ y1 ↦ y2) = TRUE&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;⇒ psi(x ↦ h(x ↦ y1 ↦ y2)) = TRUE" org.eventb.core.theorem="true"/>
+    <org.eventb.core.constant name="." org.eventb.core.identifier="p"/>
+    <org.eventb.core.constant name="/" org.eventb.core.identifier="u"/>
+    <org.eventb.core.axiom name="2" org.eventb.core.label="CORR" org.eventb.core.predicate="∀x ⦂ ℤ, y1 ⦂ ℤ, y2 ⦂ ℤ · phi(x) = TRUE ∧ p(x ↦ (y1 ↦ y2)) = TRUE ⇒ u(x ↦ (y1 ↦ y2)) ∈ ℕ" org.eventb.core.theorem="true"/>
+    <org.eventb.core.axiom name="3" org.eventb.core.label="ATAt" org.eventb.core.predicate="∀x ⦂ ℤ, y1 ⦂ ℤ, y2 ⦂ ℤ · phi(x) = TRUE ∧ p(x ↦ (y1 ↦ y2)) = TRUE ∧ RATA(x ↦ y1 ↦ y2) = TRUE&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;⇒ u(x ↦ rATA(x ↦ y1 ↦ y2)) &lt; u(x ↦ (y1 ↦ y2))" org.eventb.core.theorem="true"/>
+</org.eventb.core.contextFile>

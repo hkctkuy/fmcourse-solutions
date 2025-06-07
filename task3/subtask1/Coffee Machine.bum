@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<org.eventb.core.machineFile org.eventb.core.configuration="org.eventb.core.fwd" version="5">
+    <org.eventb.core.event name="'" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="INITIALISATION">
+        <org.eventb.core.action name=")" org.eventb.core.assignment="&#9;&#9;tank, storage, slot_is_open :∣ tank' ∈ 0‥W ∧ storage' ∈ 0‥C ∧ slot_is_open' = bool(tank' ≥ N ∧ storage' ≥ M)" org.eventb.core.label="slot init"/>
+        <org.eventb.core.action name="*" org.eventb.core.assignment="&#9;making ≔ FALSE" org.eventb.core.label="make init"/>
+    </org.eventb.core.event>
+    <org.eventb.core.variable name="(" org.eventb.core.identifier="tank"/>
+    <org.eventb.core.variable name=")" org.eventb.core.identifier="storage"/>
+    <org.eventb.core.variable name="*" org.eventb.core.identifier="slot_is_open"/>
+    <org.eventb.core.invariant name="+" org.eventb.core.label="tank type" org.eventb.core.predicate="&#9;&#9;tank ∈ 0‥W"/>
+    <org.eventb.core.seesContext name="," org.eventb.core.target="Params"/>
+    <org.eventb.core.invariant name="-" org.eventb.core.label="storage type" org.eventb.core.predicate="&#9;storage ∈ 0‥C"/>
+    <org.eventb.core.invariant name="." org.eventb.core.label="slot type" org.eventb.core.predicate="&#9;&#9;&#9;slot_is_open ∈ BOOL"/>
+    <org.eventb.core.event name="/" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="Update ingredients">
+        <org.eventb.core.parameter name="'" org.eventb.core.identifier="upd_tank"/>
+        <org.eventb.core.parameter name="(" org.eventb.core.identifier="upd_storage"/>
+        <org.eventb.core.guard name=")" org.eventb.core.label="tank grd" org.eventb.core.predicate="&#9;&#9;upd_tank ∈ tank‥W"/>
+        <org.eventb.core.guard name="*" org.eventb.core.label="storage grd" org.eventb.core.predicate="&#9;upd_storage ∈ storage‥C"/>
+        <org.eventb.core.action name="+" org.eventb.core.assignment="&#9;&#9;tank ≔ upd_tank" org.eventb.core.label="upd tank"/>
+        <org.eventb.core.action name="," org.eventb.core.assignment="storage ≔ upd_storage" org.eventb.core.label="upd storage"/>
+        <org.eventb.core.action name="-" org.eventb.core.assignment="&#9;slot_is_open ≔ bool(upd_tank ≥ N ∧ upd_storage ≥ M ∧ making = FALSE)" org.eventb.core.label="open_slot"/>
+    </org.eventb.core.event>
+    <org.eventb.core.variable name="0" org.eventb.core.identifier="making"/>
+    <org.eventb.core.invariant name="1" org.eventb.core.label="make type" org.eventb.core.predicate="&#9;&#9;making ∈ BOOL"/>
+    <org.eventb.core.event name="2" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="Start making coffee">
+        <org.eventb.core.guard name="'" org.eventb.core.label="tank grd" org.eventb.core.predicate="&#9;&#9;tank ≥ N"/>
+        <org.eventb.core.guard name="(" org.eventb.core.label="storage grd" org.eventb.core.predicate="&#9;storage ≥ M"/>
+        <org.eventb.core.guard name=")" org.eventb.core.label="make grd" org.eventb.core.predicate="&#9;making = FALSE"/>
+        <org.eventb.core.action name="*" org.eventb.core.assignment="&#9;&#9;tank ≔ tank − N" org.eventb.core.label="upd tank"/>
+        <org.eventb.core.action name="+" org.eventb.core.assignment="storage ≔ storage − M" org.eventb.core.label="upd storage"/>
+        <org.eventb.core.action name="," org.eventb.core.assignment="making  ≔ TRUE" org.eventb.core.label="start making"/>
+        <org.eventb.core.action name="-" org.eventb.core.assignment="&#9;slot_is_open ≔ FALSE" org.eventb.core.label="close slot"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="3" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="End making coffee">
+        <org.eventb.core.guard name="'" org.eventb.core.label="making" org.eventb.core.predicate="&#9;&#9;making = TRUE"/>
+        <org.eventb.core.action name="(" org.eventb.core.assignment="making ≔ FALSE" org.eventb.core.label="end making"/>
+        <org.eventb.core.action name=")" org.eventb.core.assignment="&#9;slot_is_open ≔ bool(tank ≥ N ∧ storage ≥ M)" org.eventb.core.label="open slot"/>
+    </org.eventb.core.event>
+    <org.eventb.core.invariant name="4" org.eventb.core.label="slot" org.eventb.core.predicate="&#9;&#9;&#9;&#9;&#9;slot_is_open = TRUE ⇔ tank ≥ N ∧ storage ≥ M ∧ making = FALSE"/>
+</org.eventb.core.machineFile>

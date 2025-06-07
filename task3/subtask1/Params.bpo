@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<org.eventb.core.poFile org.eventb.core.poStamp="0">
+    <org.eventb.core.poPredicateSet name="ABSHYP" org.eventb.core.poStamp="0">
+        <org.eventb.core.poIdentifier name="C" org.eventb.core.type="ℤ"/>
+        <org.eventb.core.poIdentifier name="M" org.eventb.core.type="ℤ"/>
+        <org.eventb.core.poIdentifier name="N" org.eventb.core.type="ℤ"/>
+        <org.eventb.core.poIdentifier name="W" org.eventb.core.type="ℤ"/>
+    </org.eventb.core.poPredicateSet>
+    <org.eventb.core.poPredicateSet name="ALLHYP" org.eventb.core.parentSet="/subtask1/Params.bpo|org.eventb.core.poFile#Params|org.eventb.core.poPredicateSet#ABSHYP" org.eventb.core.poStamp="0">
+        <org.eventb.core.poPredicate name="PRD0" org.eventb.core.predicate="W∈ℕ1" org.eventb.core.source="/subtask1/Params.buc|org.eventb.core.contextFile#Params|org.eventb.core.axiom#+"/>
+        <org.eventb.core.poPredicate name="PRD1" org.eventb.core.predicate="C∈ℕ1" org.eventb.core.source="/subtask1/Params.buc|org.eventb.core.contextFile#Params|org.eventb.core.axiom#,"/>
+        <org.eventb.core.poPredicate name="PRD2" org.eventb.core.predicate="N∈1 ‥ W" org.eventb.core.source="/subtask1/Params.buc|org.eventb.core.contextFile#Params|org.eventb.core.axiom#-"/>
+        <org.eventb.core.poPredicate name="PRD3" org.eventb.core.predicate="M∈1 ‥ C" org.eventb.core.source="/subtask1/Params.buc|org.eventb.core.contextFile#Params|org.eventb.core.axiom#."/>
+    </org.eventb.core.poPredicateSet>
+</org.eventb.core.poFile>

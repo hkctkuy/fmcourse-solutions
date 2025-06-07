@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<org.eventb.core.poFile org.eventb.core.poStamp="1">
+    <org.eventb.core.poPredicateSet name="ABSHYP" org.eventb.core.poStamp="0">
+        <org.eventb.core.poIdentifier name="isqrt" org.eventb.core.type="ℙ(ℤ×ℤ)"/>
+        <org.eventb.core.poIdentifier name="sqr" org.eventb.core.type="ℙ(ℤ×ℤ)"/>
+        <org.eventb.core.poPredicate name="isqru" org.eventb.core.predicate="∀a⦂ℤ,b⦂ℤ,d⦂ℤ·a∈ℕ∧b∈ℕ1∧d∈ℕ⇒(d=a ÷ b⇔a − b&lt;b∗d∧b∗d≤a)" org.eventb.core.source="/subtask2/Common.buc|org.eventb.core.contextFile#Common|org.eventb.core.axiom#'"/>
+        <org.eventb.core.poPredicate name="isqrv" org.eventb.core.predicate="∀a⦂ℤ,b⦂ℤ·a∈ℕ∧b∈ℕ1⇒a=a∗b ÷ b" org.eventb.core.source="/subtask2/Common.buc|org.eventb.core.contextFile#Common|org.eventb.core.axiom#("/>
+        <org.eventb.core.poPredicate name="isqrw" org.eventb.core.predicate="∀a⦂ℤ,b⦂ℤ,c⦂ℤ·a∈ℕ∧b∈ℕ∧c∈ℕ1∧a≤b ÷ c⇒a∗c≤b" org.eventb.core.source="/subtask2/Common.buc|org.eventb.core.contextFile#Common|org.eventb.core.axiom#2"/>
+        <org.eventb.core.poPredicate name="isqrx" org.eventb.core.predicate="∀a⦂ℤ,b⦂ℤ,c⦂ℤ·a∈ℕ∧b∈ℕ1∧c∈ℕ⇒a ÷ b+c=(a+b∗c) ÷ b" org.eventb.core.source="/subtask2/Common.buc|org.eventb.core.contextFile#Common|org.eventb.core.axiom#)"/>
+        <org.eventb.core.poPredicate name="isqry" org.eventb.core.predicate="∀a⦂ℤ,b⦂ℤ,c⦂ℤ·a∈ℕ∧b∈ℕ1∧c∈ℕ1⇒a ÷ b ÷ c=a ÷ (b∗c)" org.eventb.core.source="/subtask2/Common.buc|org.eventb.core.contextFile#Common|org.eventb.core.axiom#*"/>
+        <org.eventb.core.poPredicate name="isqrz" org.eventb.core.predicate="sqr∈ℤ → ℕ" org.eventb.core.source="/subtask2/Common.buc|org.eventb.core.contextFile#Common|org.eventb.core.axiom#0"/>
+        <org.eventb.core.poPredicate name="isqr{" org.eventb.core.predicate="∀x⦂ℤ·sqr(x)=x∗x" org.eventb.core.source="/subtask2/Common.buc|org.eventb.core.contextFile#Common|org.eventb.core.axiom#,"/>
+        <org.eventb.core.poPredicate name="isqr|" org.eventb.core.predicate="isqrt∈ℤ → ℕ" org.eventb.core.source="/subtask2/Common.buc|org.eventb.core.contextFile#Common|org.eventb.core.axiom#1"/>
+        <org.eventb.core.poPredicate name="isqr}" org.eventb.core.predicate="∀x⦂ℤ,r⦂ℤ·x∈ℕ∧r∈ℕ⇒(r=isqrt(x)⇔sqr(r)≤x∧x&lt;sqr(r+1))" org.eventb.core.source="/subtask2/Common.buc|org.eventb.core.contextFile#Common|org.eventb.core.axiom#."/>
+        <org.eventb.core.poPredicate name="isqr~" org.eventb.core.predicate="∀x⦂ℤ,y⦂ℤ·x∈ℕ1∧y∈ℕ1⇒x&lt;sqr((x ÷ y+y) ÷ 2+1)" org.eventb.core.source="/subtask2/Common.buc|org.eventb.core.contextFile#Common|org.eventb.core.axiom#\/"/>
+        <org.eventb.core.poIdentifier name="h" org.eventb.core.type="ℙ(ℤ×ℤ×ℤ×ℤ)"/>
+        <org.eventb.core.poIdentifier name="rATA" org.eventb.core.type="ℙ(ℤ×ℤ×ℤ×(ℤ×ℤ))"/>
+        <org.eventb.core.poIdentifier name="phi" org.eventb.core.type="ℙ(ℤ×BOOL)"/>
+        <org.eventb.core.poIdentifier name="psi" org.eventb.core.type="ℙ(ℤ×ℤ×BOOL)"/>
+        <org.eventb.core.poIdentifier name="RAFH" org.eventb.core.type="ℙ(ℤ×ℤ×ℤ×BOOL)"/>
+        <org.eventb.core.poIdentifier name="RATA" org.eventb.core.type="ℙ(ℤ×ℤ×ℤ×BOOL)"/>
+        <org.eventb.core.poIdentifier name="rSA" org.eventb.core.type="ℙ(ℤ×(ℤ×ℤ))"/>
+        <org.eventb.core.poPredicate name="isqs'" org.eventb.core.predicate="phi∈ℤ → BOOL" org.eventb.core.source="/subtask2/Scheme.buc|org.eventb.core.contextFile#Scheme|org.eventb.core.axiom#*"/>
+        <org.eventb.core.poPredicate name="isqs(" org.eventb.core.predicate="psi∈ℤ × ℤ → BOOL" org.eventb.core.source="/subtask2/Scheme.buc|org.eventb.core.contextFile#Scheme|org.eventb.core.axiom#2"/>
+        <org.eventb.core.poPredicate name="isqs)" org.eventb.core.predicate="RATA∈ℤ × ℤ × ℤ → BOOL" org.eventb.core.source="/subtask2/Scheme.buc|org.eventb.core.contextFile#Scheme|org.eventb.core.axiom#6"/>
+        <org.eventb.core.poPredicate name="isqs*" org.eventb.core.predicate="RAFH∈ℤ × ℤ × ℤ → BOOL" org.eventb.core.source="/subtask2/Scheme.buc|org.eventb.core.contextFile#Scheme|org.eventb.core.axiom#4"/>
+        <org.eventb.core.poPredicate name="isqs+" org.eventb.core.predicate="rSA∈ℤ → ℤ × ℤ" org.eventb.core.source="/subtask2/Scheme.buc|org.eventb.core.contextFile#Scheme|org.eventb.core.axiom#I"/>
+        <org.eventb.core.poPredicate name="isqs," org.eventb.core.predicate="rATA∈ℤ × ℤ × ℤ → ℤ × ℤ" org.eventb.core.source="/subtask2/Scheme.buc|org.eventb.core.contextFile#Scheme|org.eventb.core.axiom#9"/>
+        <org.eventb.core.poPredicate name="isqs-" org.eventb.core.predicate="h∈ℤ × ℤ × ℤ → ℤ" org.eventb.core.source="/subtask2/Scheme.buc|org.eventb.core.contextFile#Scheme|org.eventb.core.axiom#:"/>
+        <org.eventb.core.poPredicate name="isqs." org.eventb.core.predicate="∀x⦂ℤ·phi(x)=bool(x≥0)" org.eventb.core.source="/subtask2/Scheme.buc|org.eventb.core.contextFile#Scheme|org.eventb.core.axiom#,"/>
+        <org.eventb.core.poPredicate name="isqs/" org.eventb.core.predicate="∀x⦂ℤ,z⦂ℤ·psi(x ↦ z)=bool(z=isqrt(x))" org.eventb.core.source="/subtask2/Scheme.buc|org.eventb.core.contextFile#Scheme|org.eventb.core.axiom#0"/>
+        <org.eventb.core.poPredicate name="isqs0" org.eventb.core.predicate="∀x⦂ℤ,y1⦂ℤ,y2⦂ℤ·RATA(x ↦ y1 ↦ y2)=bool(y1&gt;y2)" org.eventb.core.source="/subtask2/Scheme.buc|org.eventb.core.contextFile#Scheme|org.eventb.core.axiom#?"/>
+        <org.eventb.core.poPredicate name="isqs1" org.eventb.core.predicate="∀x⦂ℤ,y1⦂ℤ,y2⦂ℤ·RAFH(x ↦ y1 ↦ y2)=bool(RATA(x ↦ y1 ↦ y2)=FALSE)" org.eventb.core.source="/subtask2/Scheme.buc|org.eventb.core.contextFile#Scheme|org.eventb.core.axiom#@"/>
+        <org.eventb.core.poPredicate name="isqs2" org.eventb.core.predicate="∀x⦂ℤ·rSA(x)=x ↦ (x+1) ÷ 2" org.eventb.core.source="/subtask2/Scheme.buc|org.eventb.core.contextFile#Scheme|org.eventb.core.axiom#H"/>
+        <org.eventb.core.poPredicate name="isqs3" org.eventb.core.predicate="∀x⦂ℤ,y1⦂ℤ,y2⦂ℤ·y2≠0⇒rATA(x ↦ y1 ↦ y2)=y2 ↦ (x ÷ y2+y2) ÷ 2" org.eventb.core.source="/subtask2/Scheme.buc|org.eventb.core.contextFile#Scheme|org.eventb.core.axiom#&gt;"/>
+        <org.eventb.core.poPredicate name="isqs4" org.eventb.core.predicate="∀x⦂ℤ,y1⦂ℤ,y2⦂ℤ·h(x ↦ y1 ↦ y2)=y1" org.eventb.core.source="/subtask2/Scheme.buc|org.eventb.core.contextFile#Scheme|org.eventb.core.axiom#A"/>
+        <org.eventb.core.poIdentifier name="p" org.eventb.core.type="ℙ(ℤ×(ℤ×ℤ)×BOOL)"/>
+        <org.eventb.core.poIdentifier name="u" org.eventb.core.type="ℙ(ℤ×(ℤ×ℤ)×ℤ)"/>
+    </org.eventb.core.poPredicateSet>
+    <org.eventb.core.poSequent name="p def/WD" org.eventb.core.accurate="true" org.eventb.core.poDesc="Well-definedness of Axiom" org.eventb.core.poStamp="1">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/subtask2/Correctness.bpo|org.eventb.core.poFile#Correctness|org.eventb.core.poPredicateSet#HYPSchemf"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="∀x⦂ℤ,y1⦂ℤ,y2⦂ℤ·x ↦ (y1 ↦ y2)∈dom(p)∧p∈ℤ × (ℤ × ℤ) ⇸ BOOL∧((x=0∧y1=0∧y2=0)∨(x&gt;0∧y1&gt;0⇒y1≠0∧2≠0∧(y2=(x ÷ y1+y1) ÷ 2∧y1≤x⇒y1+1∈dom(sqr)∧sqr∈ℤ ⇸ ℤ)))" org.eventb.core.source="/subtask2/Correctness.buc|org.eventb.core.contextFile#Correctness|org.eventb.core.axiom#,"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/subtask2/Correctness.buc|org.eventb.core.contextFile#Correctness|org.eventb.core.axiom#,"/>
+        <org.eventb.core.poSelHint name="SEQHYS" org.eventb.core.poSelHintFst="/subtask2/Correctness.bpo|org.eventb.core.poFile#Correctness|org.eventb.core.poPredicateSet#ABSHYP" org.eventb.core.poSelHintSnd="/subtask2/Correctness.bpo|org.eventb.core.poFile#Correctness|org.eventb.core.poPredicateSet#HYPSchemf"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poSequent name="u def/WD" org.eventb.core.accurate="true" org.eventb.core.poDesc="Well-definedness of Axiom" org.eventb.core.poStamp="1">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/subtask2/Correctness.bpo|org.eventb.core.poFile#Correctness|org.eventb.core.poPredicateSet#HYPSchemh"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="∀x⦂ℤ,y1⦂ℤ,y2⦂ℤ·x ↦ (y1 ↦ y2)∈dom(u)∧u∈ℤ × (ℤ × ℤ) ⇸ ℤ" org.eventb.core.source="/subtask2/Correctness.buc|org.eventb.core.contextFile#Correctness|org.eventb.core.axiom#1"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/subtask2/Correctness.buc|org.eventb.core.contextFile#Correctness|org.eventb.core.axiom#1"/>
+        <org.eventb.core.poSelHint name="SEQHYS" org.eventb.core.poSelHintFst="/subtask2/Correctness.bpo|org.eventb.core.poFile#Correctness|org.eventb.core.poPredicateSet#ABSHYP" org.eventb.core.poSelHintSnd="/subtask2/Correctness.bpo|org.eventb.core.poFile#Correctness|org.eventb.core.poPredicateSet#HYPSchemh"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poSequent name="SA/WD" org.eventb.core.accurate="true" org.eventb.core.poDesc="Well-definedness of Theorem" org.eventb.core.poStamp="1">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/subtask2/Correctness.bpo|org.eventb.core.poFile#Correctness|org.eventb.core.poPredicateSet#HYPSchemi"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="∀x⦂ℤ·x∈dom(phi)∧phi∈ℤ ⇸ BOOL∧(phi(x)=TRUE⇒x∈dom(rSA)∧rSA∈ℤ ⇸ ℤ × ℤ∧x ↦ rSA(x)∈dom(p)∧p∈ℤ × (ℤ × ℤ) ⇸ BOOL)" org.eventb.core.source="/subtask2/Correctness.buc|org.eventb.core.contextFile#Correctness|org.eventb.core.axiom#)"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/subtask2/Correctness.buc|org.eventb.core.contextFile#Correctness|org.eventb.core.axiom#)"/>
+        <org.eventb.core.poSelHint name="SEQHYS" org.eventb.core.poSelHintFst="/subtask2/Correctness.bpo|org.eventb.core.poFile#Correctness|org.eventb.core.poPredicateSet#ABSHYP" org.eventb.core.poSelHintSnd="/subtask2/Correctness.bpo|org.eventb.core.poFile#Correctness|org.eventb.core.poPredicateSet#HYPSchemi"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poSequent name="SA/THM" org.eventb.core.accurate="true" org.eventb.core.poDesc="Theorem" org.eventb.core.poStamp="1">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/subtask2/Correctness.bpo|org.eventb.core.poFile#Correctness|org.eventb.core.poPredicateSet#HYPSchemi"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="∀x⦂ℤ·phi(x)=TRUE⇒p(x ↦ rSA(x))=TRUE" org.eventb.core.source="/subtask2/Correctness.buc|org.eventb.core.contextFile#Correctness|org.eventb.core.axiom#)"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/subtask2/Correctness.buc|org.eventb.core.contextFile#Correctness|org.eventb.core.axiom#)"/>
+        <org.eventb.core.poSelHint name="SEQHYS" org.eventb.core.poSelHintFst="/subtask2/Correctness.bpo|org.eventb.core.poFile#Correctness|org.eventb.core.poPredicateSet#ABSHYP" org.eventb.core.poSelHintSnd="/subtask2/Correctness.bpo|org.eventb.core.poFile#Correctness|org.eventb.core.poPredicateSet#HYPSchemi"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poSequent name="ATA/WD" org.eventb.core.accurate="true" org.eventb.core.poDesc="Well-definedness of Theorem" org.eventb.core.poStamp="1">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/subtask2/Correctness.bpo|org.eventb.core.poFile#Correctness|org.eventb.core.poPredicateSet#HYPSchemj"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="∀x⦂ℤ,y1⦂ℤ,y2⦂ℤ·x∈dom(phi)∧phi∈ℤ ⇸ BOOL∧(phi(x)=TRUE⇒x ↦ (y1 ↦ y2)∈dom(p)∧p∈ℤ × (ℤ × ℤ) ⇸ BOOL∧(p(x ↦ (y1 ↦ y2))=TRUE⇒x ↦ y1 ↦ y2∈dom(RATA)∧RATA∈ℤ × ℤ × ℤ ⇸ BOOL))∧(phi(x)=TRUE∧p(x ↦ (y1 ↦ y2))=TRUE∧RATA(x ↦ y1 ↦ y2)=TRUE⇒x ↦ y1 ↦ y2∈dom(rATA)∧rATA∈ℤ × ℤ × ℤ ⇸ ℤ × ℤ∧x ↦ rATA(x ↦ y1 ↦ y2)∈dom(p))" org.eventb.core.source="/subtask2/Correctness.buc|org.eventb.core.contextFile#Correctness|org.eventb.core.axiom#*"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/subtask2/Correctness.buc|org.eventb.core.contextFile#Correctness|org.eventb.core.axiom#*"/>
+        <org.eventb.core.poSelHint name="SEQHYS" org.eventb.core.poSelHintFst="/subtask2/Correctness.bpo|org.eventb.core.poFile#Correctness|org.eventb.core.poPredicateSet#ABSHYP" org.eventb.core.poSelHintSnd="/subtask2/Correctness.bpo|org.eventb.core.poFile#Correctness|org.eventb.core.poPredicateSet#HYPSchemj"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poSequent name="ATA/THM" org.eventb.core.accurate="true" org.eventb.core.poDesc="Theorem" org.eventb.core.poStamp="1">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/subtask2/Correctness.bpo|org.eventb.core.poFile#Correctness|org.eventb.core.poPredicateSet#HYPSchemj"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="∀x⦂ℤ,y1⦂ℤ,y2⦂ℤ·phi(x)=TRUE∧p(x ↦ (y1 ↦ y2))=TRUE∧RATA(x ↦ y1 ↦ y2)=TRUE⇒p(x ↦ rATA(x ↦ y1 ↦ y2))=TRUE" org.eventb.core.source="/subtask2/Correctness.buc|org.eventb.core.contextFile#Correctness|org.eventb.core.axiom#*"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/subtask2/Correctness.buc|org.eventb.core.contextFile#Correctness|org.eventb.core.axiom#*"/>
+        <org.eventb.core.poSelHint name="SEQHYS" org.eventb.core.poSelHintFst="/subtask2/Correctness.bpo|org.eventb.core.poFile#Correctness|org.eventb.core.poPredicateSet#ABSHYP" org.eventb.core.poSelHintSnd="/subtask2/Correctness.bpo|org.eventb.core.poFile#Correctness|org.eventb.core.poPredicateSet#HYPSchemj"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poSequent name="AFH/WD" org.eventb.core.accurate="true" org.eventb.core.poDesc="Well-definedness of Theorem" org.eventb.core.poStamp="1">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/subtask2/Correctness.bpo|org.eventb.core.poFile#Correctness|org.eventb.core.poPredicateSet#HYPSchemk"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="∀x⦂ℤ,y1⦂ℤ,y2⦂ℤ·x∈dom(phi)∧phi∈ℤ ⇸ BOOL∧(phi(x)=TRUE⇒x ↦ (y1 ↦ y2)∈dom(p)∧p∈ℤ × (ℤ × ℤ) ⇸ BOOL∧(p(x ↦ (y1 ↦ y2))=TRUE⇒x ↦ y1 ↦ y2∈dom(RAFH)∧RAFH∈ℤ × ℤ × ℤ ⇸ BOOL))∧(phi(x)=TRUE∧p(x ↦ (y1 ↦ y2))=TRUE∧RAFH(x ↦ y1 ↦ y2)=TRUE⇒x ↦ y1 ↦ y2∈dom(h)∧h∈ℤ × ℤ × ℤ ⇸ ℤ∧x ↦ h(x ↦ y1 ↦ y2)∈dom(psi)∧psi∈ℤ × ℤ ⇸ BOOL)" org.eventb.core.source="/subtask2/Correctness.buc|org.eventb.core.contextFile#Correctness|org.eventb.core.axiom#+"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/subtask2/Correctness.buc|org.eventb.core.contextFile#Correctness|org.eventb.core.axiom#+"/>
+        <org.eventb.core.poSelHint name="SEQHYS" org.eventb.core.poSelHintFst="/subtask2/Correctness.bpo|org.eventb.core.poFile#Correctness|org.eventb.core.poPredicateSet#ABSHYP" org.eventb.core.poSelHintSnd="/subtask2/Correctness.bpo|org.eventb.core.poFile#Correctness|org.eventb.core.poPredicateSet#HYPSchemk"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poSequent name="AFH/THM" org.eventb.core.accurate="true" org.eventb.core.poDesc="Theorem" org.eventb.core.poStamp="1">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/subtask2/Correctness.bpo|org.eventb.core.poFile#Correctness|org.eventb.core.poPredicateSet#HYPSchemk"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="∀x⦂ℤ,y1⦂ℤ,y2⦂ℤ·phi(x)=TRUE∧p(x ↦ (y1 ↦ y2))=TRUE∧RAFH(x ↦ y1 ↦ y2)=TRUE⇒psi(x ↦ h(x ↦ y1 ↦ y2))=TRUE" org.eventb.core.source="/subtask2/Correctness.buc|org.eventb.core.contextFile#Correctness|org.eventb.core.axiom#+"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/subtask2/Correctness.buc|org.eventb.core.contextFile#Correctness|org.eventb.core.axiom#+"/>
+        <org.eventb.core.poSelHint name="SEQHYS" org.eventb.core.poSelHintFst="/subtask2/Correctness.bpo|org.eventb.core.poFile#Correctness|org.eventb.core.poPredicateSet#ABSHYP" org.eventb.core.poSelHintSnd="/subtask2/Correctness.bpo|org.eventb.core.poFile#Correctness|org.eventb.core.poPredicateSet#HYPSchemk"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poSequent name="CORR/WD" org.eventb.core.accurate="true" org.eventb.core.poDesc="Well-definedness of Theorem" org.eventb.core.poStamp="1">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/subtask2/Correctness.bpo|org.eventb.core.poFile#Correctness|org.eventb.core.poPredicateSet#HYPScheml"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="∀x⦂ℤ,y1⦂ℤ,y2⦂ℤ·x∈dom(phi)∧phi∈ℤ ⇸ BOOL∧(phi(x)=TRUE⇒x ↦ (y1 ↦ y2)∈dom(p)∧p∈ℤ × (ℤ × ℤ) ⇸ BOOL)∧(phi(x)=TRUE∧p(x ↦ (y1 ↦ y2))=TRUE⇒x ↦ (y1 ↦ y2)∈dom(u)∧u∈ℤ × (ℤ × ℤ) ⇸ ℤ)" org.eventb.core.source="/subtask2/Correctness.buc|org.eventb.core.contextFile#Correctness|org.eventb.core.axiom#2"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/subtask2/Correctness.buc|org.eventb.core.contextFile#Correctness|org.eventb.core.axiom#2"/>
+        <org.eventb.core.poSelHint name="SEQHYS" org.eventb.core.poSelHintFst="/subtask2/Correctness.bpo|org.eventb.core.poFile#Correctness|org.eventb.core.poPredicateSet#ABSHYP" org.eventb.core.poSelHintSnd="/subtask2/Correctness.bpo|org.eventb.core.poFile#Correctness|org.eventb.core.poPredicateSet#HYPScheml"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poSequent name="CORR/THM" org.eventb.core.accurate="true" org.eventb.core.poDesc="Theorem" org.eventb.core.poStamp="1">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/subtask2/Correctness.bpo|org.eventb.core.poFile#Correctness|org.eventb.core.poPredicateSet#HYPScheml"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="∀x⦂ℤ,y1⦂ℤ,y2⦂ℤ·phi(x)=TRUE∧p(x ↦ (y1 ↦ y2))=TRUE⇒u(x ↦ (y1 ↦ y2))∈ℕ" org.eventb.core.source="/subtask2/Correctness.buc|org.eventb.core.contextFile#Correctness|org.eventb.core.axiom#2"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/subtask2/Correctness.buc|org.eventb.core.contextFile#Correctness|org.eventb.core.axiom#2"/>
+        <org.eventb.core.poSelHint name="SEQHYS" org.eventb.core.poSelHintFst="/subtask2/Correctness.bpo|org.eventb.core.poFile#Correctness|org.eventb.core.poPredicateSet#ABSHYP" org.eventb.core.poSelHintSnd="/subtask2/Correctness.bpo|org.eventb.core.poFile#Correctness|org.eventb.core.poPredicateSet#HYPScheml"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poSequent name="ATAt/WD" org.eventb.core.accurate="true" org.eventb.core.poDesc="Well-definedness of Theorem" org.eventb.core.poStamp="1">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/subtask2/Correctness.bpo|org.eventb.core.poFile#Correctness|org.eventb.core.poPredicateSet#HYPSchemm"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="∀x⦂ℤ,y1⦂ℤ,y2⦂ℤ·x∈dom(phi)∧phi∈ℤ ⇸ BOOL∧(phi(x)=TRUE⇒x ↦ (y1 ↦ y2)∈dom(p)∧p∈ℤ × (ℤ × ℤ) ⇸ BOOL∧(p(x ↦ (y1 ↦ y2))=TRUE⇒x ↦ y1 ↦ y2∈dom(RATA)∧RATA∈ℤ × ℤ × ℤ ⇸ BOOL))∧(phi(x)=TRUE∧p(x ↦ (y1 ↦ y2))=TRUE∧RATA(x ↦ y1 ↦ y2)=TRUE⇒x ↦ y1 ↦ y2∈dom(rATA)∧rATA∈ℤ × ℤ × ℤ ⇸ ℤ × ℤ∧x ↦ rATA(x ↦ y1 ↦ y2)∈dom(u)∧u∈ℤ × (ℤ × ℤ) ⇸ ℤ∧x ↦ (y1 ↦ y2)∈dom(u))" org.eventb.core.source="/subtask2/Correctness.buc|org.eventb.core.contextFile#Correctness|org.eventb.core.axiom#3"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/subtask2/Correctness.buc|org.eventb.core.contextFile#Correctness|org.eventb.core.axiom#3"/>
+        <org.eventb.core.poSelHint name="SEQHYS" org.eventb.core.poSelHintFst="/subtask2/Correctness.bpo|org.eventb.core.poFile#Correctness|org.eventb.core.poPredicateSet#ABSHYP" org.eventb.core.poSelHintSnd="/subtask2/Correctness.bpo|org.eventb.core.poFile#Correctness|org.eventb.core.poPredicateSet#HYPSchemm"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poSequent name="ATAt/THM" org.eventb.core.accurate="true" org.eventb.core.poDesc="Theorem" org.eventb.core.poStamp="1">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/subtask2/Correctness.bpo|org.eventb.core.poFile#Correctness|org.eventb.core.poPredicateSet#HYPSchemm"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="∀x⦂ℤ,y1⦂ℤ,y2⦂ℤ·phi(x)=TRUE∧p(x ↦ (y1 ↦ y2))=TRUE∧RATA(x ↦ y1 ↦ y2)=TRUE⇒u(x ↦ rATA(x ↦ y1 ↦ y2))&lt;u(x ↦ (y1 ↦ y2))" org.eventb.core.source="/subtask2/Correctness.buc|org.eventb.core.contextFile#Correctness|org.eventb.core.axiom#3"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/subtask2/Correctness.buc|org.eventb.core.contextFile#Correctness|org.eventb.core.axiom#3"/>
+        <org.eventb.core.poSelHint name="SEQHYS" org.eventb.core.poSelHintFst="/subtask2/Correctness.bpo|org.eventb.core.poFile#Correctness|org.eventb.core.poPredicateSet#ABSHYP" org.eventb.core.poSelHintSnd="/subtask2/Correctness.bpo|org.eventb.core.poFile#Correctness|org.eventb.core.poPredicateSet#HYPSchemm"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poPredicateSet name="HYPSchemf" org.eventb.core.parentSet="/subtask2/Correctness.bpo|org.eventb.core.poFile#Correctness|org.eventb.core.poPredicateSet#ABSHYP" org.eventb.core.poStamp="0">
+        <org.eventb.core.poPredicate name="PRD0" org.eventb.core.predicate="p∈ℤ × (ℤ × ℤ) → BOOL" org.eventb.core.source="/subtask2/Correctness.buc|org.eventb.core.contextFile#Correctness|org.eventb.core.axiom#-"/>
+    </org.eventb.core.poPredicateSet>
+    <org.eventb.core.poPredicateSet name="HYPSchemh" org.eventb.core.parentSet="/subtask2/Correctness.bpo|org.eventb.core.poFile#Correctness|org.eventb.core.poPredicateSet#HYPSchemf" org.eventb.core.poStamp="0">
+        <org.eventb.core.poPredicate name="PRD1" org.eventb.core.predicate="∀x⦂ℤ,y1⦂ℤ,y2⦂ℤ·p(x ↦ (y1 ↦ y2))=bool((x=0∧y1=0∧y2=0)∨(x&gt;0∧y1&gt;0∧y2=(x ÷ y1+y1) ÷ 2∧y1≤x∧x&lt;sqr(y1+1)))" org.eventb.core.source="/subtask2/Correctness.buc|org.eventb.core.contextFile#Correctness|org.eventb.core.axiom#,"/>
+        <org.eventb.core.poPredicate name="PRD2" org.eventb.core.predicate="u∈ℤ × (ℤ × ℤ) → ℤ" org.eventb.core.source="/subtask2/Correctness.buc|org.eventb.core.contextFile#Correctness|org.eventb.core.axiom#0"/>
+    </org.eventb.core.poPredicateSet>
+    <org.eventb.core.poPredicateSet name="HYPSchemi" org.eventb.core.parentSet="/subtask2/Correctness.bpo|org.eventb.core.poFile#Correctness|org.eventb.core.poPredicateSet#HYPSchemh" org.eventb.core.poStamp="0">
+        <org.eventb.core.poPredicate name="PRD3" org.eventb.core.predicate="∀x⦂ℤ,y1⦂ℤ,y2⦂ℤ·u(x ↦ (y1 ↦ y2))=y1" org.eventb.core.source="/subtask2/Correctness.buc|org.eventb.core.contextFile#Correctness|org.eventb.core.axiom#1"/>
+    </org.eventb.core.poPredicateSet>
+    <org.eventb.core.poPredicateSet name="HYPSchemj" org.eventb.core.parentSet="/subtask2/Correctness.bpo|org.eventb.core.poFile#Correctness|org.eventb.core.poPredicateSet#HYPSchemi" org.eventb.core.poStamp="0">
+        <org.eventb.core.poPredicate name="PRD4" org.eventb.core.predicate="∀x⦂ℤ·phi(x)=TRUE⇒p(x ↦ rSA(x))=TRUE" org.eventb.core.source="/subtask2/Correctness.buc|org.eventb.core.contextFile#Correctness|org.eventb.core.axiom#)"/>
+    </org.eventb.core.poPredicateSet>
+    <org.eventb.core.poPredicateSet name="HYPSchemk" org.eventb.core.parentSet="/subtask2/Correctness.bpo|org.eventb.core.poFile#Correctness|org.eventb.core.poPredicateSet#HYPSchemj" org.eventb.core.poStamp="0">
+        <org.eventb.core.poPredicate name="PRD5" org.eventb.core.predicate="∀x⦂ℤ,y1⦂ℤ,y2⦂ℤ·phi(x)=TRUE∧p(x ↦ (y1 ↦ y2))=TRUE∧RATA(x ↦ y1 ↦ y2)=TRUE⇒p(x ↦ rATA(x ↦ y1 ↦ y2))=TRUE" org.eventb.core.source="/subtask2/Correctness.buc|org.eventb.core.contextFile#Correctness|org.eventb.core.axiom#*"/>
+    </org.eventb.core.poPredicateSet>
+    <org.eventb.core.poPredicateSet name="HYPScheml" org.eventb.core.parentSet="/subtask2/Correctness.bpo|org.eventb.core.poFile#Correctness|org.eventb.core.poPredicateSet#HYPSchemk" org.eventb.core.poStamp="0">
+        <org.eventb.core.poPredicate name="PRD6" org.eventb.core.predicate="∀x⦂ℤ,y1⦂ℤ,y2⦂ℤ·phi(x)=TRUE∧p(x ↦ (y1 ↦ y2))=TRUE∧RAFH(x ↦ y1 ↦ y2)=TRUE⇒psi(x ↦ h(x ↦ y1 ↦ y2))=TRUE" org.eventb.core.source="/subtask2/Correctness.buc|org.eventb.core.contextFile#Correctness|org.eventb.core.axiom#+"/>
+    </org.eventb.core.poPredicateSet>
+    <org.eventb.core.poPredicateSet name="HYPSchemm" org.eventb.core.parentSet="/subtask2/Correctness.bpo|org.eventb.core.poFile#Correctness|org.eventb.core.poPredicateSet#HYPScheml" org.eventb.core.poStamp="0">
+        <org.eventb.core.poPredicate name="PRD7" org.eventb.core.predicate="∀x⦂ℤ,y1⦂ℤ,y2⦂ℤ·phi(x)=TRUE∧p(x ↦ (y1 ↦ y2))=TRUE⇒u(x ↦ (y1 ↦ y2))∈ℕ" org.eventb.core.source="/subtask2/Correctness.buc|org.eventb.core.contextFile#Correctness|org.eventb.core.axiom#2"/>
+    </org.eventb.core.poPredicateSet>
+    <org.eventb.core.poPredicateSet name="ALLHYP" org.eventb.core.parentSet="/subtask2/Correctness.bpo|org.eventb.core.poFile#Correctness|org.eventb.core.poPredicateSet#HYPSchemm" org.eventb.core.poStamp="1">
+        <org.eventb.core.poPredicate name="PRD8" org.eventb.core.predicate="∀x⦂ℤ,y1⦂ℤ,y2⦂ℤ·phi(x)=TRUE∧p(x ↦ (y1 ↦ y2))=TRUE∧RATA(x ↦ y1 ↦ y2)=TRUE⇒u(x ↦ rATA(x ↦ y1 ↦ y2))&lt;u(x ↦ (y1 ↦ y2))" org.eventb.core.source="/subtask2/Correctness.buc|org.eventb.core.contextFile#Correctness|org.eventb.core.axiom#3"/>
+    </org.eventb.core.poPredicateSet>
+</org.eventb.core.poFile>

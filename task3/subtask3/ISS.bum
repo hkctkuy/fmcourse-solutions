@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<org.eventb.core.machineFile org.eventb.core.configuration="org.eventb.core.fwd" version="5">
+    <org.eventb.core.event name="'" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="INITIALISATION">
+        <org.eventb.core.action name="-" org.eventb.core.assignment="&#9;&#9;Files ≔ ∅" org.eventb.core.label="Files"/>
+        <org.eventb.core.action name="." org.eventb.core.assignment="&#9;&#9;Users ≔ ∅" org.eventb.core.label="Users"/>
+        <org.eventb.core.action name="/" org.eventb.core.assignment="Processes ≔ ∅" org.eventb.core.label="Processes"/>
+        <org.eventb.core.action name="0" org.eventb.core.assignment="Accesses ≔ ∅" org.eventb.core.label="Accesses"/>
+        <org.eventb.core.action name="1" org.eventb.core.assignment="&#9;&#9;Owner ≔ ∅" org.eventb.core.label="Owner"/>
+        <org.eventb.core.action name="2" org.eventb.core.assignment="&#9;Logged ≔ ∅" org.eventb.core.label="Logged"/>
+        <org.eventb.core.action name="3" org.eventb.core.assignment="OpenFiles ≔ ∅" org.eventb.core.label="OpenFiles"/>
+        <org.eventb.core.action name="," org.eventb.core.assignment="PrevOwner ≔ ∅" org.eventb.core.label="PrevOwner"/>
+    </org.eventb.core.event>
+    <org.eventb.core.seesContext name="*" org.eventb.core.target="Common"/>
+    <org.eventb.core.variable name="+" org.eventb.core.identifier="Files"/>
+    <org.eventb.core.invariant name="," org.eventb.core.label="Files" org.eventb.core.predicate="&#9;&#9;Files ∈ ℙ(FILES)"/>
+    <org.eventb.core.variable name="/" org.eventb.core.identifier="Users"/>
+    <org.eventb.core.invariant name="0" org.eventb.core.label="Users" org.eventb.core.predicate="&#9;&#9;Users ∈ ℙ(USERS)"/>
+    <org.eventb.core.variable name="(" org.eventb.core.identifier="Processes"/>
+    <org.eventb.core.variable name="-" org.eventb.core.identifier="OpenFiles"/>
+    <org.eventb.core.variable name="1" org.eventb.core.identifier="Accesses"/>
+    <org.eventb.core.invariant name=")" org.eventb.core.label="Processes" org.eventb.core.predicate="Processes ∈ ℙ(PROCESSES)"/>
+    <org.eventb.core.invariant name="." org.eventb.core.label="OpenFIles" org.eventb.core.predicate="OpenFiles ∈ Processes × ℕ ⇸ Files"/>
+    <org.eventb.core.invariant name="4" org.eventb.core.label="Onwer" org.eventb.core.predicate="&#9;&#9;Owner ∈ Processes → Users"/>
+    <org.eventb.core.invariant name="2" org.eventb.core.label="Accesses" org.eventb.core.predicate="Accesses ∈ Users → ℙ(Files)"/>
+    <org.eventb.core.invariant name="7" org.eventb.core.label="Logged" org.eventb.core.predicate="&#9;Logged ∈ Users → BOOL"/>
+    <org.eventb.core.invariant name="evt7" org.eventb.core.label="PrevOwner" org.eventb.core.predicate="PrevOwner ∈ Processes ⇸ Users"/>
+    <org.eventb.core.invariant name="5" org.eventb.core.label="PermittedAccess" org.eventb.core.predicate="&#10;∀p, n · p ↦ n ∈ dom(OpenFiles) ⇒ OpenFiles(p ↦ n) ∈ Accesses(Owner(p))"/>
+    <org.eventb.core.variable name="3" org.eventb.core.identifier="Owner"/>
+    <org.eventb.core.variable name="6" org.eventb.core.identifier="Logged"/>
+    <org.eventb.core.event name="evt@" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="Any Transition">
+        <org.eventb.core.guard name="," org.eventb.core.label="files" org.eventb.core.predicate="&#9;&#9;&#9;files ∈ ℙ(FILES)"/>
+        <org.eventb.core.guard name="0" org.eventb.core.label="users" org.eventb.core.predicate="&#9;&#9;users ∈ ℙ(USERS)"/>
+        <org.eventb.core.guard name=")" org.eventb.core.label="processes" org.eventb.core.predicate="processes ∈ ℙ(PROCESSES)"/>
+        <org.eventb.core.guard name="." org.eventb.core.label="openfIles" org.eventb.core.predicate="openfiles ∈ processes × ℕ ⇸ files"/>
+        <org.eventb.core.guard name="4" org.eventb.core.label="onwer" org.eventb.core.predicate="&#9;&#9;owner ∈ processes → users"/>
+        <org.eventb.core.guard name="2" org.eventb.core.label="accesses" org.eventb.core.predicate="&#9;accesses ∈ users → ℙ(files)"/>
+        <org.eventb.core.guard name="7" org.eventb.core.label="logged" org.eventb.core.predicate="&#9;logged ∈ users → BOOL"/>
+        <org.eventb.core.guard name="evt7" org.eventb.core.label="prevowner" org.eventb.core.predicate="prevowner ∈ processes ⇸ users"/>
+        <org.eventb.core.guard name="5" org.eventb.core.label="permittedaccess" org.eventb.core.predicate="&#10;∀p, n · p ↦ n ∈ dom(openfiles) ⇒ openfiles(p ↦ n) ∈ accesses(owner(p))"/>
+        <org.eventb.core.parameter name="+" org.eventb.core.identifier="files"/>
+        <org.eventb.core.parameter name="/" org.eventb.core.identifier="users"/>
+        <org.eventb.core.parameter name="(" org.eventb.core.identifier="processes"/>
+        <org.eventb.core.parameter name="-" org.eventb.core.identifier="openfiles"/>
+        <org.eventb.core.parameter name="1" org.eventb.core.identifier="accesses"/>
+        <org.eventb.core.parameter name="3" org.eventb.core.identifier="owner"/>
+        <org.eventb.core.parameter name="6" org.eventb.core.identifier="logged"/>
+        <org.eventb.core.parameter name="33" org.eventb.core.identifier="prevowner"/>
+        <org.eventb.core.guard name="evt8" org.eventb.core.label="loggedaccess" org.eventb.core.predicate="&#10;&#9;∀p · p ∈ processes ⇒ logged(owner(p)) = TRUE"/>
+        <org.eventb.core.guard name="evt9" org.eventb.core.label="loggedprev" org.eventb.core.predicate="&#10;&#9;&#9;∀p · p ∈ processes ∧ p ∈ dom(prevowner) ⇒ logged(prevowner(p)) = TRUE"/>
+        <org.eventb.core.action name="evt:" org.eventb.core.assignment="&#9;&#9;Files ≔ files" org.eventb.core.label="Files"/>
+        <org.eventb.core.action name="evt;" org.eventb.core.assignment="&#9;&#9;Users ≔ users" org.eventb.core.label="Users"/>
+        <org.eventb.core.action name="evt=" org.eventb.core.assignment="Processes ≔ processes" org.eventb.core.label="Processes"/>
+        <org.eventb.core.action name="evt&gt;" org.eventb.core.assignment="OpenFiles ≔ openfiles" org.eventb.core.label="OpenFiles"/>
+        <org.eventb.core.action name="evt?" org.eventb.core.assignment="&#9;&#9;Owner ≔ owner" org.eventb.core.label="Owner"/>
+        <org.eventb.core.action name="evt@" org.eventb.core.assignment="Accesses ≔ accesses" org.eventb.core.label="Accesses"/>
+        <org.eventb.core.action name="evtA" org.eventb.core.assignment="&#9;Logged ≔ logged" org.eventb.core.label="Logged"/>
+        <org.eventb.core.action name="evtB" org.eventb.core.assignment="PrevOwner ≔ prevowner" org.eventb.core.label="PrevOwner"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="9" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="Log In">
+        <org.eventb.core.parameter name="'" org.eventb.core.identifier="user"/>
+        <org.eventb.core.guard name="(" org.eventb.core.label="user" org.eventb.core.predicate="user ∈ Users"/>
+        <org.eventb.core.action name=")" org.eventb.core.assignment="Logged(user) ≔ TRUE" org.eventb.core.label="log in"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="8" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="Open File">
+        <org.eventb.core.parameter name="'" org.eventb.core.identifier="process"/>
+        <org.eventb.core.parameter name="(" org.eventb.core.identifier="file"/>
+        <org.eventb.core.guard name=")" org.eventb.core.label="process" org.eventb.core.predicate="process ∈ Processes"/>
+        <org.eventb.core.guard name="*" org.eventb.core.label="file" org.eventb.core.predicate="&#9;&#9;file ∈ Files"/>
+        <org.eventb.core.guard name="0" org.eventb.core.label="n" org.eventb.core.predicate="&#9;&#9;&#9;n ∈ ℕ"/>
+        <org.eventb.core.guard name="+" org.eventb.core.label="onwer" org.eventb.core.predicate="&#9;Logged(Owner(process)) = TRUE"/>
+        <org.eventb.core.guard name="," org.eventb.core.label="access" org.eventb.core.predicate="file ∈ Accesses(Owner(process))"/>
+        <org.eventb.core.action name="-" org.eventb.core.assignment="&#9;OpenFiles(process ↦ n) ≔ file" org.eventb.core.label="open"/>
+        <org.eventb.core.parameter name="." org.eventb.core.identifier="n"/>
+        <org.eventb.core.guard name="/" org.eventb.core.label="closed" org.eventb.core.predicate="&#9;process ↦ n ∉ dom(OpenFiles)"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="evt1" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="Close FIle">
+        <org.eventb.core.parameter name="'" org.eventb.core.identifier="process"/>
+        <org.eventb.core.parameter name="(" org.eventb.core.identifier="file"/>
+        <org.eventb.core.guard name=")" org.eventb.core.label="process" org.eventb.core.predicate="process ∈ Processes"/>
+        <org.eventb.core.guard name="*" org.eventb.core.label="file" org.eventb.core.predicate="&#9;&#9;file ∈ Files"/>
+        <org.eventb.core.action name="-" org.eventb.core.assignment="&#9;OpenFiles ≔ {process ↦ n} ⩤ OpenFiles" org.eventb.core.label="close"/>
+        <org.eventb.core.guard name="." org.eventb.core.label="open" org.eventb.core.predicate="&#9;process ↦ n ∈ dom(OpenFiles) ∧ OpenFiles(process ↦ n) = file"/>
+        <org.eventb.core.parameter name="/" org.eventb.core.identifier="n"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="evt2" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="Create a Child Process">
+        <org.eventb.core.parameter name="'" org.eventb.core.identifier="process"/>
+        <org.eventb.core.guard name="(" org.eventb.core.label="process" org.eventb.core.predicate="process ∈ Processes"/>
+        <org.eventb.core.action name=")" org.eventb.core.assignment="&#9;Processes ≔ Processes ∪ {child}" org.eventb.core.label="create"/>
+        <org.eventb.core.action name="*" org.eventb.core.assignment="&#9;Owner(child) ≔ Owner(process)" org.eventb.core.label="owner"/>
+        <org.eventb.core.parameter name="+" org.eventb.core.identifier="child"/>
+        <org.eventb.core.guard name="," org.eventb.core.label="child" org.eventb.core.predicate="&#9;child ∈ PROCESSES ∖ Processes"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="evt3" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="Change Owner">
+        <org.eventb.core.parameter name="'" org.eventb.core.identifier="process"/>
+        <org.eventb.core.parameter name="(" org.eventb.core.identifier="newuser"/>
+        <org.eventb.core.guard name=")" org.eventb.core.label="process" org.eventb.core.predicate="process ∈ Processes"/>
+        <org.eventb.core.guard name="*" org.eventb.core.label="newuser" org.eventb.core.predicate="newuser ∈ Users"/>
+        <org.eventb.core.guard name="+" org.eventb.core.label="logged" org.eventb.core.predicate="Logged(newuser) = TRUE"/>
+        <org.eventb.core.action name="," org.eventb.core.assignment="Owner(process) ≔ newuser" org.eventb.core.label="change"/>
+        <org.eventb.core.guard name="-" org.eventb.core.label="access" org.eventb.core.predicate="∀n · process ↦ n ∈ dom(OpenFiles) ⇒ OpenFiles(process ↦ n) ∈ Accesses(newuser)"/>
+        <org.eventb.core.action name="." org.eventb.core.assignment="&#9;PrevOwner(process) ≔ Owner(process)" org.eventb.core.label="prev"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="evt4" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="Return Owner">
+        <org.eventb.core.guard name="'" org.eventb.core.label="process" org.eventb.core.predicate="process ∈ Processes"/>
+        <org.eventb.core.parameter name="(" org.eventb.core.identifier="process"/>
+        <org.eventb.core.action name=")" org.eventb.core.assignment="&#9;Owner(process) ≔ PrevOwner(process)" org.eventb.core.label="return"/>
+        <org.eventb.core.guard name="*" org.eventb.core.label="hasprev" org.eventb.core.predicate="process ∈ dom(PrevOwner)"/>
+        <org.eventb.core.action name="+" org.eventb.core.assignment="&#9;PrevOwner(process) ≔ Owner(process)" org.eventb.core.label="prev"/>
+        <org.eventb.core.guard name="-" org.eventb.core.label="logged" org.eventb.core.predicate="Logged(PrevOwner(process)) = TRUE"/>
+        <org.eventb.core.guard name="," org.eventb.core.label="access" org.eventb.core.predicate="∀n · process ↦ n ∈ dom(OpenFiles) ⇒ OpenFiles(process ↦ n) ∈ Accesses(PrevOwner(process))"/>
+    </org.eventb.core.event>
+    <org.eventb.core.variable name="evt5" org.eventb.core.identifier="PrevOwner"/>
+    <org.eventb.core.invariant name="evt&gt;" org.eventb.core.label="LoggedAccess" org.eventb.core.predicate="&#10;&#9;∀p · p ∈ Processes ⇒ Logged(Owner(p)) = TRUE"/>
+    <org.eventb.core.invariant name="evt?" org.eventb.core.label="LoggedPrev" org.eventb.core.predicate="&#10;&#9;&#9;∀p · p ∈ Processes ∧ p ∈ dom(PrevOwner) ⇒ Logged(PrevOwner(p)) = TRUE"/>
+</org.eventb.core.machineFile>
