@@ -1,0 +1,1129 @@
+\documentclass[oneside,senior,etd]{BYUPhys}
+
+\usepackage{cmap} % Для корректной кодировки в pdf
+\usepackage[utf8]{inputenc}
+\usepackage{rotating}
+
+\usepackage[russian]{babel}
+\usepackage{amsfonts} % Пакеты для математических символов и теорем
+\usepackage{amstext}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{graphicx} % Пакеты для вставки графики
+\usepackage{subfig}
+\usepackage{color}
+\usepackage[unicode]{hyperref}
+\usepackage[nottoc]{tocbibind} % Для того, чтобы список литературы отображался в оглавлении
+\usepackage{verbatim} % Для вставок заранее подготовленного текста в режиме as-is
+\usepackage{listings}
+
+\newcommand{\sectionbreak}{\clearpage} % Раздел с новой станицы
+
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usetikzlibrary{arrows, positioning, shapes}
+\usepackage{adjustbox}
+
+\usepackage{makecell}
+\usepackage{booktabs}
+\usepackage{boldline}
+
+\usepackage{xcolor}
+\usepackage{soul}
+\usepackage{url}
+\usepackage{multirow}
+\usepackage{amsmath}
+
+\usepackage{pifont}
+\usepackage{indentfirst} % Делать отступ в начале первого параграфа
+
+\usepackage{minted}
+\usepackage[russian]{cleveref}
+
+% \usepackage{showframe}
+% \renewcommand\ShowFrameLinethickness{0.15pt}
+% \renewcommand*\ShowFrameColor{\color{red}}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}{Следствие}[theorem]
+\newtheorem{lemma}[theorem]{Лемма}
+
+% tikz styles
+\tikzstyle{process} = [rectangle, minimum width=9em, minimum height=3em,
+text centered, draw=black, align=center]
+\tikzstyle{rounded} = [rectangle, minimum width=9em, minimum height=3em,
+text centered, draw=black, align=center, rounded corners]
+\tikzstyle{arrow} = [thick,->,>=stealth]
+\tikzset{
+  dot/.style = {circle, fill, minimum size=#1, inner sep=0pt, outer sep=0pt},
+  dot/.default = 3pt % size of the circle diameter 
+}
+
+\renewcommand
+\listingscaption{Листинг}
+
+% Общие параметры листингов
+\lstset{
+  %frame=TB,
+  showstringspaces=false,
+  tabsize=4,
+  basicstyle=\linespread{1.0}\tt\small, % делаем листинги компактнее
+  breaklines=true,
+  texcl=true, % русские буквы в комментах
+  captionpos=b,
+  aboveskip=\baselineskip,
+  commentstyle=\tt
+}
+
+\newcommand{\todo}[1]{\textcolor{red}{#1}}
+
+% DEBUG
+% \usepackage{showframe}
+
+\Faculty{Факультет вычислительной математики и кибернетики}
+\Chair{Кафедра системного программирования}
+% Лаборатория
+% \Lab{~}
+\Year{2025}
+  \Month{Март}
+  \City{Москва}
+  \AuthorText{Автор:}
+  \Author{Егоров Илья Георгиевич}
+  \AuthorEng{Ilya Yegorov}
+  \AcadGroup{527}
+
+  \TitleTop{Формальные методы разработки программ}
+  % Раскомментируйте, если нужны еще строчки названия
+  % \TitleMiddle{}
+  % \TitleBottom{Третья строка названия}
+  % Uncomment if you need English title
+  % \TitleTopEng{Thesis theme, first line}
+  % \TitleMiddleEng{Thesis theme, second line}
+  % \TitleBottomEng{Thesis theme, third line}
+
+\docname{Практикум -- задание \textnumero 1}
+  % \Advisor{}
+  % \AdvisorDegree{\\}
+  % Раскомментируйте, чтобы добавить научного консультанта
+  % \Consultant{}
+  % \ConsultantDegree{\\}
+
+% Закомментируйте, если аннотация не нужна
+% \Abstract{}
+% Раскомментируйте, если нужна английская аннотация
+% \AbstractEng{Abstract in English}
+
+% Раскомментируйте, чтобы написать благодарности
+% \Acknowledgments{Благодарности.}
+
+%%%% DON'T change this. It is here because .sty does not support cyrillic cp properly %%%%
+\TitlePageText{Титульная страница}
+\University{Московский государственный университет имени М.В.Ломоносова}
+\GrText{гр.}
+\AdvisorText{Научный руководитель}
+\ConsultantText{Научный консультант}
+\AbstractText{Аннотация}
+\AcknowledgmentsText{Благодарности}
+\ListingText{Листинг}
+\AlgorithmText{Алгоритм}
+
+% Set PDF title and author
+\hypersetup{
+  pdftitle={\PDFTitle},
+  pdfauthor={\PDFAuthor}
+}
+
+\begin{document}
+\fixmargins
+ \makepreliminarypages
+
+\oneandhalfspace
+
+\pdfbookmark[section]{\contentsname}{toc}
+\tableofcontents
+
+\section{Задание 1.1}
+
+\subsection{Реализация, моделирование, требования}
+
+Введём обозначения для максимального и минимального чисел в машинной арифметике:
+\begin{align}
+  INT\_MIN = -2^{31} \\
+  INT\_MAX = 2^{31} - 1
+\end{align}
+
+Также введём несколько дополнительных предикатов для обозначения переполнения:
+\begin{align}
+  OF^+(x, y) \equiv x + y < INT\_MIN \vee x + y > INT\_MAX \\
+  OF^-(x, y) \equiv x - y < INT\_MIN \vee x - y > INT\_MAX
+\end{align}
+\begin{lemma}\label{lem:of}
+  При $INT\_MIN \leq x \leq INT\_MAX$ верны
+\begin{align}
+  OF^+(x, y) \equiv y < 0 \wedge x < INT\_MIN - y \vee y > 0 \wedge x > INT\_MAX - y \\
+  OF^-(x, y) \equiv y < 0 \wedge x > INT\_MAX + y \vee y > 0 \wedge x < INT\_MIN + y
+\end{align}
+\end{lemma}
+
+\begin{proof}
+В силу
+\begin{align}
+  y \geq 0 \rightarrow x + y \geq x \geq INT\_MIN
+\end{align}
+Верно
+\begin{align}
+\begin{split}
+  x + y < INT\_MIN &\equiv (y < 0 \vee y \geq 0) \wedge x + y < INT\_MIN \\
+    &\equiv y < 0 \wedge x < INT\_MIN - y
+\end{split}
+\end{align}
+Аналогично:
+\begin{align}
+  x + y < INT\_MIN &\equiv y > 0 \wedge x > INT\_MAX - y
+\end{align}
+Откуда и получаем доказываемую формулу. Аналогично для $OF^-(x, y)$
+\end{proof}
+
+Выпишем их отрицания:
+\begin{align}
+\begin{split}
+  \overline{OF^+(x, y)} & \equiv INT\_MIN \leq x + y \leq INT\_MAX \\
+    & \stackrel{(\ref{lem:of})}{\equiv}
+    \overline{(y < 0 \wedge x < INT\_MIN - y)} \wedge \overline{(y > 0 \wedge x > INT\_MAX - y)} \\
+    & \stackrel{(\ref{alt})}{\equiv}
+    (y < 0 \rightarrow x \geq INT\_MIN - y) \wedge (y > 0 \rightarrow x \leq INT\_MAX - y)
+\end{split} \\
+\begin{split}
+  \overline{OF^-(x, y)} & \equiv INT\_MIN \leq x - y \leq INT\_MAX \\
+    & \stackrel{(\ref{lem:of})}{\equiv}
+    \overline{(y < 0 \wedge x > INT\_MAX + y)} \wedge \overline{(y > 0 \wedge x < INT\_MIN + y)} \\
+    & \stackrel{(\ref{alt})}{\equiv}
+    (y < 0 \rightarrow x \leq INT\_MAX + y) \wedge (y > 0 \rightarrow x \geq INT\_MIN + y)
+\end{split}
+\end{align}
+
+Дополнительно отметим, чтo указанные в \cref{lem:of} операции
+никогда не приведут к целочисленному переполнению:
+\begin{align}
+\begin{split}
+  INT\_MIN \leq x < 0   & \rightarrow   INT\_MIN < INT\_MIN - x \leq 0 \\
+                        & \wedge        -1 \leq INT\_MAX + x < INT\_MAX
+\end{split} \\
+\begin{split}
+  0 < x \leq INT\_MAX   & \rightarrow   INT\_MIN < INT\_MIN + x \leq -1 \\
+                        & \wedge        0 \leq INT\_MAX - x < INT\_MAX
+\end{split}
+\end{align}
+
+Везде далее доменами входных переменных $x = (x_1, x_2, x_3)$ и промежуточной
+переменной $y$ являются целые
+числа:
+\begin{align}
+  D_{x_1} = D_{x_2} = D_{x_3} = D_y = \mathbb{Z}, D_x = \mathbb{Z}^3
+\end{align}
+
+
+На \cref{p1src,p2src} представлен исходный код программ P1 и P2
+соответственно, а на рисунках \cref{p1fc,p2fc}~--- их блок-схемы.
+
+\begin{listing}[h]
+\caption{Программа P1}
+\label{p1src}
+\begin{minted}[linenos=true]{c}
+int comp(int x1, int x2, int x3) {
+    int y = x1 - x3;
+    return y + x2;
+}
+\end{minted}
+\end{listing}
+
+\begin{figure}[H]
+\caption{Блок-схема программы P1}
+\label{p1fc}
+\centering
+\begin{tikzpicture}[node distance=5em]
+  % Nodes
+  \node (start)     [rounded]                   {START: \\ $y \leftarrow 0$};
+  \node (ofsub)     [rounded, below of=start]   {$OF^-(x_1, x_3)$};
+  \node (assign)    [process, below of=ofsub]   {$y \leftarrow x_1 - x_3$};
+  \node (ofadd)     [rounded, below of=assign]  {$OF^+(y, x_2)$};
+  \node (halt)      [rounded, below of=ofadd]   {HALT: \\ $z \leftarrow y + x_2$};
+  % Arrows
+  \draw [arrow] (start) -- node[dot, pos=.7, label=0:A] {} coordinate (loopsub) (ofsub);
+  \draw [arrow] (ofsub.west) -- +(-.5,0) |- node[left, pos=.25] {T} (loopsub-|ofsub.north);
+  \draw [arrow] (ofsub) -- node[right] {F} (assign);
+  \draw [arrow] (assign) -- node[dot, pos=.7, label=0:B] {} coordinate (loopadd) (ofadd);
+  \draw [arrow] (ofadd.west) -| +(-.5,0) |- node[left, pos=.25] {T} (loopadd-|ofadd.north);
+  \draw [arrow] (ofadd) -- node[right] {F} (halt);
+\end{tikzpicture}
+\end{figure}
+
+\begin{listing}[H]
+\caption{Программа P2}
+\label{p2src}
+\begin{minted}[linenos=true]{c}
+#include <limits.h>
+
+#define OFsub(x, y) (y < 0 && x > INT_MAX + y || y > 0 && x < INT_MIN + y)
+#define OFadd(x, y) (y < 0 && x < INT_MIN - y || y > 0 && x > INT_MAX - y)
+#define NOFsub(x, y) (!OFsub(x, y))
+#define NOFadd(x, y) (!OFadd(x, y))
+
+int comp(int x1, int x2, int x3) {
+    int y;
+    if (NOFsub(x1, x3)) {
+        y = x1 - x3;
+        return y + x2;
+    }
+    if (NOFadd(x1, x2)) {
+        y = x1 + x2;
+        return y - x3;
+    }
+    y = x2 - x3;
+    return y + x1;
+}
+\end{minted}
+\end{listing}
+
+\begin{figure}[H]
+\caption{Блок-схема программы P2}
+\label{p2fc}
+\centering
+\begin{tikzpicture}[node distance=5em]
+  % Nodes
+  \node (start)     [rounded]                               {START: \\ $y \leftarrow 0$};
+  % First try
+  \node (ofsub1)    [rounded, below of=start]               {$OF^-(x_1, x_3)$};
+  \node (assign1)   [process, right of=ofsub1, xshift=9em]  {$y \leftarrow x_1 - x_3$};
+  \node (ofadd1)    [rounded, below of=assign1]             {$OF^+(y, x_2)$};
+  \node (halt1)     [rounded, right of=ofadd1, xshift=9em, label=0:$(H_1)$]
+                                                            {HALT: \\ $z \leftarrow y + x_2$};
+  % Second try
+  \node (ofadd2)    [rounded, below of=ofsub1, yshift=-5em] {$OF^+(x_1, x_2)$};
+  \node (assign2)   [process, right of=ofadd2, xshift=9em]  {$y \leftarrow x_1 + x_2$};
+  \node (ofsub2)    [rounded, below of=assign2]             {$OF^-(y, x_3)$};
+  \node (halt2)     [rounded, right of=ofsub2, xshift=9em, label=0:$(H_2)$]
+                                                            {HALT: \\ $z \leftarrow y - x_3$};
+  % Third try
+  \node (ofsub3)    [rounded, below of=ofadd2, yshift=-5em] {$OF^-(x_2, x_3)$};
+  \node (assign3)   [process, right of=ofsub3, xshift=9em]  {$y \leftarrow x_2 - x_3$};
+  \node (ofadd3)    [rounded, below of=assign3]             {$OF^+(y, x_1)$};
+  \node (halt3)     [rounded, right of=ofadd3, xshift=9em, label=0:$(H_3)$]
+                                                            {HALT: \\ $z \leftarrow y + x_1$};
+  % Arrows
+  % First try
+  \draw [arrow] (start)     -- (ofsub1);
+  \draw [arrow] (ofsub1)    -- node[left, pos=.25]  {T} node[dot, pos=.5,  label=0:B] {} (ofadd2);
+  \draw [arrow] (ofsub1)    -- node[above]          {F} (assign1);
+  \draw [arrow] (assign1)   -- node[dot, pos=.7, label=0:A] {} coordinate (loop) (ofadd1);
+  \draw [arrow] (ofadd1.west) -| +(-.5,0) |- node[left, pos=.25] {T} (loop);
+  \draw [arrow] (ofadd1)    -- node[above]          {F} (halt1);
+  % Second try
+  \draw [arrow] (ofadd2)    -- node[left, pos=.25]  {T} node[dot, pos=.75, label=0:D] {}
+    coordinate (to3) (ofsub3);
+  \draw [arrow] (ofadd2)    -- node[above]          {F} (assign2);
+  \draw [arrow] (assign2)   -- node[dot, pos=.7, label=0:C] {} coordinate (loop) (ofsub2);
+  \draw [arrow] (ofsub2.west) -| +(-.5,0) |- node[left, pos=.25] {T} (loop);
+  \draw [arrow] (ofsub2)    -- node[above]          {F} (halt2);
+  % Third try
+  \draw [arrow] (ofsub3.west) -| +(-.5,0) |- node[left, pos=.25] {T} (to3);
+  \draw [arrow] (ofsub3)    -- node[above]          {F} (assign3);
+  \draw [arrow] (assign3)   -- node[dot, pos=.7, label=0:E] {} coordinate (loop) (ofadd3);
+  \draw [arrow] (ofadd3.west) -| +(-.5,0) |- node[left, pos=.25] {T} (loop);
+  \draw [arrow] (ofadd3)    -- node[above]          {F} (halt3);
+\end{tikzpicture}
+\end{figure}
+
+Требования T1:
+\begin{align}
+\begin{split}
+  \varphi_{T1}(x)   &\equiv INT\_MIN \leq x_1              \leq INT\_MAX \\
+                    &\wedge INT\_MIN \leq x_2              \leq INT\_MAX \\
+                    &\wedge INT\_MIN \leq x_3              \leq INT\_MAX \\
+                    &\wedge INT\_MIN \leq x_1 - x_3        \leq INT\_MAX \\
+                    &\wedge INT\_MIN \leq x_1 + x_2 - x_3  \leq INT\_MAX
+\end{split} \\
+  \psi(x)           &\equiv z = x_1 + x_2 - x_3
+\end{align}
+
+Требования T2:
+\begin{align}
+\begin{split}
+  \varphi_{T2}(x)   &\equiv INT\_MIN \leq x_1              \leq INT\_MAX \\
+                    &\wedge INT\_MIN \leq x_2              \leq INT\_MAX \\
+                    &\wedge INT\_MIN \leq x_3              \leq INT\_MAX \\
+                    &\wedge INT\_MIN \leq x_1 + x_2 - x_3  \leq INT\_MAX
+\end{split} \\
+  \psi(x)           &\equiv z = x_1 + x_2 - x_3
+\end{align}
+
+Докажем несколько вспомогательных утверждений.
+\begin{lemma}\label{lem:sub}
+\begin{align}
+  \forall x \in D_x \ \varphi_{T1}(x) \rightarrow \overline{OF^-(x_1, x_3)}
+\end{align}
+\end{lemma}
+
+\begin{proof}
+\begin{align}
+  & \varphi_{T1}(x) \rightarrow INT\_MIN \leq x_1 - x_3 \leq INT\_MAX \\
+\begin{split}
+  x_1 - x_3 \leq INT\_MAX \rightarrow x_1 \leq INT\_MAX + x_3
+  \stackrel{(\ref{impl})}{\rightarrow} \\
+  \rightarrow (x_3 < 0 \rightarrow x_1 \leq INT\_MAX + x_3)
+\end{split} \\
+\begin{split}
+  x_1 - x_3 \geq INT\_MIN \rightarrow x_1 \geq INT\_MIN + x_3
+  \stackrel{(\ref{impl})}{\rightarrow} \\
+  \rightarrow (x_3 > 0 \rightarrow x_1 \geq INT\_MIN + x_3)
+\end{split}
+\end{align}
+\end{proof}
+
+\begin{lemma}\label{lem:full}
+\begin{align}
+  \forall x \in D_x \ \varphi_{T2}(x) \rightarrow \overline{OF^+(x_1 - x_3, x_2)} \\
+  \forall x \in D_x \ \varphi_{T2}(x) \rightarrow \overline{OF^-(x_1 + x_2, x_3)} \\
+  \forall x \in D_x \ \varphi_{T2}(x) \rightarrow \overline{OF^+(x_2 - x_3, x_1)}
+\end{align}
+\end{lemma}
+
+\begin{proof}
+  Аналогично \cref{lem:sub}.
+\end{proof}
+
+\begin{corollary}\label{cor:full}
+\begin{align}
+  \forall x \in D_x \ \overline{\varphi_{T2}(x) \wedge OF^+(x_1 - x_3, x_2)} \\
+  \forall x \in D_x \ \overline{\varphi_{T2}(x) \wedge OF^-(x_1 + x_2, x_3)} \\
+  \forall x \in D_x \ \overline{\varphi_{T2}(x) \wedge OF^+(x_2 - x_3, x_1)}
+\end{align}
+\end{corollary}
+
+\begin{proof}
+  Верно в силу \cref{alt}.
+\end{proof}
+
+\begin{lemma}\label{lem:possible}
+\begin{align}
+  \forall x \in D_x \ \varphi_{T2}(x) \rightarrow (OF^-(x_1, x_3)
+  \rightarrow \overline{OF^+(x_1, x_2)} \vee \overline{OF^-(x_2, x_3)})
+\end{align}
+\end{lemma}
+
+\begin{proof}
+\begin{align}
+  OF^-(x_1, x_3) &\equiv x_3 < 0 \wedge x_3 > INT\_MAX + x_3
+    \vee x_1 > 0 \wedge x_1 < INT\_MIN + x_3 \\
+  & \varphi_{T2}(x) \rightarrow x_1 + x_2 - x_3 \leq INT\_MAX \\
+\begin{split}
+    x_3 < 0 \wedge x_1 > INT\_MAX + x_3 \wedge x_1 + x_2 - x_3 \leq INT\_MAX \\
+    \rightarrow x_1 + x_2 - x_3 \leq INT\_MAX < x_1 - x_3 \leq x_2 < 0
+    \label{prf:minor}
+\end{split} \\
+  \stackrel{(\ref{prf:minor})}{\Rightarrow} \
+  & INT\_MIN \leq x_1 + x_2 - x_3 < x_1 + x_2 < x_1 \leq INT\_MAX
+  \label{prf:sub1} \\
+  \stackrel{(\ref{prf:sub1})}{\Rightarrow} \
+  & \overline{OF^+(x_1, x_2)} \label{prf:nof1} \\
+  & \varphi_{T2}(x) \rightarrow x_1 + x_2 - x_3 \geq INT\_MIN \\
+\begin{split}
+    x_3 > 0 \wedge x_1 < INT\_MIN + x_3 \wedge x_1 + x_2 - x_3 \geq INT\_MIN \\
+    \rightarrow x_1 - x_3 < INT\_MIN \leq x_1 + x_2 - x_3 \rightarrow x_2 > 0
+    \label{prf:major}
+\end{split} \\
+  \stackrel{(\ref{prf:major})}{\Rightarrow} \
+  & INT\_MIN < -INT\_MAX \leq -x3 < x_2 - x_3 < x_2 \leq INT\_MAX
+  \label{prf:sub2} \\
+  \stackrel{(\ref{prf:sub2})}{\Rightarrow} \
+  & \overline{OF^-(x_2, x_3)} \label{prf:nof2} \\
+  \stackrel{(\ref{prf:nof1}), (\ref{prf:nof2})}{\Rightarrow} \
+  & \overline{OF^+(x_1, x_2)} \vee \overline{OF^-(x_2, x_3)}
+\end{align}
+\end{proof}
+
+\begin{corollary}
+\begin{align}
+  \forall x \in D_x \ \varphi_{T2}(x) \rightarrow (\overline{OF^-(x_1, x_3)}
+  \vee \overline{OF^+(x_1, x_2)} \vee \overline{OF^-(x_2, x_3)})
+\end{align}
+\end{corollary}
+
+\subsection{P1-T1}
+
+\subsubsection{Частичная корректность}
+
+Положим:
+\begin{align}
+  \varphi(x) \equiv \varphi_{T1}(x)
+\end{align}
+
+Условия верификации:
+\begin{align}
+  SA: \ &\forall x \in D_x \ \varphi(x) \rightarrow p_A(x, r_{SA}(x, y)) \\
+  ATA:\ &\forall x \in D_x \ \forall y \in D_y \ \varphi(x) \wedge p_A(x, y) \wedge R_{ATA}(x, y)
+    \rightarrow p_A(x, r_{ATA}(x, y)) \\
+  AFB:\ &\forall x \in D_x \ \forall y \in D_y \ \varphi(x) \wedge p_A(x, y) \wedge R_{AFB}(x, y)
+    \rightarrow p_B(x, r_{AFB}(x, y)) \\
+  BTB:\ &\forall x \in D_x \ \forall y \in D_y \ \varphi(x) \wedge p_B(x, y) \wedge R_{BTB}(x, y)
+    \rightarrow p_B(x, r_{BTB}(x, y)) \\
+  BFH:\ &\forall x \in D_x \ \forall y \in D_y \ \varphi(x) \wedge p_B(x, y) \wedge R_{BFH}(x, y)
+    \rightarrow \psi(x, r_{BFH}(x, y))
+\end{align}
+
+Положим следующие индуктивные утверждения:
+\begin{align}
+  p_A(x, y) &\equiv \overline{OF^-(x_1, x_3)} \\
+  p_B(x, y) &\equiv \overline{OF^+(y, x_2)} \wedge y = x_1 - x_3
+\end{align}
+
+Получаем:
+\begin{align}
+  SA: \ &\forall x \in D_x \ \varphi(x) \stackrel{(\ref{lem:sub})}{\rightarrow}
+    \overline{OF^-(x_1,x_3)}\label{p1t1p:sa} \\
+  ATA:\ &\forall x \in D_x \ \forall y \in D_y \ \varphi(x) \wedge \overline{OF^-(x_1, x_3)}
+    \wedge OF^-(x_1, x_3) \rightarrow \overline{OF^-(x_1, x_3)}\label{p1t1p:ata} \\
+\begin{split}
+  AFB:\ &\forall x \in D_x \ \forall y \in D_y \ \varphi(x) \wedge \overline{OF^-(x_1, x_3)}
+    \wedge \overline{OF^-(x_1, x_3)} \\
+    &\qquad \stackrel{(\ref{lem:full})}{\rightarrow}
+    \overline{OF^+(x_1 - x_3, x_2)} \wedge x_1 - x_3 = x_1 - x_3 \label{p1t1p:afb}
+\end{split} \\
+\begin{split}
+  BTB:\ &\forall x \in D_x \ \forall y \in D_y \ \varphi(x) \wedge \overline{OF^+(y, x_2)}
+    \wedge y = x_1 - x_3 \wedge OF^+(y, x_2) \\
+    &\qquad \rightarrow \overline{OF^+(y, x_2)} \wedge y = x_1 - x_3 \label{p1t1p:bfb}
+\end{split} \\
+\begin{split}
+  BFH:\ &\forall x \in D_x \ \forall y \in D_y \ \varphi(x) \wedge \overline{OF^+(y, x_2)} \wedge y = x_1 - x_3
+        \wedge \overline{OF^+(y, x_2)} \\
+        &\qquad \rightarrow \overline{OF^+(y, x_2)} \wedge x_1 - x_3 + x_2 = x_1 + x_2 - x_3
+        \label{p1t1p:bfh}
+\end{split}
+\end{align}
+
+Из \cref{p1t1p:sa,p1t1p:ata,p1t1p:afb,p1t1p:bfb,p1t1p:bfh} вытекает
+частичная корректность:
+\begin{align}\label{p1t1p}
+  \{\varphi\}P1\{\psi\}
+\end{align}
+
+\subsubsection{Завершимость и полная корректность}\label{sec:p1t1t}
+
+Пусть $W$~--- фундированное множество с частичным порядком $<$, а $u_A(x, y)$ и
+$u_B(x, y)$~--- оценочные функции в точках A и B соответственно.
+
+Условия корректности оценочных функций:
+\begin{align}
+  CORR_A:\ &\forall x \in D_x \ \forall y \in D_y \ \varphi(x) \wedge p_A(x, y)
+    \rightarrow u_A(x, y) \in W \\
+  CORR_B:\ &\forall x \in D_x \ \forall y \in D_y \ \varphi(x) \wedge p_B(x, y)
+    \rightarrow u_B(x, y) \in W \\
+\end{align}
+
+Условия завершимости:
+\begin{align}
+  ATA: &\forall x \in D_x \forall y \in D_y \ \varphi(x) \wedge p_A(x, y) \wedge R_{ATA}(x, y)
+        \rightarrow u_A(x, r_{ATA}(x, y)) < u_A(x, y) \\
+  BTB: &\forall x \in D_x \forall y \in D_y \ \varphi(x) \wedge p_B(x, y) \wedge R_{BTB}(x, y)
+        \rightarrow u_B(x, r_{BTB}(x, y)) < u_B(x, y)
+\end{align}
+
+Возьмём \footnote{На самом деле, можно взять произвольные $W$, $<$, $u_A(x, y)$,
+$u_B(x, y)$}:
+\begin{align}
+  & W \equiv \mathbb{N}_0 \ \text{со стандартной операцией} \: < \\
+  & u_A(x, y) = u_B(x, y) = 0
+\end{align}
+
+Получаем:
+\begin{align}
+  CORR_A:\ &\forall x \in D_x \ \forall y \in D_y \ \varphi(x) \wedge \overline{OF^-(x_1, x_3)}
+    \rightarrow 0 \in \mathbb{N}_0 \label{p1t1t:corra} \\
+  CORR_B:\ &\forall x \in D_x \ \forall y \in D_y \ \varphi(x) \wedge \overline{OF^+(y, x_2)}
+    \wedge y = x_1 - x_3 \rightarrow 0 \in \mathbb{N}_0 \label{p1t1t:corrb} \\
+  ATA:\ &\forall x \in D_x \ \forall y \in D_y \ \varphi(x) \wedge \overline{OF^-(x_1, x_3)}
+    \wedge OF^-(x_1, x_3) \rightarrow 0 < 0 \label{p1t1t:ata} \\
+  BTB:\ &\forall x \in D_x \ \forall y \in D_y \ \varphi(x) \wedge \overline{OF^+(y, x_2)}
+    \wedge y = x_1 - x_3 \wedge OF^+(y, x_2) \rightarrow 0 < 0 \label{p1t1t:btb}
+\end{align}
+
+Из
+\cref{p1t1p:sa,p1t1p:ata,p1t1p:afb,p1t1p:bfb,p1t1t:corra,p1t1t:corrb,p1t1t:ata,p1t1t:btb}
+вытекает
+завершимость:
+\begin{align}\label{p1t1t}
+  \{\varphi\}P1\{\mathbb{T}\}
+\end{align}
+
+Из \cref{p1t1p,p1t1t} вытекает полная корректность:
+\begin{align}
+  \langle\varphi\rangle P1 \langle\psi\rangle
+\end{align}
+
+\subsection{P1-T2}
+
+\subsubsection{Частичная корректность}
+
+Положим:
+\begin{align}
+  \varphi(x) \equiv \varphi_{T2}(x)
+\end{align}
+
+Положим следующие индуктивные утверждения:
+\begin{align}
+  p_A(x, y) &\equiv \mathbb{T} \\
+  p_B(x, y) &\equiv y = x_1 - x_3
+\end{align}
+
+Получаем:
+\begin{align}
+  SA: \ &\forall x \in D_x \ \varphi(x) \rightarrow
+        \mathbb{T} \label{p1t2p:sa} \\
+  ATA:\ &\forall x \in D_x \ \forall y \in D_y \ \varphi(x) \wedge \mathbb{T}
+    \wedge OF^-(x_1, x_3) \rightarrow \mathbb{T} \label{p1t2p:ata} \\
+  AFB:\ &\forall x \in D_x \ \forall y \in D_y \ \varphi(x) \wedge \mathbb{T}
+    \wedge \overline{OF^-(x_1, x_3)} \rightarrow x_1 - x_3 = x_1 - x_3 \label{p1t2p:afb} \\
+  BTB:\ &\forall x \in D_x \ \forall y \in D_y \ \varphi(x) \wedge y = x_1 - x_3
+    \wedge OF^+(y, x_2) \rightarrow y = x_1 - x_3 \label{p1t2p:bfb} \\
+\begin{split}
+  BFH:\ &\forall x \in D_x \ \forall y \in D_y \ \varphi(x) \wedge y = x_1 - x_3
+    \wedge \overline{OF^+(y, x_2)} \\
+    &\quad \rightarrow x_1 - x_3 + x_2 = x_1 + x_2 - x_3 \label{p1t2p:bfh}
+\end{split}
+\end{align}
+
+Из \cref{p1t2p:sa,p1t2p:ata,p1t2p:afb,p1t2p:bfb,p1t2p:bfh} вытекает частичная
+корректность:
+\begin{align}
+  \{\varphi\}P1\{\psi\}
+\end{align}
+
+\subsubsection{Завершимость и полная корректность}
+
+Рассмотрим следующие входные параметры:
+\begin{align}
+  (x_1, x_2, x_3) = (INT\_MIN, 1, 1)
+\end{align}
+
+Тогда:
+\begin{align}
+  x_1 + x_2 - x_3 = INT\_MIN + 1 - 1 = INT\_MIN
+\end{align}
+
+Следовательно:
+\begin{align}
+  \varphi(x_1, x_2, x_3) \equiv \mathbb{T}
+\end{align}
+
+Но:
+\begin{align}
+\begin{split}
+  OF^-(x_1, x_3)
+    &\equiv 1 < 0 \wedge INT\_MIN > INT\_MAX + 1 \\
+    &\vee 1 > 0 \wedge INT\_MIN < INT\_MIN + 1 \\
+    &\equiv \mathbb{F} \wedge \mathbb{F} \vee \mathbb{T} \wedge \mathbb{T}
+    \equiv \mathbb{F}
+\end{split}
+\end{align}
+
+Т.е. программа зацикливается на $(x_1, x_2, x_3)$. Или, иначе говоря:
+\begin{align}
+  \exists x \in D_x: \varphi(x) \wedge M[P1](x) = \omega
+\end{align}
+
+Получаем:
+\begin{align}
+  \overline{\langle\varphi\rangle P1 \langle\psi\rangle}
+\end{align}
+
+\subsection{P2-T2}
+
+\subsubsection{Частичная корректность}
+
+Положим:
+\begin{align}
+  \varphi(x) \equiv \varphi_{T2}(x)
+\end{align}
+
+Условия верификации:
+\begin{align}
+  SFA:  \ &\forall x \in D_x \ \varphi(x) \wedge R_{SFA}(x, y)
+    \rightarrow p_A(x, r_{SFA}(x, y)) \\
+  STB:  \ &\forall x \in D_x \ \varphi(x) \wedge R_{STB}(x, y)
+    \rightarrow p_B(x, r_{STB}(x, y)) \\
+  AFH_1:\ &\forall x \in D_x \ \forall y \in D_y \ \varphi(x) \wedge p_A(x, y)
+    \wedge R_{AFH_1}(x, y) \rightarrow \psi(x, r_{AFH_1}(x, y)) \\
+  ATA:  \ &\forall x \in D_x \ \forall y \in D_y \ \varphi(x) \wedge p_A(x, y)
+    \wedge R_{ATA}(x, y) \rightarrow p_A(x, r_{ATA}(x, y)) \\
+  BFC:  \ &\forall x \in D_x \ \forall y \in D_y \ \varphi(x) \wedge p_B(x, y)
+    \wedge R_{BFC}(x, y) \rightarrow p_C(x, r_{BFC}(x, y)) \\
+  BTD:  \ &\forall x \in D_x \ \forall y \in D_y \ \varphi(x) \wedge p_B(x, y)
+    \wedge R_{BTD}(x, y) \rightarrow p_D(x, r_{BTD}(x, y)) \\
+  CFH_2:\ &\forall x \in D_x \ \forall y \in D_y \ \varphi(x) \wedge p_C(x, y)
+    \wedge R_{CFH_2}(x, y) \rightarrow \psi(x, r_{CFH_2}(x, y)) \\
+  CTC:  \ &\forall x \in D_x \ \forall y \in D_y \ \varphi(x) \wedge p_C(x, y)
+    \wedge R_{CTC}(x, y) \rightarrow p_C(x, r_{CTC}(x, y)) \\
+  DFE:  \ &\forall x \in D_x \ \forall y \in D_y \ \varphi(x) \wedge p_D(x, y)
+    \wedge R_{DFE}(x, y) \rightarrow p_E(x, r_{DFE}(x, y)) \\
+  DTD:  \ &\forall x \in D_x \ \forall y \in D_y \ \varphi(x) \wedge p_D(x, y)
+    \wedge R_{DTD}(x, y) \rightarrow p_D(x, r_{DTD}(x, y)) \\
+  EFH_3:\ &\forall x \in D_x \ \forall y \in D_y \ \varphi(x) \wedge p_E(x, y)
+    \wedge R_{EFH_3}(x, y) \rightarrow \psi(x, r_{EFH_3}(x, y)) \\
+  ETE:  \ &\forall x \in D_x \ \forall y \in D_y \ \varphi(x) \wedge p_E(x, y)
+    \wedge R_{ETE}(x, y) \rightarrow p_E(x, r_{ETE}(x, y))
+\end{align}
+
+Положим следующие индуктивные утверждения:
+\begin{align}
+  p_A(x, y) &\equiv \overline{OF^+(y, x_2)} \wedge y = x_1 - x_3 \\
+  p_B(x, y) &\equiv \overline{OF^+(x_1, x_2)} \vee \overline{OF^-(x_2, x_3)} \\
+  p_C(x, y) &\equiv \overline{OF^-(y, x_3)} \wedge y = x_1 + x_2 \\
+  p_D(x, y) &\equiv \overline{OF^-(x_2, x_3)} \\
+  p_E(x, y) &\equiv \overline{OF^+(y, x_1)} \wedge y = x_2 - x_3
+\end{align}
+
+Получаем:
+\begin{align}
+  SFA:  \ &\forall x \in D_x \ \varphi(x) \wedge \overline{OF^-(x_1, x_3)}
+    \stackrel{(\ref{lem:full})}{\rightarrow}
+    \overline{OF^+(x_1 - x_3, x_2)} \wedge x_1 - x_3 = x_1 - x_3 \label{p2t2p:sfa} \\
+  STB:  \ &\forall x \in D_x \ \varphi(x) \wedge OF^-(x_1, x_3)
+    \stackrel{(\ref{lem:possible})}{\rightarrow}
+    \overline{OF^+(x_1, x_2)} \vee \overline{OF^-(x_2, x_3)} \label{p2t2p:stb} \\
+\begin{split}
+  AFH_1:\ &\forall x \in D_x \ \forall y \in D_y \ \varphi(x) \wedge
+    \overline{OF^+(y, x_2)} \wedge y = x_1 - x_3 \wedge \overline{OF^+(y, x_2)} \\
+    &\quad \rightarrow x_1 - x_3 + x_2 = x_1 + x_2 - x_3 \label{p2t2p:afh1}
+\end{split} \\
+\begin{split}
+  ATA:  \ &\forall x \in D_x \ \forall y \in D_y \ \varphi(x) \wedge
+    \overline{OF^+(y, x_2)} \wedge y = x_1 - x_3 \wedge OF^+(y, x_2) \\
+    &\quad \rightarrow \overline{OF^+(y, x_2)} \wedge y = x_1 - x_3 \label{p2t2p:ata}
+\end{split} \\
+\begin{split}
+  BFC:  \ &\forall x \in D_x \ \forall y \in D_y \ \varphi(x) \wedge
+    (\overline{OF^+(x_1, x_2)} \vee \overline{OF^-(x_2, x_3)}) \wedge
+    \overline{OF^+(x_1, x_2)} \\
+    &\quad \stackrel{(\ref{lem:full})}{\rightarrow}
+    \overline{OF^-(x_1 + x_2, x_3)} \wedge x_1 + x_2 = x_1 + x_2 \label{p2t2p:bfc}
+\end{split} \\
+\begin{split}
+  BTD:  \ &\forall x \in D_x \ \forall y \in D_y \ \varphi(x) \wedge
+    (\overline{OF^+(x_1, x_2)} \vee \overline{OF^-(x_2, x_3)}) \wedge OF^+(x_1, x_2) \\
+    &\quad \stackrel{(\ref{hack})}{\rightarrow}
+    \overline{OF^-(x_2, x_3)} \label{p2t2p:btd}
+\end{split} \\
+\begin{split}
+  CFH_2:\ &\forall x \in D_x \ \forall y \in D_y \ \varphi(x) \wedge
+    \overline{OF^-(y, x_3)} \wedge y = x_1 + x_2 \wedge \overline{OF^-(y, x_3)} \\
+    &\quad \rightarrow x_1 + x_2 - x_3 = x_1 + x_2 - x_3 \label{p2t2p:cfh2}
+\end{split} \\
+\begin{split}
+  CTC:  \ &\forall x \in D_x \ \forall y \in D_y \ \varphi(x) \wedge
+    \overline{OF^-(y, x_3)} \wedge y = x_1 + x_2 \wedge OF^-(y, x_3) \\
+    &\quad \rightarrow \overline{OF^-(y, x_3)} \wedge y = x_1 + x_2 \label{p2t2p:ctc}
+\end{split} \\
+\begin{split}
+  DFE:  \ &\forall x \in D_x \ \forall y \in D_y \ \varphi(x) \wedge
+    \overline{OF^-(x_2, x_3)} \wedge \overline{OF^-(x_2, x_3)} \\
+    &\quad \stackrel{(\ref{lem:full})}{\rightarrow}
+    \overline{OF^+(x_2 - x_3, x_1)} \wedge x_2 - x_3 = x_2 - x_3 \label{p2t2p:dfe}
+\end{split} \\
+  DTD:  \ &\forall x \in D_x \ \forall y \in D_y \ \varphi(x) \wedge
+    \overline{OF^-(x_2, x_3)} \wedge OF^-(x_2, x_3)
+    \rightarrow \overline{OF^-(x_2, x_3)} \label{p2t2p:dtd} \\
+\begin{split}
+  EFH_3:\ &\forall x \in D_x \ \forall y \in D_y \ \varphi(x) \wedge
+    \overline{OF^+(y, x_1)} \wedge y = x_2 - x_3 \wedge \overline{OF^+(y, x_1)} \\
+    &\quad \rightarrow x_2 - x_3 + x_1 = x_1 + x_2 - x_3 \label{p2t2p:efh3}
+\end{split}
+\end{align}
+\begin{align}
+\begin{split}
+  ETE:  \ &\forall x \in D_x \ \forall y \in D_y \ \varphi(x) \wedge
+    \overline{OF^+(y, x_1)} \wedge y = x_2 - x_3 \wedge OF^+(y, x_1) \\
+    &\quad \rightarrow \overline{OF^+(y, x_1)} \wedge y = x_2 - x_3 \label{p2t2p:ete} 
+\end{split}
+\end{align}
+
+Из
+\cref{p2t2p:sfa,p2t2p:stb,p2t2p:afh1,p2t2p:ata,p2t2p:bfc,p2t2p:btd,p2t2p:cfh2,p2t2p:ctc,p2t2p:dfe,p2t2p:dtd,p2t2p:efh3,p2t2p:ete}
+вытекает частичная корректность:
+\begin{align}\label{p2t2p}
+  \{\varphi\}P2\{\psi\}
+\end{align}
+
+\subsubsection{Завершимость и полная корректность}
+
+Пусть $W$~--- фундированное множество с частичным порядком $<$, а $u_A(x, y)$,
+$u_C(x, y)$, $u_D(x, y)$ и $u_E(x, y)$ ~--- оценочные функции в точках A, C, D и
+E соответственно.
+
+Условие корректоности оценочной функции:
+\begin{align}
+  CORR_A:\ &\forall x \in D_x \ \forall y \in D_y \ \varphi(x) \wedge p_A(x, y)
+            \rightarrow u_A(x, y) \in W \\
+  CORR_C:\ &\forall x \in D_x \ \forall y \in D_y \ \varphi(x) \wedge p_C(x, y)
+            \rightarrow u_C(x, y) \in W \\
+  CORR_D:\ &\forall x \in D_x \ \forall y \in D_y \ \varphi(x) \wedge p_D(x, y)
+            \rightarrow u_D(x, y) \in W \\
+  CORR_E:\ &\forall x \in D_x \ \forall y \in D_y \ \varphi(x) \wedge p_E(x, y)
+            \rightarrow u_E(x, y) \in W \\
+\end{align}
+
+Условие завершимости:
+\begin{align}
+\begin{split}
+  ATA:\ &\forall x \in D_x \ \forall y \in D_y \ \varphi(x) \wedge p_C(x, y)
+    \wedge R_{ATA}(x, y) \\
+    &\quad \rightarrow u_A(x, r_{ATA}(x, y)) < u_A(x, y)
+\end{split} \\
+\begin{split}
+  CTC:\ &\forall x \in D_x \ \forall y \in D_y \ \varphi(x) \wedge p_C(x, y)
+    \wedge R_{CTC}(x, y) \\
+    &\quad \rightarrow u_C(x, r_{CTC}(x, y)) < u_C(x, y)
+\end{split} \\
+\begin{split}
+  DTD:\ &\forall x \in D_x \ \forall y \in D_y \ \varphi(x) \wedge p_C(x, y)
+    \wedge R_{DTD}(x, y) \\
+    &\quad \rightarrow u_D(x, r_{DTD}(x, y)) < u_D(x, y)
+\end{split} \\
+\begin{split}
+  ETE:\ &\forall x \in D_x \ \forall y \in D_y \ \varphi(x) \wedge p_C(x, y)
+    \wedge R_{ETE}(x, y) \\
+    &\quad \rightarrow u_E(x, r_{ETE}(x, y)) < u_E(x, y)
+\end{split}
+\end{align}
+
+Аналогично P1 (см. \cref{sec:p1t1t}) возьмём \footnote{Здесь также можно взять
+произвольные $W$, $<$, $u_C(x, y)$}:
+\begin{align}
+  & W \equiv \mathbb{N}_0 \ \text{со стандартной операцией} \: < \\
+  & u_A(x, y) = u_B(x, y) = u_C(x, y) = u_D(x, y) = 0
+\end{align}
+
+Получаем:
+\begin{align}
+  CORR_A:\ &\forall x \in D_x \ \forall y \in D_y \ \varphi(x) \wedge
+            \overline{OF^+(y, x_2)} \wedge y = x_1 - x_3
+            \rightarrow 0 \in \mathbb{N}_0 \label{p2t2t:ca} \\
+  CORR_C:\ &\forall x \in D_x \ \forall y \in D_y \ \varphi(x) \wedge
+            \overline{OF^-(y, x_3)} \wedge y = x_1 + x_2
+            \rightarrow 0 \in \mathbb{N}_0 \label{p2t2t:cc} \\
+  CORR_D:\ &\forall x \in D_x \ \forall y \in D_y \ \varphi(x) \wedge
+            \overline{OF^-(x_2, x_3)}
+            \rightarrow 0 \in \mathbb{N}_0 \label{p2t2t:cd} \\
+  CORR_E:\ &\forall x \in D_x \ \forall y \in D_y \ \varphi(x) \wedge
+            \overline{OF^+(y, x_1)} \wedge y = x_2 - x_3
+            \rightarrow 0 \in \mathbb{N}_0 \label{p2t2t:ce} \\
+\begin{split}
+  ATA:\ &\forall x \in D_x \ \forall y \in D_y \ \varphi(x) \wedge
+    \overline{OF^+(y, x_2)} \wedge y = x_1 - x_3 \wedge OF^+(y, x_2) \\
+    &\quad \rightarrow 0 < 0 \label{p2t2t:ata}
+\end{split} \\
+\begin{split}
+  CTC:\ &\forall x \in D_x \ \forall y \in D_y \ \varphi(x) \wedge
+    \overline{OF^-(y, x_3)} \wedge y = x_1 + x_2 \wedge OF^-(y, x_3) \\
+    &\quad \rightarrow 0 < 0 \label{p2t2t:ctc}
+\end{split} \\
+\begin{split}
+  DTD:\ &\forall x \in D_x \ \forall y \in D_y \ \varphi(x) \wedge
+    \overline{OF^-(x_2, x_3)} \wedge OF^-(x_2, x_3) \\
+    &\quad \rightarrow 0 < 0 \label{p2t2t:dtd}
+\end{split} \\
+\begin{split}
+  ETE:\ &\forall x \in D_x \ \forall y \in D_y \ \varphi(x) \wedge
+    \overline{OF^+(y, x_1)} \wedge y = x_2 - x_3 \wedge OF^+(y, x_1) \\
+    &\quad \rightarrow 0 < 0 \label{p2t2t:ete}
+\end{split}
+\end{align}
+
+Из
+\cref{p2t2t:ca,p2t2t:cc,p2t2t:cd,p2t2t:ce,p2t2t:ata,p2t2t:ctc,p2t2t:dtd,p2t2t:ete}
+вытекает завершимость:
+\begin{align}\label{p2t2t}
+  \{\varphi\}P2\{\mathbb{T}\}
+\end{align}
+
+Из \cref{p2t2p,p2t2t} вытекает полная корректность:
+\begin{align}\label{p2t2tt}
+  \langle\varphi\rangle P2 \langle\psi\rangle
+\end{align}
+
+
+\subsection{P2-T1}
+
+Заметим, что:
+\begin{align}
+  \varphi_{T1}(x) \rightarrow \varphi_{T2}(x)
+\end{align}
+
+Тогда:
+\begin{align}
+  \{\varphi_{T2}\} P2 \{\psi\} &\rightarrow
+  \{\varphi_{T1}\} P2 \{\psi\} \label{pweak} \\
+  \langle\varphi_{T2}\rangle P2 \langle\psi\rangle &\rightarrow
+  \langle\varphi_{T1}\rangle P2 \langle\psi\rangle \label{tweak}
+\end{align}
+
+Из \cref{p2t2p,p2t2tt,pweak,tweak} имеем:
+\begin{align}
+  \{\varphi_{T1}\} &P2 \{\psi\} \\
+  \langle\varphi_{T1}\rangle &P2 \langle\psi\rangle
+\end{align}
+
+\section{Задание 1.2}
+
+Условия (см. блок-схему на \cref{st2fc}):
+\begin{align}
+  & V = \{x, y_1, y_2, y_3, z\} \nonumber \\
+  & D_x = D_{y_1} = D_{y_2} = D_{y_3} = D_z = \mathbb{Z} \nonumber \\
+  & y = (y_1, y_2, y_3), D_y = \mathbb{Z}^3 \nonumber \\
+  & \varphi(x) \equiv x \geq 0 \\
+  & \psi(x, z) \equiv z^3 \leq x < (z + 1)^3
+\end{align}
+
+\begin{figure}[H]
+\caption{Блок-схема программы задания 1.2}
+\label{st2fc}
+\centering
+\begin{tikzpicture}[node distance=5em]
+  % Nodes
+  \node (start) [rounded]                   {START: \\ $(y_1, y_2, y_3) \leftarrow (0, 0, 1)$};
+  \node (y2ass) [process, below of=start]   {$y_2 \leftarrow y_2 + y_3$};
+  \node (check) [rounded, below of=y2ass]   {$y_2 > x$};
+  \node (y1ass) [process, below of=check, xshift=-6em]
+                                            {$y_1 \leftarrow y_1 + 1$};
+  \node (y3ass) [process, below of=y1ass]   {$y_3 \leftarrow y_3 + 6y_1$};
+  \node (halt)  [rounded, below of=check, xshift=+6em]
+                                            {HALT: \\ $z \leftarrow y_1$};
+  % Arrows
+  \draw [arrow] (start) -- coordinate (loop) (y2ass);
+  \draw [arrow] (y2ass) -- node[dot, pos=.5, label=0:A] {} (check);
+  \draw [arrow] (check.east) -| node[above, pos=.25] {T} (halt);
+  \draw [arrow] (check.west) -| node[above, pos=.25] {F} (y1ass);
+  \draw [arrow] (y1ass) -- (y3ass);
+  \draw [arrow] (y3ass.south) -- +(0,-.5) -- +(-3,-.5) |- (loop);
+\end{tikzpicture}
+\end{figure}
+
+Условия верификации:
+\begin{align}
+  SA: \ &\forall x \in D_x \ \varphi(x) \rightarrow p_A(x, r_{SA}(x, y)) \\
+  AFA:\ &\forall x \in D_x \ \forall y \in D_y \ \varphi(x) \wedge p_A(x, y) \wedge R_{AFA}(x, y) \rightarrow p_A(x, r_{AFA}(x, y)) \\
+  ATH:\ &\forall x \in D_x \ \forall y \in D_y \ \varphi(x) \wedge p_A(x, y) \wedge R_{ATH}(x, y) \rightarrow \psi(x, r_{ATH}(x, y))
+\end{align}
+
+Положим следующее индуктивное утверждение:
+\begin{align}
+  p_A(x, y) \equiv y_1^3 \leq x \wedge y_2 = (y_1 + 1)^3 \wedge y_3 = 3y_1^2 + 3y_1 + 1
+\end{align}
+
+%элементы $p_A(x, y_1 + 1, y_2 + y_3 + 6y_1 + 6, y_3 + 6y_1 + 1)$:
+
+Получаем:
+\begin{align}
+  SA: \ &\forall x \in D_x \ x \geq 0 \rightarrow 0^3 \leq x \wedge 1^3 = (0 + 1)^3
+  \wedge 1 = 0 + 0 + 1 \label{st2sa} \\
+\begin{split}
+  AFA:\ &\forall x \in D_x \ \forall y \in D_y \ x \geq 0 \wedge y_1^3 \leq x
+    \wedge y_2 = (y_1 + 1)^3 \wedge y_3 = 3y_1^2 + 3y_1 + 1 \\
+    &\quad \wedge y_2 \leq x
+    \rightarrow (y_1 + 1)^3 \leq x \wedge y_2 + y_3 + 6y_1 + 6 = (y_1 + 2)^3 \\
+    &\quad \wedge y_3 + 6y_1 + 6 = 3(y_1 + 1)^2 + 3(y_1 + 1) + 1 \label{st2afa}
+\end{split} \\
+\begin{split}
+  ATH:\ &\forall x \in D_x \ \forall y \in D_y \ x \geq 0 \wedge y_1^3 \leq x
+    \wedge y_2 = (y_1 + 1)^3 \wedge y_3 = 3y_1^2 + 3y_1 + 1 \\
+    &\quad \wedge y_2 > x \rightarrow y_1^3 \leq x < (y_1 + 1)^3 \label{st2ath}
+\end{split}
+\end{align}
+
+Покажем \cref{st2afa}:
+\begin{align}
+  & y_2 = (y_1 + 1)^3 \wedge y_2 \leq x \rightarrow (y_1 + 1)^3 \leq x
+  \label{st2fa1proof} \\
+\begin{split}
+  & y_2 + y_3 + 6y_1 + 6 = y_1^3 + 3y_1^2 + 3y_1 + 1 + 3y_1^2 + 3y_1 + 1 + 6y_1 + 6 \\
+  & \qquad = y_1^3 + 6y_1^2 + 12y_1 + 8 = (y_1 + 2)^3
+\end{split} \\
+\begin{split}
+  & y_3 + 6y_1 + 6 = 3y_1^2 + 3y_1 + 1 + 6y_1 + 6 = 3y_1^2 + 9y_1 + 7 \\
+  & \qquad = 3y_1^2 + 6y_1 + 3 + 3y_1 + 3 + 1 = 3(y_1 + 1)^2 + 3(y_1 + 1) + 1
+\end{split}
+\end{align}
+
+Аналогично \cref{st2fa1proof} показывается \cref{st2ath}.
+
+Из \cref{st2sa,st2afa,st2ath} вытекает частичная корректность:
+\begin{align}
+  \{\varphi\}P\{\psi\}
+\end{align}
+
+\section{Задание 1.3}
+
+Условия (см. блок-схему на \cref{st3fc}):
+\begin{align}
+  & V = \{x, y_1, y_2, y_3, z\} \nonumber \\
+  & D_x = D_{y_1} = D_{y_2} = D_{y_3} = D_z = \mathbb{Z} \nonumber \\
+  & y = (y_1, y_2, y_3), D_y = \mathbb{Z}^3 \nonumber \\
+  & \varphi(x) \equiv x > 1
+\end{align}
+
+\begin{figure}[H]
+\caption{Блок-схема программы задания 1.3}
+\label{st3fc}
+\centering
+\begin{tikzpicture}[node distance=5em]
+  % Nodes
+  \node (start)     [rounded]                   {START: \\ $(y_1, y_2, y_3)
+                                                \leftarrow (x, 1, x)$};
+  \node (checkles)  [rounded, below of=start]   {$y_2 < y_3$};
+  \node (y1ass)     [process, below of=checkles, xshift=-6em]
+                                                {$(y_1, y_2) \leftarrow
+                                                (y_1 + x, y_2 + 1)$};
+  \node (checkequ)  [rounded, below of=checkles, xshift=+11em]
+                                                {$y_3 = x$};
+  \node (y3ass)     [process, below of=checkequ, xshift=-6em]
+                                                {$y_3 \leftarrow y_1$};
+  \node (halt)      [rounded, below of=checkequ, xshift=+6em]
+                                            {HALT: \\ $z \leftarrow y_1$};
+  % Arrows
+  \draw [arrow] (start) -- node[dot, pos=.7, label=0:A] {} coordinate (loop) (checkles);
+  \draw [arrow] (checkles.west) -| node[above, pos=.25] {T} (y1ass);
+  \draw [arrow] (checkles.east) -| node[above, pos=.25] {F} (checkequ);
+  \draw [arrow] (checkequ.west) -| node[above, pos=.25] {T} (y3ass);
+  \draw [arrow] (checkequ.east) -| node[above, pos=.25] {F} (halt);
+  \draw [arrow] (y3ass.south) -- +(0,-.5) -- coordinate (bottom) +(-8,-.5) |- (loop);
+  \draw [-]     (y1ass.south) -- (y1ass|-bottom);
+\end{tikzpicture}
+\end{figure}
+
+Пусть $W$~--- фундированное множество с частичным порядком $<$, а $p_A(x, y)$ и
+$u_A(x, y)$~--- индуктивное утверждение и оценочная функция в точкe A
+соответственно.
+
+Условия верификации:
+\begin{align}
+  SA:  \ &\forall x \in D_x \ \forall y \in D_y \ \varphi(x)
+    \rightarrow p_A(x, r_{SA}(x, y)) \\
+  ATA: \ &\forall x \in D_x \ \forall y \in D_y \ \varphi(x) \wedge p_A(x, y)
+    \wedge R_{ATA}(x, y) \rightarrow p_A(x, r_{ATA}(x, y)) \\
+  AFTA:\ &\forall x \in D_x \ \forall y \in D_y \ \varphi(x) \wedge p_A(x, y)
+    \wedge R_{AFTA}(x, y) \rightarrow p_A(x, r_{AFTA}(x, y))
+\end{align}
+
+Условие корректоности оценочной функции:
+\begin{align}
+  CORR_A:\ &\forall x \in D_x \ \forall y \in D_y \ \varphi(x) \wedge p_A(x, y)
+    \rightarrow u_A(x, y) \in W \\
+\end{align}
+
+Условие завершимости:
+\begin{align}
+\begin{split}
+  ATA: \ &\forall x \in D_x \ \forall y \in D_y \ \varphi(x) \wedge p_A(x, y)
+    \wedge R_{ATA}(x, y) \\
+    &\quad \rightarrow u_A(x, r_{ATA}(x, y)) < u_A(x, y)
+\end{split} \\
+\begin{split}
+  AFTA:\ &\forall x \in D_x \ \forall y \in D_y \ \varphi(x) \wedge p_A(x, y)
+    \wedge R_{AFTA}(x, y) \\
+    &\quad \rightarrow u_A(x, r_{AFTA}(x, y)) < u_A(x, y)
+\end{split}
+\end{align}
+
+Возьмём:
+\begin{align}
+  & p_A(x, y) \equiv y_1 \geq x \wedge y_2 \geq 1 \wedge y_3 \geq x
+    \wedge y_1 = xy_2 \wedge y_2 \leq y_3 \wedge y_3 \leq x^2 \\
+  & W \equiv (\mathbb{N}_0,\mathbb{N}_0) \\
+  & <: (a, b) < (c, d) \Leftrightarrow a < c \vee a = c \wedge b < d \\
+  & u_A(x, y) = (x^2 - y_2, x^2 - y_3)
+\end{align}
+
+Получаем:
+\begin{align}
+  SA:    \ &\forall x \in D_x \ x > 1 \rightarrow x \geq x \wedge x \geq 1
+    \wedge x \geq x \wedge x = 1x \wedge 1 \leq x \wedge x \leq x^2 \label{st3sa} \\
+\begin{split}
+  ATA:   \ &\forall x \in D_x \ \forall y \in D_y \ x > 1 \wedge y_1 \geq x
+    \wedge y_2 \geq 1 \wedge y_3 \geq x \wedge y_1 = xy_2 \wedge y_2 \leq y_3 \\
+    \wedge \ &y_3 \leq x^2 \wedge y_2 < y_3 \rightarrow y_1 + x \geq x
+    \wedge y_2 + 1 \geq 1 \wedge y_3 \geq x \\
+    \wedge \ &y_1 + x = x(y_2 + 1) \wedge (y_2 + 1) \leq y_3 \wedge y_3 \leq x^2
+    \label{st3ata}
+\end{split} \\
+\begin{split}
+  AFTA:  \ &\forall x \in D_x \ \forall y \in D_y \ x > 1 \wedge y_1 \geq x
+    \wedge y_2 \geq 1 \wedge y_3 \geq x \wedge y_1 = xy_2 \wedge y_2 \leq y_3 \\
+    \wedge \ &y_3 \leq x^2 \wedge y_2 \geq y_3 \wedge y_3 = x \\
+    \rightarrow \ &y_1 \geq x \wedge y_2 \geq 1 \wedge y_1 \geq x
+    \wedge y_1 = xy_2 \wedge y_2 \leq y_1 \wedge y_1 \leq x^2 \label{st3afta}
+\end{split} \\
+\begin{split}
+  CORR_A:\ &\forall x \in D_x \ \forall y \in D_y \ x > 1 \wedge y_1 \geq x
+    \wedge y_2 \geq 1 \wedge y_3 \leq y_3 \wedge y_3 \geq x \\
+    \rightarrow \ &(x^2 - y_2, x^2 - y_3) \in (\mathbb{N}_0, \mathbb{N}_0)
+    \label{st3corra}
+\end{split} \\
+\begin{split}
+  ATA:   \ &\forall x \in D_x \ \forall y \in D_y \ x > 1 \wedge y_1 \geq x
+    \wedge y_2 \geq 1 \wedge y_3 \geq x \wedge y_1 = xy_2 \wedge y_2 \leq y_3 \\
+    \wedge \ &y_3 \leq x^2 \wedge y_2 < y_3
+    \rightarrow (x^2 - y_2 - 1, x^2 - y_3) < (x^2 - y_2, x^2 - y_3) \label{st3atau}
+\end{split} \\
+\begin{split}
+  AFTA:  \ &\forall x \in D_x \ \forall y \in D_y \ x > 1 \wedge y_1 \geq x
+    \wedge y_2 \geq 1 \wedge y_3 \geq x \wedge y_1 = xy_2 \wedge y_2 \leq y_3 \\
+    \wedge \ &y_3 \leq x^2 \wedge y_2 \geq y_3 \wedge y_3 = x
+    \rightarrow (x^2 - y_2, x^2 - y_1) < (x^2 - y_2, x^2 - y_3) \label{st3aftau}
+\end{split}
+\end{align}
+
+Пояснения к \cref{st3afta}:
+\begin{align}
+  & x > 1 \wedge y_1 = xy_2 \rightarrow y_2 \leq y_1 \\
+  & x > 1 \wedge y_1 = xy_2 \wedge y_2 \leq y_3 \wedge y_3 = x
+  \rightarrow y_1 \leq x^2
+\end{align}
+
+Пояснения к \cref{st3aftau}:
+\begin{align}
+  & x > 1 \wedge y_1 = xy_2 \wedge y_2 \geq y_3 \rightarrow y_1 > y_3
+\end{align}
+
+
+Из \cref{st3sa,st3ata,st3afta,st3corra,st3atau,st3aftau} вытекает
+завершимость:
+\begin{align}
+  \{\varphi\}P\{\mathbb{T}\}
+\end{align}
+
+% Раскомментируйте, если нужно приложение
+\appendix
+
+\cleardoublepage \phantomsection
+\section*{Приложение}\label{sec:appendix}
+\addcontentsline{toc}{section}{Приложение}
+
+\begin{align}\label{alt}
+  \overline{AB} \equiv \overline{A} \vee \overline{B} \equiv A \rightarrow \overline{B}
+\end{align}
+
+\begin{align}\label{impl}
+  A \rightarrow (B \rightarrow A) \equiv \overline{A} \vee \overline{B} \vee A
+\end{align}
+
+\begin{align}\label{any}
+  \overline{A} \rightarrow (A \rightarrow B) \equiv A \vee \overline{A} \vee B
+\end{align}
+
+\begin{align}\label{hack}
+  (\overline{A} \vee \overline{B}) \wedge B \rightarrow \overline{A} \equiv
+  \overline{\overline{A} \vee \overline{B}} \vee \overline{A} \vee \overline{B}
+\end{align}
+
+\end{document}
+

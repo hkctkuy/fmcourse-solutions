@@ -1,0 +1,25 @@
+theory Task
+    use import int.Int
+
+    function sqr  (x: int) : int = x * x
+    function cube (x: int) : int = x * x * x
+
+    predicate phi (x: int)   = x >= 0
+    predicate psi (x z: int) = cube(z) <= x < cube(z + 1)
+
+    predicate pAFA (x y1 y2 y3: int) = y2 <= x
+    predicate pATH (x y1 y2 y3: int) = y2 >  x
+
+    predicate p (x y1 y2 y3: int) =
+        cube(y1) <= x && y2 = cube(y1 + 1) && y3 = 3 * sqr(y1) + 3 * y1 + 1
+
+    goal SA:
+        forall x: int. (phi x) -> (p x 0 1 1)
+    goal AFA:
+        forall x y1 y2 y3: int. (phi x) && (p x y1 y2 y3) && (pAFA x y1 y2 y3)
+            -> (p x (y1 + 1) (y2 + y3 + 6 * y1 + 6) (y3 + 6 * y1 + 6))
+    goal ATH:
+        forall x y1 y2 y3: int. (phi x) && (p x y1 y2 y3) && (pATH x y1 y2 y3)
+            -> (psi x y1)
+
+end
